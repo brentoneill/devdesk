@@ -1,0 +1,191 @@
+.but {
+  position:relative;
+  font-size:24px;
+  box-sizing:border-box;
+  cursor:pointer;
+  padding:10px;
+  border:thin solid #E5E4E2;
+  border-radius:4px;
+  width:160px;
+  margin:0 auto;
+  margin-bottom:20px;
+  transition: all .3s ease;
+}
+
+.btn-home {
+   &::after {
+    transition: all .3s ease;
+    position: absolute;
+    top: 0px;
+    right:20px;
+    font-size: 36px;
+    content: "→";
+    opacity: 0;
+   }
+    &:hover {
+    background-color:lighten(#027A6B, 10%);
+    border-color:rgba(0,0,0,0);
+    color:white;
+    &::after {
+      opacity:1;
+      color:white;
+      right:6px;
+    }
+  }
+}
+
+.btn-about {
+  display:inline-block;
+  &::before {
+    -webkit-transition: all .3s ease;
+    position:absolute;
+    background-color:$white;
+    content:"";
+    z-index:-1000;
+  }
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-up {
+  &:before {
+    top:100%;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  &:hover {
+  color: $white;
+    &::before {
+      top:0;
+    }
+  }
+}
+.btn-down {
+  &:before {
+    bottom:100%;
+    top:0;
+    left:0;
+    right:0;
+  }
+  &:hover {
+  color: $white;
+    &::before {
+      bottom:0;
+    }
+  }
+}
+.btn-right {
+  &:before {
+    bottom:0;
+    top:0;
+    left:0;
+    right:100%;
+  }
+  &:hover {
+  color: $white;
+    &::before {
+      right:0;
+    }
+  }
+}
+.btn-left {
+  &:before {
+    bottom:0;
+    top:0;
+    left:100%;
+    right:0;
+  }
+  &:hover {
+  color: $white;
+    &::before {
+      left:0;
+    }
+  }
+}
+
+.btn-contact {
+  display:inline-block;
+  height:60px;
+  &:hover {
+    background-color:lighten($white, 10%);
+    border-color:lighten($white, 10%);}
+  &:before,
+  &:after {
+    position:absolute;
+    width:100%;
+    height:100%;
+    text-align:center;
+    -webkit-transition: all 400ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  }
+}
+
+.btn-contact-horz{
+   &:before {
+    content:"holler";
+    left:-50%;
+    opacity: 0;
+  }
+  &:after {
+    content:"contact";
+    left:0;
+  }
+  &:hover {
+    &:before {
+      left:0;
+      opacity:1;
+    }
+    &:after {
+      left:-50%;
+      opacity:0;
+    }
+  }
+}
+
+.btn-contact-vert{
+  &:before{
+    left:0;
+    content:"about";
+    top:10px;
+  }
+  &:after{
+    left:0;
+    top:-50%;
+    opacity:0;
+    content:"info";
+  }
+  &:hover {
+    &:before {
+      top:-50%;
+      opacity:0;
+    }
+    &:after{
+      top:10px;
+      opacity:1;
+    }
+  }
+}
+
+.btn-portfolio {
+
+  &:after {
+    content:"→";
+    opacity:0;
+    position:absolute;
+    top:12px;
+    right:10px;
+    -webkit-transition: all 400ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  }
+  &:hover{
+    border-color:rgba(0,0,0,0);
+    &:after {
+      opacity:1;
+      right:3px;
+    }
+  }
+}
+
+.btn-radial{
+
+}

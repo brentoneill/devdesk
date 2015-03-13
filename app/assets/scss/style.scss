@@ -1,0 +1,14 @@
+@import 'bourbon/bourbon'; //bourbon import
+
+
+@import 'config';       //config options - colors, mixins
+
+
+@import 'reset';        //
+@import 'typography';   //typography delcarations
+@import 'navbar';       //styling for navbar
+@import 'footer';       //styling for footer
+@import 'buttons';      //styling for buttons
+@import 'home'          //styling for home page
+
+//VIEW SPECIFIC STYLES

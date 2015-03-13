@@ -1,0 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300|Raleway:400,900,800);
+
+
+$fontfamily-main: 'Roboto', sans-serif;
+$fontfamily-header: 'Raleway', sans-serif;
+
+.font-main {
+  font-family:$fontfamily-main;
+  font-weight:400;
+}
+
+.font-header {
+  font-family:$fontfamily-header;
+  font-weight:800;
+}
+
+body{
+  @extend .font-header;
+  font-weight:400;
+}

@@ -1,0 +1,15 @@
+<div ng-controller="NavbarController as navCtrl">
+  <nav id="top-nav">
+      <span class="logo">
+        <h1 ng-click="navCtrl.goTo('')">devdesk.</h1>
+      </span>
+      <ul ng-if="!isAuthenticated()">
+        <li><a href="/#/login" rel="when">Login</a></li>
+        <li><a href="/#/signup" rel="where">Sign Up</a></li>
+      </ul>
+      <ul ng-if="isAuthenticated()">
+        <li><a href="/#/logout">Logout</a></li>
+        <li><a href="/#/profile">Profile</a></li>
+      </ul>
+    </nav>
+</div>

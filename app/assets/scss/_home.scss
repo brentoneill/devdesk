@@ -1,0 +1,60 @@
+.header-image {
+  background-image:url('../images/devdesk.jpeg');
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center center;
+  height:100vh;
+  width:100%;
+  position:relative;
+  .caption{
+    margin:0 auto;
+    padding-top:30vh;
+    color:white;
+    text-align:center;
+    width:50%;
+    text-shadow: 4px 4px 10px rgba(0,0,0,.6);
+    h1, h3 {
+      margin-bottom:20px;
+    }
+  }
+
+  .scroll-button {
+
+  }
+}
+
+
+
+
+.container-features {
+  text-align:center;
+  h2{
+    margin-top:80px;
+  }
+}
+.feature-list {
+  padding-left:20px;
+  padding-right:20px;
+  margin-top:80px;
+  margin-bottom:80px;
+  .feature {
+    text-align:center;
+    i.fa {
+      margin-bottom:40px;
+    }
+    .feature-text {
+      text-align:left;
+    }
+  }
+}
+
+
+
+
+.cta-marketing {
+  height:50vh;
+  background-color: $black;
+  .caption{
+    
+  }
+}
