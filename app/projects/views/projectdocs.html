@@ -1,0 +1,19 @@
+<div class="container-authenticated">
+  <h2>{{projCtrl.project.name}} project documents:</h2>
+  <accordion>
+    <accordion-group is-open="status.open">
+      <accordion-heading>
+        <h3>Project Contract <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
+      </accordion-heading>
+      <h4>Contract Options:</h4>
+      <button class="btn btn-warning" ng-click="projCtrl.emailContract(projCtrl.project)">Email to copy to client</button>
+      <ng-include class="contract" src="'projects/views/docs/contract.html'"></ng-include>
+    </accordion-group>
+    <accordion-group>
+      <accordion-heading is-open="status.open">
+        <h3>Project Estimate <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
+      </accordion-heading>
+      <ng-include class="contract" src="'projects/views/docs/estimate.html'"></ng-include>
+    </accordion-group>
+  </accordion>
+</div>

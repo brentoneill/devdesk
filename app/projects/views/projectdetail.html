@@ -1,0 +1,68 @@
+
+
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+
+    <div class="container-authenticated">
+      <h3>{{projCtrl.project.name}}</h3>
+      <p>{{projCtrl.project.startdate | date : format : mediumDate}} - {{projCtrl.project.enddate | date : format : mediumDate}}</p>
+      <p>{{projCtrl.project.notes}}</p>
+      <p>For: <a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project._id)">{{projCtrl.project.client.name}}</a> - <a href="mailto:{{projCtrl.project.client.email}}">{{projCtrl.project.client.email}}</a></p>
+      <progressbar class="progress-striped active" max="100" value="((projCtrl.project.totalHrs - projCtrl.project.hrsRemaining)*100) / max" type="success">{{projectStatus}}</progressbar>
+      <h4>Deliverables - {{projCtrl.project.totalDel}} tasks, {{projCtrl.project.hrsRemaining}} hrs remaining</h4>
+      <table class="table table-striped table-bordered table-deliverables">
+        <thead>
+          <tr>
+            <th class="complete-col">#</th>
+            <th>Name</th>
+            <th class="hours-col">Hours (est)</th>
+            <th class="hours-col">Hours (real)</th>
+            <th class="complete-col">Complete</th>
+            <th class="complete-col">Invoiced</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
+            <td class="complete-col">{{$index + 1}}</td>
+            <td>{{deliverable.name}}</td>
+            <td class="hours-col">{{deliverable.hours}}</td>
+            <td class="hours-col form-inline"><input class="form-control" type="number" ng-model="deliverable.realHrs"></td>
+            <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
+            <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'">
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" ng-click="projCtrl.createInvoice(project)">Create invoice</button>
+      <button class="btn btn-warning">View documents</button>
+    </div>
+  </div>
+</div>

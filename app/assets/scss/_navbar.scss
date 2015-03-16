@@ -27,10 +27,13 @@ nav {
   li {
     vertical-align:middle;
     display:inline-block;
-    width:19%;
     text-align:center;
     position:relative;
+    margin-right:10%;
     @include transition(all .5s ease);
+    &:last-child {
+      margin-right:0;
+    }
     a {
       @extend .font-header;
       text-transform:lowercase;
@@ -42,7 +45,13 @@ nav {
       &:hover{
         color:$white;
       }
+      &:focus {
+        text-decoration:none;
+        color:$white;
+        outline:none;
+      }
     }
+
     a:before {
       content: "";
       position: absolute;

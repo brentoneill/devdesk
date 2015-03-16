@@ -1,0 +1,68 @@
+<div class="container-authenticated">
+
+
+  <input type="checkbox" id="sidebartoggler">
+
+  <div class="page-wrapper">
+
+    <label class="toggle" for="sidebartoggler">☰</label>
+
+    <div class="sidebar">
+      <h4>Hi, {{user.displayName}}!</h4>
+      <ul>
+        <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/dashboard">Dashboard</a></li>
+        <li><a href="/#/clients/new">Add client</a></li>
+        <li><a href="/#/projects/new">Add project</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/calendar">View calendar</a></li>
+        <li><a href="/#/clients">View clients</a></li>
+        <li><a href="/#/projects">View projects</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/profile">Edit profile</a></li>
+        <li><a href="/#/developer-map">Dev Map</a></li>
+      </ul>
+    </div>
+
+
+    <div class="page-content">
+      <h2>Add a project</h2>
+      <div class="form-group">
+        <label for="cName">Project Name</label>
+        <input class="form-control" type="text" name="nName" data-ng-model="project.name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="pStartDate">Date started:</label>
+        <input type="text" class="form-control" ng-model="project.startdate" name="pStartDate" bs-datepicker>
+      </div>
+      <div class="form-group">
+        <label for="pDueDate">Completion date:</label>
+        <input type="text" class="form-control" ng-model="project.enddate" name="pEndDate" bs-datepicker>
+      </div>
+      <div class="form-group">
+        <label for="pClient">Client</label>
+        <select ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
+          <option value="">-- choose client --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="pDesc">Project Notes</label>
+        <textarea class="form-control" name="pDesc" data-ng-model="project.notes"></textarea>
+      </div>
+
+      <div class="form-group form-inline" data-ng-repeat="deliverable in deliverablesNew">
+        <label for="choice" ng-show="showChoiceLabel(deliverable)">Deliverables</label>
+        <input type="text" class="form-control" ng-model="deliverable.name" name="" placeholder="Enter deliverable name">
+        <input type="text" class="form-control" ng-model="deliverable.hours" name="" placeholder="Enter estimate">
+        <button class="btn btn-success" ng-show="showAddDeliverable(deliverable)" ng-click="addNewDeliverable()">Add deliverable</button>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" data-ng-click="projCtrl.createProject(project)">Add Project</button>
+      </div>
+    </div>
+  </div>
+</div>

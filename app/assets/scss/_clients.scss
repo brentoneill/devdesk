@@ -1,0 +1,38 @@
+.container-authenticated {
+  padding-top:120px;
+  width:80%;
+  margin:0 auto;
+  margin-bottom:160px;
+  position:relative;
+  i.fa {
+    color:black;
+    cursor:pointer;
+    @include transition(all .5s ease);
+    opacity:.5;
+    &:hover {
+      transform:scale(1.5);
+      opacity:1;
+    }
+  }
+  .fa-close {
+    &:hover{
+      color:red;
+    }
+  }
+  .fa-th-large {
+    &:hover{
+      color:#29D4E8;
+    }
+  }
+}
+
+.container-addclient {
+  width:75%;
+}
+
+
+.client{
+  border:thin solid $black;
+  padding:20px;
+  min-height:400px;
+}

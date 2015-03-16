@@ -1,0 +1,49 @@
+
+
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+  <div class="page-content">
+    <div class="container-authenticated">
+      <h2>{{user.displayName}}'s clients</h2>
+        <div class="row client-list">
+          <section class="col-md-4 col-sm-6 col-xs-12" data-ng-repeat="client in cliCtrl.clients">
+            <div class="client">
+              <h2>{{client.name}}</h2>
+              <p>{{client.email}}</p>
+              <p>{{client.street}}</p>
+              <p>{{client.city}}, {{client.state}} {{client.zip}}</p>
+              <p>{{client.notes}}</p>
+              <h3>Projects:</h3>
+              <i ng-click="cliCtrl.deleteClient(client._id)" class="fa fa-close"></i>
+              <i ng-click="cliCtrl.viewClientDetail(client._id)" class="fa fa-th-large"></i>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

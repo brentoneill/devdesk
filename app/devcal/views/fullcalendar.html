@@ -1,0 +1,35 @@
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+    <div class="container-calendar">
+      <h3>Hi, {{user.displayName}}. Here's your calendar:</h3>
+      <div ui-calendar="uiConfig.calendar" ng-model="$scope.eventSources"></div>
+    </div>
+  </div>
+</div>

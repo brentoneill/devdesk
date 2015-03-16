@@ -17,6 +17,23 @@ angular.module('profile', ['ngMessages', 'ngRoute', 'mgcrea.ngStrap'])
             return deferred.promise;
           }
         }
-      });
+      })
+      .when('/dashboard', {
+        templateUrl: 'profile/views/dashboard.html',
+        controller: 'ProfileController',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
+      })
 
   });

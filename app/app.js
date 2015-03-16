@@ -1,17 +1,25 @@
 
-angular.module('devdesk', [
+var app = angular.module('devdesk', [
     'ngMessages',
     'ngAnimate',
     'ngRoute',
     'ngSanitize',
     'mgcrea.ngStrap',
+    'ui.bootstrap',
+    'ui.router',
     'auth',
     'profile',
-    'posts'])
+    'clients',
+    'projects',
+     'devcal',
+    // 'dashboard',
+    // 'posts'
+    ])
   .config(function($routeProvider){
     $routeProvider
       .when('/', {
         templateUrl: 'home/views/home.html',
+        controller: 'NavbarController as navCtrl'
       })
       .when('/developer-map', {
         templateUrl: 'home/views/devmap.html',
@@ -25,4 +33,5 @@ angular.module('devdesk', [
       .otherwise({
         redirectTo: '/not-found'
       })
-  });
+    })
+    .constant('_', _);

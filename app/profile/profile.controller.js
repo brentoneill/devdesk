@@ -24,11 +24,15 @@ angular.module('profile')
      * Update user's profile information.
      */
     $scope.updateProfile = function() {
-      console.log('trying to update profile');
       Account.updateProfile({
         displayName: $scope.user.displayName,
+        fullName: $scope.user.fullName,
         email: $scope.user.email,
         website: $scope.user.website,
+        address: $scope.user.address,
+        city: $scope.user.city,
+        state: $scope.user.state,
+        zip: $scope.user.zip,
         phone: $scope.user.phone
       }).then(function() {
         $alert({

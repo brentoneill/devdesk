@@ -6,15 +6,18 @@
   ],
   "description": "Client management app for freelance developers",
   "main": "server.js",
-  "keywords": [],
+  "keywords": [
+    "angularJS"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "app/assets/bower_components",
+    "app/assets/bower_components"
   ],
   "dependencies": {
+    "angular": "~1.3.14",
     "angular-animate": "~1.3.14",
     "angular-messages": "~1.3.14",
     "angular-resource": "~1.3.14",
@@ -22,9 +25,14 @@
     "angular-strap": "~2.2.0",
     "satellizer": "~0.9.3",
     "angular-sanitize": "~1.3.14",
+    "angular-ui-router": "latest",
     "lodash": "~2.4.1",
     "jquery": "~2.1.3",
+    "jquery-ui": "~1.10.4",
     "bootstrap": "~3.3.2",
     "font-awesome": "~4.3.0"
+  },
+  "resolutions": {
+    "angular": "~1.3.14"
   }
 }

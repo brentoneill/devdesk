@@ -1,0 +1,47 @@
+//
+.project {
+  padding:40px;
+  border:thin solid $black;
+  border-radius:4px;
+  position:relative;
+  margin-bottom:40px;
+  h3 {
+    margin-top:10px;
+    color:$black;
+    small{
+      color:gray;
+    }
+  }
+}
+
+.project-controls {
+  position:absolute;
+  right:40px;
+  top:20px;
+  i.fa:first-child{
+    margin-right:10px;
+  }
+}
+
+
+
+//Table view stuff
+td {
+  transition:all .5s ease;
+
+}
+
+.deliv-comp > td {
+  background-color:lighten(green,60%);
+}
+
+.complete-col, .hours-col {
+  text-align:center;
+}
+
+.project-search {
+  position:absolute;
+  top:140px;
+  right:0px;
+  width:200px;
+}

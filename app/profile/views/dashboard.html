@@ -1,0 +1,65 @@
+
+
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+    <div class="container-dashboard">
+
+      <h2>Welcome, {{user.displayName}}</h2>
+
+      <div class="row row-dashboard">
+        <h3>At a glance</h3>
+        <div class="col-md-6">
+          <div  class="">
+            <h4>List of new projects (outside source)</h4>
+          </div>
+          <div class="deliverables">
+            <h4>List of deliverables (due in next week/set by user)</h4>
+          </div>
+        </div>
+      </div>
+
+      <div ng-controller="ProjectController as projCtrl" class="row row-dashboard">
+        <ul>
+          <li ng-repeat="project in projCtrl.projects">
+            <h2>{{project.name}}</h2>
+            <p>for <b>{{project.client.name}}</b> - {{project.client.email}}, {{project.client.phone}}</p>
+            <p><b>Start Date:</b> {{project.startdate  | date : format : mediumDate }}</p>
+            <p><b>Due Date:</b> {{project.enddate  | date : format : mediumDate}}</p>
+            <p>{{project.notes}}</p>
+            <h4>Deliverables:</h4>
+            <div ng-repeat="deliverable in project.deliverables">
+              <p>{{deliverable.name}} - {{deliverable.hours}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

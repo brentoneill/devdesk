@@ -1,0 +1,83 @@
+
+
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+
+    <div class="container-authenticated">
+      <h2>{{user.displayName}}'s projects - {{projCtrl.projects.length}} total</h2>
+        <input type="text" class="form-control project-search" ng-model="projectsQuery" placeholder="Search projects">
+        <div class="project-list">
+          <section class="project" data-ng-repeat="project in projCtrl.projects | orderBy: 'enddate'| filter:projectsQuery">
+            <div class="project-controls">
+              <i ng-click="projCtrl.deleteProject(project._id)" class="fa fa-2x fa-close"></i>
+              <i ng-click="projCtrl.viewProjectDetail(project._id)" class="fa fa-2x fa-th-large"></i>
+            </div>
+            <h3>{{project.name}} <small>for <b>{{project.client.name}}</b> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone}}</small></h3>
+            <p><b>Start Date:</b> {{project.startdate | date : format : mediumDate}} &nbsp; &nbsp;<b>Due Date:</b> {{project.enddate | date : format : mediumDate}}</p>
+            <p></p>
+            <p>{{project.notes}}</p>
+            <h4>Deliverables</h4>
+            <table class="table table-deliverables">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th class="hours-col">Hours (est)</th>
+                  <th class="hours-col">Hours (real)</th>
+                  <th class="complete-col">Complete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in project.deliverables | filter:{'complete':'no'} | limitTo:3">
+                  <td>{{$index + 1}}</td>
+                  <td>{{deliverable.name}}</td>
+                  <td class="hours-col">{{deliverable.hours}}</td>
+                  <td class="hours-col">x</td>
+                  <td class="complete-col">{{deliverable.complete}}</td>
+                </tr>
+                <tr ng-if="project.devliverables.length() > 3" class="faded-row">
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Project Documents:</h4>
+            <button class="btn btn-primary">View Contract</button>
+            <button class="btn btn-primary" ng-click="projCtrl.goToEstimate(project)">View Estimate</button>
+            <button class="btn btn-primary" ng-click="projCtrl.goToInvoices(project)">View Invoices</button>
+            <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(project)">Document Center</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

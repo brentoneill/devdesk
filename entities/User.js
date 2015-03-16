@@ -15,7 +15,12 @@ var userSchema = new mongoose.Schema({
   yahoo: String,
   twitter: String,
   website: String,
-  phone: String
+  phone: String,
+  address: String,
+  city: String,
+  state: String,
+  zip: String,
+  fullName: String
 }, {strict: false});
 
 

@@ -5,7 +5,6 @@
 body {
   margin:0;
   padding:0;
-  height:2000px;
   position:relative;
 }
 
@@ -15,7 +14,11 @@ a{
   }
   &:focus {
     text-decoration:none;
-    color:$white;
-    outline:none;
   }
+}
+
+ul {
+  padding:0;
+  margin:0;
+  list-style-type:none;
 }

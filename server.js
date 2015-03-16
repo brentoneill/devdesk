@@ -1,9 +1,3 @@
-/**
- * Satellizer Node.js Example
- * (c) 2015 Sahat Yalkabov
- * License: MIT
- * Modified by: Calvin Webster
- */
 
 var path = require('path');
 var async = require('async');
@@ -15,8 +9,13 @@ var config = require('./config');
 var User = require('./entities/User');
 var authRoutes = require('./routes/auth');
 var crudRoutes = require('./routes/apiCrud');
+var clientRoutes = require('./routes/clients');
+var projectRoutes = require('./routes/projects');
 var profileRoutes = require('./routes/profile');
-
+var docusendRoutes = require('./routes/docusend');
+//
+// var multer = require('multer');
+// var done = false;
 
 mongoose.connect(config.MONGO_URI);
 
@@ -26,10 +25,29 @@ mongoose.connection.on('error', function() {
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 1337);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
+// app.use(multer({ dest: './app/uploads/avatars',
+//   rename: function (fieldname, filename){
+//     console.log(fieldname);
+//     return fieldname;
+//   },
+//   onFileUploadStart: function(file) {
+//     console.log(file.originalname + ' is starting')
+//   },
+//   onFileUploadComplete: function(file) {
+//     console.log(file.fieldname + ' uploaded to ' + file.path)
+//     done=true;
+//   }
+// }));
+
+
 
 // Force HTTPS on Heroku
 if (app.get('env') === 'production') {
@@ -45,6 +63,9 @@ app.use('/auth', authRoutes);
 app.use('/api', profileRoutes);
 // basic crud endpoints a la tiny-server
 app.use('/api/collections', crudRoutes);
+app.use('/api/collections/clients', clientRoutes);
+app.use('/api/collections/projects', projectRoutes);
+app.use('/', docusendRoutes)
 
 
 /*
