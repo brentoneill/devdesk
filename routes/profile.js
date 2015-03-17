@@ -32,6 +32,7 @@ router.route('/me')
       user.state = req.body.state || user.state;
       user.zip = req.body.zip || user.zip;
       user.picture = 'http://localhost:1337/uploads/avatars/userPhoto' + user.displayName + '.png';
+      user.ratehr = req.body.ratehr;
       user.save(function(err) {
         res.status(200).end();
       });

@@ -5,7 +5,6 @@ var app = angular.module('devdesk', [
     'ngRoute',
     'ngSanitize',
     'mgcrea.ngStrap',
-    'ui.bootstrap',
     'ui.router',
     'auth',
     'profile',

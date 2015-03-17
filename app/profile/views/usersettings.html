@@ -1,0 +1,41 @@
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+    <div class="container-authenticated">
+      <h2>Howdy {{user.displayName}}!</h2>
+        <h4>Trying to swap those settings, are ye?!</h2>
+          <div class="col-md-3 col-sm-6 col-xs-8">
+            <form method="post" ng-submit="updateProfile()">
+            <div class="form-group form-inline">
+              <label class="control-label"><i class="ion-person"></i> Hourly rate:</label>
+              <input type="text" class="form-control" ng-model="user.ratehr" />
+            </div>
+          <button type="submit" class="btn btn-lg btn-success">Update Settings</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

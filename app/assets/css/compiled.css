@@ -524,34 +524,20 @@ td {
 .form-control input {
   width: 15%; }
 
-.datepicker.dropdown-menu {
-  width: 250px;
-  height: 250px; }
-  .datepicker.dropdown-menu button {
-    outline: none;
-    border: 0px; }
-  .datepicker.dropdown-menu tbody {
-    height: 180px; }
-  .datepicker.dropdown-menu tbody button {
-    padding: 6px; }
-  .datepicker.dropdown-menu.datepicker-mode-1 tbody button, .datepicker.dropdown-menu.datepicker-mode-2 tbody button {
-    height: 65px;
-    background-color: white; }
-
 .container-calendar {
   padding-top: 120px;
   width: 80%;
   margin: 0 auto; }
 
 .document {
-  width: 600px;
   border: thin solid #4d4d4d;
   border-radius: 2px;
   padding: 60px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 8px 8px 20px rgba(77, 77, 77, 0.2); }
+  box-shadow: 8px 8px 20px rgba(77, 77, 77, 0.2);
+  position: relative; }
   .document ul {
     padding-left: 40px;
     list-style-type: circle; }
@@ -565,27 +551,82 @@ td {
 .contract-wrapper h5 {
   font-weight: bold; }
 
-.docoptions-wrapper {
+.document-options-wrapper {
   border-radius: 4px;
   padding: 40px;
   padding-top: 0px; }
-  .docoptions-wrapper .form-group {
+  .document-options-wrapper .form-group {
     display: inline-block;
     vertical-align: middle;
     width: 24%;
     margin-bottom: 2px; }
-  .docoptions-wrapper label {
+  .document-options-wrapper label {
     width: 80%; }
 
-.options-contract,
-.options-estimate {
+.document-options {
   position: relative;
-  padding-top: 10px; }
-  .options-contract .docubut-wrapper,
-  .options-estimate .docubut-wrapper {
+  padding-top: 60px; }
+  .document-options .docubut-wrapper {
     position: absolute;
     top: 10px;
     right: 0px; }
+
+.deliv-est > td {
+  background-color: #85e7f2; }
+
+.estimate-wrapper h2 {
+  margin-top: 0px; }
+
+.estimate-table tbody > tr > td, .estimate-table .table > tfoot > tr > td {
+  vertical-align: middle; }
+.estimate-table .name {
+  width: 65%; }
+.estimate-table .cost {
+  width: 35%;
+  text-align: right; }
+  .estimate-table .cost h3, .estimate-table .cost h4 {
+    text-align: right; }
+.estimate-table h5 {
+  font-size: 16px; }
+.estimate-table tr.total-header {
+  border-top: 1px solid #ddd; }
+
+.estimate-header {
+  overflow: auto; }
+
+.estimate-project-name,
+.estimate-project-date,
+.estimate-dev-info {
+  display: inline-block;
+  vertical-align: top; }
+
+.estimate-project-name,
+.estimate-project-date {
+  width: 30%;
+  margin-top: 20px;
+  margin-right: 5%; }
+  .estimate-project-name h4,
+  .estimate-project-date h4 {
+    margin-bottom: 20px; }
+  .estimate-project-name h5,
+  .estimate-project-date h5 {
+    border-bottom: thin solid #343434; }
+
+.estimate-dev-info {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  width: 190px; }
+  .estimate-dev-info p {
+    margin-top: 0;
+    margin-bottom: 0; }
+
+.estimate-goal p {
+  width: 70%;
+  min-height: 100px;
+  padding: 20px;
+  border: thin solid #343434;
+  border-radius: 2px; }
 
 .tab-pane.am-fade {
   animation-duration: .3s;

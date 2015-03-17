@@ -12,6 +12,7 @@
             editProject: editProject,
             deleteProject: deleteProject,
             emailContract: emailContract,
+            emailEstimate: emailEstimate,
             sendReminder : sendReminder
           }
 
@@ -56,7 +57,18 @@
             // project.contract.contractSent = true;
             // project.contract.sendDate = Date.now();
             editProject(project);
-            $http.post('/generate-email', request).then(function(res){
+            $http.post('/send-contract', request).then(function(res){
+              $rootScope.$broadcast("document:sent");
+              $location.path('/projects/' + project._id + '/documents');
+            });
+          }
+
+          function emailEstimate(html, project){
+            console.log('trying to send estimate');
+            var request = [html, project];
+            project.estimateSent = true;
+            editProject(project);
+            $http.post('/send-estimate', request).then(function(res){
               $rootScope.$broadcast("document:sent");
               $location.path('/projects/' + project._id + '/documents');
             });

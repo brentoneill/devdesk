@@ -24,6 +24,7 @@ angular.module('profile')
      * Update user's profile information.
      */
     $scope.updateProfile = function() {
+      console.log($scope.user);
       Account.updateProfile({
         displayName: $scope.user.displayName,
         fullName: $scope.user.fullName,
@@ -33,7 +34,8 @@ angular.module('profile')
         city: $scope.user.city,
         state: $scope.user.state,
         zip: $scope.user.zip,
-        phone: $scope.user.phone
+        phone: $scope.user.phone,
+        ratehr: $scope.user.ratehr
       }).then(function() {
         $alert({
           content: 'Profile has been updated',

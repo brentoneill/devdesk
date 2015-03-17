@@ -1,0 +1,66 @@
+<div class="estimate-wrapper">
+  <div class="document">
+    <h2>Project Cost Estimate</h2>
+    <div class="estimate-header">
+      <div class="estimate-header-top">
+        <div class="estimate-project-name">
+          <h4>Project Name:</h4>
+          <h5>{{projCtrl.project.name}} for <small>{{projCtrl.project.client.name}}</small></h5>
+        </div>
+        <div class="estimate-project-date">
+          <h4>Date:</h4>
+          <h5>{{projCtrl.project.startdate | date:'mediumDate'}}</h5>
+        </div>
+        <div class="estimate-dev-info">
+          <img class="img img-rounded" src="http://placehold.it/100/100" alt="{{user.fullName}} logo">
+          <small>
+            <p>{{user.fullName}}</p>
+            <p>{{user.address}}</p>
+            <p>{{user.city}}, {{user.state}} {{user.zip}}</p>
+            <p><i class="fa fa-phone"></i> {{user.phone}}</p>
+            <p><i class="fa fa-envelope"></i> {{user.email}}</p>
+            <p><i class="fa fa-link"></i> {{user.website}}</p>
+          </small>
+        </div>
+      </div>
+      <div class="estimate-header-bot">
+        <div class="estimate-goal">
+          <h4>Project goal</h4>
+          <p>{{projCtrl.project.goal || projCtrl.project.notes}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="estimate-body">
+      <div class="estimate-deliverables">
+        <table class="table estimate-table">
+          <thead class="estimate-table-headers">
+            <tr>
+              <th class="name"><h3><i class="fa fa-file-text-o"></i>&nbsp;Deliverables</h3></th>
+              <th class="cost"><h3><i class="fa fa-money"></i>&nbsp;Estimated Cost</h3></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="deliverable in projCtrl.project.estimate.deliverables">
+              <td class="name">
+                <h5>{{deliverable.name}}</h5>
+                <!-- <input class="form-control" type="text" ng-model="deliverable.description"> -->
+              </td>
+              <td class="cost"><h5>{{deliverable.cost | currency}}</h5></td>
+            </tr>
+            <tr class="total-header">
+              <td><h3><i class="fa fa-clipboard"></i>&nbsp;Notice</h3></td>
+              <td class="cost"><h3><i class="fa fa-tag"></i>&nbsp;Total Cost</h3></td>
+            </tr>
+            <tr class="total">
+              <td>
+                <p>
+                Estimated total cost is an estimate based on project infomration give to me at this time. Acutal cost may end up being slightly lower or higher depending on the number of revisions and meetings needed for each deliverable.
+                </p>
+              </td>
+              <td class="cost"><h4>{{projCtrl.project.estimate.estCost | currency}}</h4></td>
+            </tr>
+          </tbody>
+      </div>
+    </div>
+  </div>
+</div>

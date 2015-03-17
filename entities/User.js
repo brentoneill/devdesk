@@ -20,7 +20,8 @@ var userSchema = new mongoose.Schema({
   city: String,
   state: String,
   zip: String,
-  fullName: String
+  fullName: String,
+  ratehr: Number
 }, {strict: false});
 
 

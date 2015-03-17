@@ -62,8 +62,6 @@
             return $auth.isAuthenticated();
           };
 
-
-
           projCtrl.updateTotals = function(){
             projCtrl.project.hrsRemaining = 0;
             projCtrl.project.totalDel = 0;
@@ -85,9 +83,9 @@
           }
 
           projCtrl.updateDeliverable = function(project){
-
             projCtrl.updateTotals();
             projCtrl.editProject(project);
+
           }
 
           projCtrl.createProject = function (newProject){
@@ -103,9 +101,31 @@
             _.each(newProject.deliverables, function(item, idx, arr){
               newProject.totalHrs += +item.hours;
             })
-            console.log(newProject.totalHrs);
             ProjectService.createProject(newProject);
           };
+
+
+          projCtrl.createEstimate = function(project){
+            project.estimateCreated = 'yes';
+            project.estimate.deliverables = [];
+            project.estimate.estCost = 0;
+            var allDeliverables = projCtrl.project.deliverables
+            _.each(allDeliverables, function(item, idx, arr){
+              if(item.inEstimate === 'yes'){
+                project.estimate.deliverables.push(item);
+                project.estimate.estCost += +item.cost;
+              }
+            });
+            projCtrl.editProject(project);
+          }
+
+          projCtrl.resetEstimate = function(project){
+            project.estimateCreated = 'no';
+            project.estimate.deliverables = [];
+            project.estimate.estCost = 0;
+            projCtrl.editProject(project);
+          }
+
 
           projCtrl.viewProjectDetail = function(id){
             $location.path('/projects/' + id);
@@ -132,6 +152,10 @@
             var html = angular.element('.contract-wrapper').html();
             ProjectService.emailContract(html, project);
           };
+          projCtrl.emailEstimate = function(project){
+            var html = angular.element('.estimate-wrapper').html();
+            ProjectService.emailEstimate(html, project);
+          }
           projCtrl.sendReminder = function(project, type){
             console.log(project);
             console.log(type);
