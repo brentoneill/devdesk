@@ -3,6 +3,7 @@ var router = express.Router();
 var config = require('../config');
 
 //Mail Sending Module
+<<<<<<< HEAD
 var sendgrid  = require('sendgrid')(config.sgName, config.sgPass);
 
 //PDF conversion, writing Modules
