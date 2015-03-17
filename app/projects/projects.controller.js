@@ -25,13 +25,24 @@
 
          $scope.getProfile();
 
+         ProjectService.getProjects().success(function(projects){
+           projCtrl.projects = _.where(projects, {'userId':$scope.user._id})
+         });
+
+         ProjectService.getProject($routeParams.projectId).success(function(project){
+           projCtrl.project = project;
+           projCtrl.updateTotals();
+         });
+
          ClientService.getClients().success(function(clients){
            projCtrl.clients = clients;
          });
 
          ClientService.getClient($routeParams.clientId).success(function(client){
            projCtrl.client = client;
+
          });
+
 
          //////////////////////////////
          $scope.deliverablesNew = [{id: 'deliv', 'complete': 'no', 'invoiced':'no', 'realHrs': 0}];
@@ -51,14 +62,7 @@
             return $auth.isAuthenticated();
           };
 
-          ProjectService.getProjects().success(function(projects){
-            projCtrl.projects = _.where(projects, {'userId':$scope.user._id})
-          });
 
-          ProjectService.getProject($routeParams.projectId).success(function(project){
-            projCtrl.project = project;
-            projCtrl.updateTotals();
-          });
 
           projCtrl.updateTotals = function(){
             projCtrl.project.hrsRemaining = 0;
@@ -81,12 +85,14 @@
           }
 
           projCtrl.updateDeliverable = function(project){
+
             projCtrl.updateTotals();
             projCtrl.editProject(project);
           }
 
           projCtrl.createProject = function (newProject){
             newProject.userId = $scope.user._id;
+            newProject.user = $scope.user;
             newProject.deliverables = $scope.deliverablesNew;
             newProject.totalHrs = 0;
             //Init document fields
@@ -123,11 +129,14 @@
           };
 
           projCtrl.emailContract = function(project){
-            console.log(project);
-            var html = $('.contract-wrapper').html();
-            ProjectService.emailDocument(html, project);
+            var html = angular.element('.contract-wrapper').html();
+            ProjectService.emailContract(html, project);
           };
-
+          projCtrl.sendReminder = function(project, type){
+            console.log(project);
+            console.log(type);
+            ProjectService.sendReminder(project, type);
+          };
       }]);
 
 })();

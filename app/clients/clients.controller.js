@@ -3,8 +3,8 @@
 
     angular
         .module('clients')
-        .controller('ClientController', ['ClientService', 'Account', '$location', '$routeParams', '$auth', '$scope',
-        function(ClientService, Account, $location, $routeParams, $auth, $scope, $http) {
+        .controller('ClientController', ['ClientService', 'ProjectService', 'Account', '$location', '$routeParams', '$auth', '$scope', '$http',
+        function(ClientService, ProjectService, Account, $location, $routeParams, $auth,  $scope, $http) {
           var cliCtrl = this;
 
           $scope.getProfile = function() {
@@ -30,12 +30,14 @@
 
           ClientService.getClient($routeParams.clientId).success(function(client){
             cliCtrl.client = client;
+            console.log(cliCtrl.client);
           });
 
-          // ProjectService.getProjects().success(function(projects){
-          //   cliCtrl.projects = _.where(projects, {'userId': $scope.user._id});
-          //   console.log(cliCtrl.projects);
-          // });
+          ProjectService.getProjects().success(function(projects){
+            cliCtrl.projects = _.where(projects, {'userId': $scope.user._id});
+            cliCtrl.client.projects = [];
+            console.log(cliCtrl.client.projects);
+          });
 
           cliCtrl.createClient = function (newClient){
             newClient.userId = $scope.user._id;

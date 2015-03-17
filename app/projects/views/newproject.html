@@ -29,35 +29,41 @@
     </div>
 
 
-    <div class="page-content">
+    <div class="page-content project-new">
       <h2>Add a project</h2>
+      <div class="form-group">
+        <label for="pClient">Client</label>
+        <select ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
+          <option value="">Select from client list</option>
+        </select>
+        <span ng-if="!project.client">Client not listed? No worries, <a href="/#/clients/new">click here to add!</a></span>
+      </div>
+      <div class="form-group">
+        <label for="pStartDate">Date started:</label>
+        <input type="text" class="form-control" autoclose="true" data-date-format="mediumDate" ng-model="project.startdate" name="pStartDate" bs-datepicker>
+      </div>
+      <div class="form-group">
+        <label for="pDueDate">Completion date:</label>
+        <input type="text" class="form-control" autoclose="true" data-date-format="mediumDate" ng-model="project.enddate" name="pEndDate" bs-datepicker>
+      </div>
       <div class="form-group">
         <label for="cName">Project Name</label>
         <input class="form-control" type="text" name="nName" data-ng-model="project.name" placeholder="Name">
       </div>
       <div class="form-group">
-        <label for="pStartDate">Date started:</label>
-        <input type="text" class="form-control" ng-model="project.startdate" name="pStartDate" bs-datepicker>
-      </div>
-      <div class="form-group">
-        <label for="pDueDate">Completion date:</label>
-        <input type="text" class="form-control" ng-model="project.enddate" name="pEndDate" bs-datepicker>
-      </div>
-      <div class="form-group">
-        <label for="pClient">Client</label>
-        <select ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
-          <option value="">-- choose client --</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="pDesc">Project Notes</label>
-        <textarea class="form-control" name="pDesc" data-ng-model="project.notes"></textarea>
+        <label for="pDesc">Project Description:</label>
+        <textarea class="form-control" name="pDesc" data-ng-model="project.description"></textarea>
       </div>
 
-      <div class="form-group form-inline" data-ng-repeat="deliverable in deliverablesNew">
-        <label for="choice" ng-show="showChoiceLabel(deliverable)">Deliverables</label>
-        <input type="text" class="form-control" ng-model="deliverable.name" name="" placeholder="Enter deliverable name">
-        <input type="text" class="form-control" ng-model="deliverable.hours" name="" placeholder="Enter estimate">
+      <div class="form-group">
+        <label for="pDesc">Notes</label>
+        <textarea class="form-control" name="pDesc" data-ng-model="project.notes"></textarea>
+      </div>
+      <h4>Deliverables</h4>
+      <div class="form-group form-inline deliverables-list" data-ng-repeat="deliverable in deliverablesNew">
+        <input type="text" class="form-control deliverable-name" ng-model="deliverable.name" name="" placeholder="Enter deliverable name">
+        <input type="text" class="form-control" ng-model="deliverable.hours" name="" placeholder="Enter hrs estimate">
+        <input type="text" class="form-control" ng-model="deliverable.costHr" name="" placeholder="Enter cost per hour">
         <button class="btn btn-success" ng-show="showAddDeliverable(deliverable)" ng-click="addNewDeliverable()">Add deliverable</button>
       </div>
       <div class="form-group">

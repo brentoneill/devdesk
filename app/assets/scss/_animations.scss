@@ -1,0 +1,17 @@
+.tab-pane.am-fade {
+  animation-duration: .3s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  opacity: 1;
+}
+
+.tab-pane.am-fade.active-remove {
+  display: none !important;
+}
+
+.tab-pane.am-fade.active-add {
+  animation-name: fadeIn;
+}
+.nav-tabs > li > a {
+  cursor:pointer;
+}

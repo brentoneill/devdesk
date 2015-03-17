@@ -3,15 +3,22 @@
 * {
   box-sizing: border-box; }
 
+html {
+  -webkit-font-smoothing: antialiased; }
+
 body {
   margin: 0;
   padding: 0;
   position: relative; }
 
-a:hover {
-  text-decoration: none; }
-a:focus {
-  text-decoration: none; }
+a {
+  color: #343434; }
+  a:hover {
+    color: #343434;
+    text-decoration: none; }
+  a:focus {
+    color: #343434;
+    text-decoration: none; }
 
 ul {
   padding: 0;
@@ -166,6 +173,9 @@ body {
     opacity: 1;
     right: 3px; }
 
+button.btn {
+  font-size: 13px; }
+
 nav {
   width: 100%;
   height: 80px;
@@ -175,22 +185,23 @@ nav {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease; }
-  nav .logo {
+  nav span.logo {
     float: left;
     margin-left: 10%;
-    color: #FEFEFA;
-    cursor: pointer;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    transition: all 0.5s ease; }
-    nav .logo a:visited {
-      color: #FEFEFA; }
+    color: #343434;
+    cursor: pointer; }
+    nav span.logo h2 {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
+    nav span.logo a:visited {
+      color: #343434; }
   nav ul {
     width: 50%;
     margin: 0 auto;
     text-align: right;
     float: right;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 40px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -209,17 +220,17 @@ nav {
     nav li a {
       text-transform: lowercase;
       font-weight: 400;
-      font-size: 24px;
+      font-size: 16px;
       display: inline-block;
-      color: #FEFEFA;
+      color: #343434;
       -webkit-transition: all 0.5s ease;
       -moz-transition: all 0.5s ease;
       transition: all 0.5s ease; }
       nav li a:hover {
-        color: #FEFEFA; }
+        color: #343434; }
       nav li a:focus {
         text-decoration: none;
-        color: #FEFEFA;
+        color: #343434;
         outline: none; }
     nav li a:before {
       content: "";
@@ -228,7 +239,7 @@ nav {
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: #FEFEFA;
+      background-color: #343434;
       visibility: hidden;
       -webkit-transform: scaleX(0);
       transform: scaleX(0);
@@ -242,20 +253,18 @@ nav {
 
 .fixednav {
   background-color: rgba(255, 255, 255, 0.95);
-  height: 60px; }
-  .fixednav span.logo {
-    color: #343434; }
-    .fixednav span.logo a:visited {
-      color: #343434; }
-    .fixednav span.logo h1 {
-      margin-top: 10px; }
+  height: 60px;
+  box-shadow: 0px 4px 0px rgba(52, 52, 52, 0.2); }
+  .fixednav span.logo h2 {
+    padding-bottom: 10px;
+    font-size: 24px; }
   .fixednav ul {
     margin-top: 20px; }
   .fixednav li {
     margin-bottom: 20px; }
     .fixednav li a {
       color: #343434;
-      font-size: 16px; }
+      font-size: 14px; }
       .fixednav li a:hover {
         color: #343434; }
   .fixednav a:before {
@@ -422,7 +431,7 @@ nav {
     margin-right: 0px; }
 
 .container-authenticated {
-  padding-top: 120px;
+  padding-top: 80px;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 160px;
@@ -438,9 +447,11 @@ nav {
       transform: scale(1.5);
       opacity: 1; }
   .container-authenticated .fa-close:hover {
-    color: red; }
+    color: #962D3E; }
   .container-authenticated .fa-th-large:hover {
     color: #29D4E8; }
+  .container-authenticated textarea {
+    resize: none; }
 
 .container-addclient {
   width: 75%; }
@@ -449,6 +460,13 @@ nav {
   border: thin solid #343434;
   padding: 20px;
   min-height: 400px; }
+
+.client-new {
+  width: 760px;
+  padding: 40px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  margin: 0 auto; }
 
 .project {
   padding: 40px;
@@ -477,12 +495,48 @@ td {
 
 .complete-col, .hours-col {
   text-align: center; }
+  .complete-col input, .hours-col input {
+    width: 60px; }
+
+.desc-col {
+  width: 40%; }
 
 .project-search {
   position: absolute;
-  top: 140px;
+  top: 100px;
   right: 0px;
   width: 200px; }
+
+.sent {
+  color: green; }
+
+.not-sent {
+  color: red; }
+
+.project-new {
+  width: 760px;
+  padding: 40px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
+
+.form-control input:first-child {
+  width: 40%; }
+.form-control input {
+  width: 15%; }
+
+.datepicker.dropdown-menu {
+  width: 250px;
+  height: 250px; }
+  .datepicker.dropdown-menu button {
+    outline: none;
+    border: 0px; }
+  .datepicker.dropdown-menu tbody {
+    height: 180px; }
+  .datepicker.dropdown-menu tbody button {
+    padding: 6px; }
+  .datepicker.dropdown-menu.datepicker-mode-1 tbody button, .datepicker.dropdown-menu.datepicker-mode-2 tbody button {
+    height: 65px;
+    background-color: white; }
 
 .container-calendar {
   padding-top: 120px;
@@ -507,5 +561,45 @@ td {
     font-weight: bold; }
   .document h4 {
     color: #4d4d4d; }
+
+.contract-wrapper h5 {
+  font-weight: bold; }
+
+.docoptions-wrapper {
+  border-radius: 4px;
+  padding: 40px;
+  padding-top: 0px; }
+  .docoptions-wrapper .form-group {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24%;
+    margin-bottom: 2px; }
+  .docoptions-wrapper label {
+    width: 80%; }
+
+.options-contract,
+.options-estimate {
+  position: relative;
+  padding-top: 10px; }
+  .options-contract .docubut-wrapper,
+  .options-estimate .docubut-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 0px; }
+
+.tab-pane.am-fade {
+  animation-duration: .3s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  opacity: 1; }
+
+.tab-pane.am-fade.active-remove {
+  display: none !important; }
+
+.tab-pane.am-fade.active-add {
+  animation-name: fadeIn; }
+
+.nav-tabs > li > a {
+  cursor: pointer; }
 
 /*# sourceMappingURL=compiled.css.map */

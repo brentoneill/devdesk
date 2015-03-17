@@ -35,3 +35,14 @@ var app = angular.module('devdesk', [
       })
     })
     .constant('_', _);
+
+
+    // In app.js or main.js or whatever:
+    // var myApp = angular.module('askchisne', ['ngSanitize', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls']);
+
+    // This filter makes the assumption that the input will be in decimal form (i.e. 17% is 0.17).
+    app.filter('percentage', ['$filter', function ($filter) {
+      return function (input, decimals) {
+        return $filter('number')(input * 100, decimals) + '%';
+      };
+    }]);

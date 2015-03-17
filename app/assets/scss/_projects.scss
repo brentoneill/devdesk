@@ -37,11 +37,65 @@ td {
 
 .complete-col, .hours-col {
   text-align:center;
+  input{
+    width:60px;
+  }
+}
+
+.desc-col {
+  width:40%;
 }
 
 .project-search {
   position:absolute;
-  top:140px;
+  top:100px;
   right:0px;
   width:200px;
+}
+
+.sent {
+  color:green;
+}
+.not-sent {
+  color:red;
+}
+
+//Add a project
+.project-new {
+  width:760px;
+  padding:40px;
+  border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3);
+}
+
+.form-control{
+  input:first-child{
+    width:40%;
+  }
+  input {
+    width:15%;
+  }
+
+}
+
+
+.datepicker.dropdown-menu {
+  width: 250px;
+  height: 250px;
+  button {
+    outline: none;
+    border: 0px;
+  }
+  tbody {
+    height: 180px;
+  }
+  tbody button {
+    padding: 6px;
+  }
+  &.datepicker-mode-1, &.datepicker-mode-2 {
+    tbody button {
+      height: 65px;
+      background-color:white;
+    }
+  }
 }

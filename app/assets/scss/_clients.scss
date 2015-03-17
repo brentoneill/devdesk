@@ -1,5 +1,5 @@
 .container-authenticated {
-  padding-top:120px;
+  padding-top:80px;
   width:80%;
   margin:0 auto;
   margin-bottom:160px;
@@ -16,14 +16,18 @@
   }
   .fa-close {
     &:hover{
-      color:red;
+      color:$red;
     }
   }
   .fa-th-large {
     &:hover{
-      color:#29D4E8;
+      color:$cyan;
     }
   }
+  textarea {
+    resize:none;
+  }
+
 }
 
 .container-addclient {
@@ -35,4 +39,12 @@
   border:thin solid $black;
   padding:20px;
   min-height:400px;
+}
+
+.client-new {
+  width:760px;
+  padding:40px;
+  border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3);
+  margin:0 auto;
 }

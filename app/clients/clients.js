@@ -36,13 +36,13 @@
                 resolve: {
                   authenticated: checkAuth
                 }
-              })
-              .when('/clients/:clientId/edit', {
-                templateUrl: 'clients/views/editclient.html',
-                controller: 'ClientController as cliCtrl',
-                resolve: {
-                  authenticated: checkAuth
-                }
               });
+              // .when('/clients/:clientId/edit', {
+              //   templateUrl: 'clients/views/editclient.html',
+              //   controller: 'ClientController as cliCtrl',
+              //   resolve: {
+              //     authenticated: checkAuth
+              //   }
+              // });
         });
 })();

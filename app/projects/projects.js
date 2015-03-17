@@ -3,7 +3,7 @@
 
     angular
         .module('projects', [
-            "ngRoute"
+            'ngRoute'
         ])
         .config(function ($routeProvider) {
           var checkAuth = function ($q, $location, $auth) {

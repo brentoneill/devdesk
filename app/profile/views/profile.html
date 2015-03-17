@@ -32,14 +32,14 @@
         <div class="panel-heading">Profile</div>
         <div class="panel-body">
           <legend><i class="ion-clipboard"></i> Edit My Profile</legend>
-<!--           <form  id        =  "uploadForm"
+        <form  id        =  "uploadForm"
        enctype   =  "multipart/form-data"
        action    =  "/api/photo"
        method    =  "post"
 >
   <input type="file" name="userPhoto-{{user.displayName}}" />
   <input type="submit" value="Upload Image" name="submit">
-</form> -->
+</form>
           <form method="post" ng-submit="updateProfile()">
             <div class="form-group">
               <label class="control-label">Profile Picture</label>

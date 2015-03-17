@@ -21,3 +21,37 @@
     color:$gray-med;
   }
 }
+
+.contract-wrapper {
+  h5 {
+    font-weight:bold;
+  }
+}
+
+
+.docoptions-wrapper {
+  border-radius:4px;
+  padding:40px;
+  padding-top:0px;
+  .form-group {
+    display:inline-block;
+    vertical-align:middle;
+    width:24%;
+    margin-bottom:2px;
+  }
+  label {
+    width:80%;
+  }
+
+}
+
+.options-contract,
+.options-estimate {
+  position:relative;
+  padding-top:10px;
+  .docubut-wrapper {
+    position:absolute;
+    top:10px;
+    right:0px;
+  }
+}

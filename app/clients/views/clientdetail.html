@@ -30,9 +30,21 @@
 
   <div class="page-content">
 
-    <div ng-if="cliCtrl.isAuthenticated" class="container-authenticated">
+    <div class="container-authenticated">
       <h2>{{cliCtrl.client.name}}</h2>
-      <p>{{cliCtrl.client.email}}</p>
+      <p><i class="fa fa-envelope"></i> <a href="mail:to{{cliCtrl.client.email}}">{{cliCtrl.client.email}}</a></p>
+      <p><i class="fa fa-phone"></i> {{cliCtrl.client.phone}}</p>
+      <p><i class="fa fa-building"></i> {{cliCtrl.client.street}}</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; {{cliCtrl.client.city}}, {{cliCtrl.client.state}} {{cliCtrl.client.zip}}</p>
+      <p><i class="fa fa-file-text"></i> {{cliCtrl.client.notes}}</p>
+      <h4>Projects:</h4>
+      <div class="client-project-list" ng-controller="ProjectController as projCtrl">
+        <ul>
+          <li ng-repeate="project in projCtrl.singleClient.projects">
+            <h5>{{project.name}}</h5>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

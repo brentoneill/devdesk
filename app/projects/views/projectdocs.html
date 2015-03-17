@@ -1,19 +1,101 @@
-<div class="container-authenticated">
-  <h2>{{projCtrl.project.name}} project documents:</h2>
-  <accordion>
-    <accordion-group is-open="status.open">
-      <accordion-heading>
-        <h3>Project Contract <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
-      </accordion-heading>
-      <h4>Contract Options:</h4>
-      <button class="btn btn-warning" ng-click="projCtrl.emailContract(projCtrl.project)">Email to copy to client</button>
-      <ng-include class="contract" src="'projects/views/docs/contract.html'"></ng-include>
-    </accordion-group>
-    <accordion-group>
-      <accordion-heading is-open="status.open">
-        <h3>Project Estimate <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></h3>
-      </accordion-heading>
-      <ng-include class="contract" src="'projects/views/docs/estimate.html'"></ng-include>
-    </accordion-group>
-  </accordion>
+
+
+<input type="checkbox" id="sidebartoggler">
+
+<div class="page-wrapper">
+
+  <label class="toggle" for="sidebartoggler">☰</label>
+
+  <div class="sidebar">
+    <h4>Hi, {{user.displayName}}!</h4>
+    <ul>
+      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/dashboard">Dashboard</a></li>
+      <li><a href="/#/clients/new">Add client</a></li>
+      <li><a href="/#/projects/new">Add project</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/calendar">View calendar</a></li>
+      <li><a href="/#/clients">View clients</a></li>
+      <li><a href="/#/projects">View projects</a></li>
+    </ul>
+    <ul>
+      <li><a href="/#/profile">Edit profile</a></li>
+      <li><a href="/#/developer-map">Dev Map</a></li>
+    </ul>
+  </div>
+
+
+  <div class="page-content">
+    <div class="container-authenticated">
+      <h1 class="page-header">Document Center</h1>
+      <h2>{{projCtrl.project.name}} <small>({{projCtrl.project.client.name}})</small></h2>
+      <div bs-active-pane="0" bs-tabs>
+        <div title="Contract" bs-pane>
+          <div class="options-contract">
+            <h4>Contract Options:</h4>
+            <p ng-if="projCtrl.project.contractSent" class="contract-alert">
+              Looks like you already sent out a contract to your client. Would you like to send a reminder? Click the button above
+            </p>
+            <div class="docubut-wrapper">
+              <button class="btn btn-warning btn-docusend" ng-click="projCtrl.emailContract(projCtrl.project)" ng-disabled="projCtrl.project.contractSent">Email to copy to client</button>
+              <button class="btn btn-info btn-reminder" ng-disabled="!(projCtrl.project.contractSent)" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
+              <button class="btn btn-danger btn-revise">Revise Contract</button>
+            </div>
+            <h4>Sections to include:</h4>
+            <div class="docoptions-wrapper">
+              <div class="form-group">
+                <label for="cDesign">Design:</label>
+                <input id="cDesign" type="checkbox" ng-model="contractinc.design" ng-init="contractinc.design=true" />
+              </div>
+              <div class="form-group">
+                <label for="cText">Text Content:</label>
+                <input id="cText" type="checkbox" ng-model="contractinc.textcontent" ng-init="contractinc.textcontent=true"/>
+              </div>
+              <div class="form-group">
+                <label for="cTechsupp">Tech Support:</label>
+                <input id="cTechsupp" type="checkbox" ng-model="contractinc.techsupp" ng-init="contractinc.techsupp=true"/>
+              </div>
+              <div class="form-group">
+                <label for="cChanges">Revisions:</label>
+                <input id="cChanges" type="checkbox" ng-model="contractinc.changes" ng-init="contractinc.changes=true"/>
+              </div>
+              <div class="form-group">
+                <label for="cCopyrights">Copyrights: </label>
+                <input id="cCopyrights" type="checkbox" ng-model="contractinc.copyrights" ng-init="contractinc.copyrights=true" />
+              </div>
+              <div class="form-group">
+                <label for="cLegal">Legal: </label>
+                <input id="cLegal" type="checkbox" ng-model="contractinc.legal" ng-init="contractinc.legal=true"/>
+              </div>
+              <div class="form-group">
+                <label for="cTesting">Testing:</label>
+                <input id="cTesting" type="checkbox" ng-model="contractinc.browsertest" ng-init="contractinc.browsertest=true"/>
+              </div>
+            </div>
+          </div>
+          <ng-include class="contract" src="'projects/views/docs/contract.html'"></ng-include>
+        </div>
+
+        <div title="Estimate" bs-pane>
+          <div class="options-contract">
+            <h4>Estimate Options:</h4>
+            <p ng-if="projCtrl.project.estimateSent" class="contract-alert">
+              So it looks like you already sent out an estimate to your client. Would you like to send a reminder? Click the button above.
+            </p>
+            <div class="docubut-wrapper">
+              <button class="btn btn-warning email-document" ng-click="projCtrl.emailEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateSent">Email to copy to client</button>
+              <button class="btn btn-info btn-reminder" ng-disabled="!projCtrl.project.estimateSent" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
+              <button class="btn btn-danger btn-revise">Revise Estimate</button>
+            </div>
+          </div>
+        </div>
+        <div title="Invoices" bs-pane>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
