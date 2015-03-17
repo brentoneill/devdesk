@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 //Mail Sending Module
-var sendgrid  = require('sendgrid')('brentoneill', '466370');
+var sendgrid  = require('sendgrid')('', '');
 
 //PDF conversion, writing Modules
 var fs = require('fs');
