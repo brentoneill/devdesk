@@ -1,0 +1,82 @@
+<div class="container-authenticated">
+
+
+  <input type="checkbox" id="sidebartoggler">
+
+  <div class="page-wrapper">
+    <label class="toggle" for="sidebartoggler">☰</label>
+
+    <div class="sidebar">
+      <h4>Hi, {{user.displayName}}!</h4>
+      <ul>
+        <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/dashboard">Dashboard</a></li>
+        <li><a href="/#/clients/new">Add client</a></li>
+        <li><a href="/#/projects/new">Add project</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/calendar">View calendar</a></li>
+        <li><a href="/#/clients">View clients</a></li>
+        <li><a href="/#/projects">View projects</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/profile">Edit profile</a></li>
+        <li><a href="/#/developer-map">Dev Map</a></li>
+      </ul>
+    </div>
+
+
+    <div class="page-content project-new">
+      <h2>Add a project</h2>
+      <div class="row">
+        <div class="col-md-6 project-new-top">
+          <div class="form-group">
+            <label for="pClient">Client</label>
+            <select ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
+              <option value="">Select from client list</option>
+            </select>
+            <p ng-if="!project.client">Client not listed? No worries, <a href="/#/clients/new">click here to add!</a></p>
+          </div>
+          <div class="form-group">
+            <label for="cName">Project Name</label>
+            <input class="form-control" type="text" name="nName" data-ng-model="project.name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="pStartDate">Date started:</label>
+            <input type="text" class="form-control" autoclose="true" data-date-format="mediumDate" ng-model="project.startdate" name="pStartDate" bs-datepicker>
+          </div>
+          <div class="form-group">
+            <label for="pDueDate">Completion date:</label>
+            <input type="text" class="form-control" autoclose="true" data-date-format="mediumDate" ng-model="project.enddate" name="pEndDate" bs-datepicker>
+          </div>
+          <div class="form-group">
+            <label for="pDesc">Description:</label>
+            <textarea class="form-control" name="pDesc" data-ng-model="project.description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="pGoal">Goal(s):</label>
+            <textarea class="form-control" name="pGoal" data-ng-model="project.goal"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="pDesc">Notes</label>
+            <textarea class="form-control" name="pDesc" data-ng-model="project.notes"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 project-new-bot">
+        <h4>Deliverables</h4>
+          <div class="form-group form-inline deliverables-list" data-ng-repeat="deliverable in deliverablesNew">
+            <input type="text" class="form-control deliverable-name" ng-model="deliverable.name" name="" placeholder="Enter deliverable name & description">
+            <input type="number" min="0" class="form-control deliverable-hrs" ng-model="deliverable.hours" name="" placeholder="Hours">
+            <button class="btn btn-success btn-add-deliv" ng-show="showAddDeliverable(deliverable)" ng-click="addNewDeliverable()"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" data-ng-click="projCtrl.createProject(project)">Add Project</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

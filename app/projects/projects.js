@@ -4,7 +4,6 @@
     angular
         .module('projects', [
             'ngRoute',
-            'ui.bootstrap',
         ])
         .config(function ($routeProvider) {
           var checkAuth = function ($q, $location, $auth) {
@@ -25,7 +24,7 @@
                 }
               })
               .when('/projects/new', {
-                templateUrl: 'projects/views/newproject.html',
+                templateUrl: 'projects/views/projectnew.html',
                 controller: 'ProjectController as projCtrl',
                 resolve: {
                   authenticated: checkAuth

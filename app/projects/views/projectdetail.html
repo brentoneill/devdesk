@@ -31,44 +31,56 @@
   <div class="page-content">
 
     <div class="container-authenticated">
-      <h3>{{projCtrl.project.name}}</h3>
-      <p>{{projCtrl.project.startdate | date : format : mediumDate}} - {{projCtrl.project.enddate | date : format : mediumDate}}</p>
-      <p>{{projCtrl.project.notes}}</p>
-      <p><i>For: </i><a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project._id)">{{projCtrl.project.client.name}}</a> - <a href="projCtrl.project.client.website">{{projCtrl.project.client.website}}</a></p>
-      <p><i class="fa fa-envelope"></i> <a href="mailto:{{projCtrl.project.client.email}}">{{projCtrl.project.client.email}}</a></p>
-      <p><i class="fa fa-phone"></i> {{projCtrl.project.client.phone}}</a></p>
-      <div ng-controller="ProgressbarController">
-        <progressbar class="progress-striped active" max="100" value="((projCtrl.project.totalHrs - projCtrl.project.hrsRemaining)*100) / max" type="success">{{projectStatus}}</progressbar>
+      <div class="content-wrapper">
+        <h2 class="page-header">Project HQ - <small>{{projCtrl.project.name}}</small>
+          <button class="btn btn-warning pull-right" ng-click="projCtrl.goToDocuments(projCtrl.project)">Document Center</button>
+        </h2>
+        <div class="row project-info">
+          <div class="col-md-8 col-sm-8">
+            <p><b>Description: </b>{{projCtrl.project.description}}</p>
+            <p><b>Project Goals: </b></p>
+            <p>{{projCtrl.project.goal}}</p>
+          </div>
+         <div class="col-md-4 col-sm-4 project-client-info">
+           <div class="project-client-info-wrapper">
+             <p><b>Start Date:</b> {{projCtrl.project.startdate | date : format : mediumDate}}</p>
+             <p><b>Deadline:</b> {{projCtrl.project.enddate | date : format : mediumDate}}</p>
+             <p><a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project.client._id)"><i class="fa fa-user">&nbsp;&nbsp;</i>{{projCtrl.project.client.name}}</a> <a href="projCtrl.project.client.website">{{projCtrl.project.client.website}}</a></p>
+             <p><i class="fa fa-envelope"></i>&nbsp;&nbsp; <a href="mailto:{{projCtrl.project.client.email}}">{{projCtrl.project.client.email}}</a></p>
+             <p><i class="fa fa-phone"></i>&nbsp;&nbsp; {{projCtrl.project.client.phone | tel}}</a></p>
+           </div>
+         </div>
+       </div>
+       <h4>Deliverables - {{projCtrl.project.totalDel}} tasks, {{projCtrl.project.hrsRemaining}} hrs remaining</h4>
+       <div ng-controller="ProgressbarController">
+         <progressbar class="progress-striped active" max="100" value="((projCtrl.project.totalHrs - projCtrl.project.hrsRemaining)*100) / max" type="success">{{projectStatus}}</progressbar>
+       </div>
+
+       <table class="table table-striped table-bordered table-deliverables">
+          <thead>
+            <tr>
+              <th class="complete-col">#</th>
+              <th class="desc-col">Name</th>
+              <th class="hours-col">Hours (est)</th>
+              <th class="hours-col">Hours (real)</th>
+              <th class="hours-col">Efficiency (est/real)</th>
+              <th class="complete-col">Complete</th>
+              <th class="complete-col">Invoiced</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
+              <td class="complete-col">{{$index + 1}}</td>
+              <td class="desc-col">{{deliverable.name}}</td>
+              <td class="hours-col">{{deliverable.hours}}</td>
+              <td class="hours-col form-inline"><input min="0" ng-blur="projCtrl.updateDeliverable(projCtrl.project, deliverable)" class="form-control" type="number" ng-model="deliverable.realHrs"></td>
+              <td class="hours-col">{{deliverable.hours / deliverable.realHrs | percentage:0}}</td>
+              <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
+              <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'">
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <h4>Deliverables - {{projCtrl.project.totalDel}} tasks, {{projCtrl.project.hrsRemaining}} hrs remaining <span>Estimate Accuracy: {{projCtrl.project.estimate}}</span></h4>
-      <table class="table table-striped table-bordered table-deliverables">
-        <thead>
-          <tr>
-            <th class="complete-col">#</th>
-            <th class="desc-col">Name</th>
-            <th class="hours-col">Hours (est)</th>
-            <th class="hours-col">Hours (real)</th>
-            <th class="hours-col">Efficiency (est/real)</th>
-            <th class="complete-col">Complete</th>
-            <th class="complete-col">Invoiced</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
-            <td class="complete-col">{{$index + 1}}</td>
-            <td class="desc-col">{{deliverable.name}}</td>
-            <td class="hours-col">{{deliverable.hours}}</td>
-            <td class="hours-col form-inline"><input ng-change="projCtrl.updateDeliverable(projCtrl.project)" class="form-control" type="number" ng-model="deliverable.realHrs"></td>
-            <td class="hours-col">{{deliverable.hours / deliverable.realHrs | percentage:0}}</td>
-            <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
-            <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'">
-          </tr>
-          <tr>
-          </tr>
-        </tbody>
-      </table>
-      <button class="btn btn-primary" ng-click="projCtrl.createInvoice(project)">Create invoice</button>
-      <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(projCtrl.project)">Document Center</button>
     </div>
   </div>
 </div>

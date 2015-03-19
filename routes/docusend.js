@@ -3,18 +3,22 @@ var router = express.Router();
 var config = require('../config');
 
 //Mail Sending Module
-<<<<<<< HEAD
 var sendgrid  = require('sendgrid')(config.sgName, config.sgPass);
 
 //PDF conversion, writing Modules
 var fs = require('fs');
 var pdf = require('html-pdf');
 
-
 var ensureAuthenticated = require('./helpers').ensureAuthenticated;
 
+
+
+var css = fs.readFileSync('./app/assets/css/docs.css', 'utf8');
+console.log(css);
+
 router.post('/send-contract', function(req, res, next){
-  var html = req.body[0];
+  var html = css + req.body[0]
+  console.log(html);
   var project = req.body[1];
   var recipient = project.client.email;
   // var sender = project.user.email;
@@ -62,7 +66,8 @@ router.post('/send-contract', function(req, res, next){
 
 
 router.post('/send-estimate', function(req, res, next){
-  var html = req.body[0];
+  var html = '<style>' +  css + '</style>' + req.body[0]
+  console.log(html);
   var project = req.body[1];
   var recipient = project.client.email;
 

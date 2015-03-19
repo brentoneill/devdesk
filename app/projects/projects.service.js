@@ -38,7 +38,6 @@
           }
 
           function editProject(project) {
-            console.log('editing project');
             $http.put('api/collections/projects/' + project._id, project).then(function(res){
               $rootScope.$broadcast('project:updated');
             });

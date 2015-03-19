@@ -5,11 +5,35 @@
   border-radius:4px;
   position:relative;
   margin-bottom:40px;
+  background-color:white;
+  .table > thead > tr > th {
+    padding:4px;
+  }
   h3 {
     margin-top:10px;
     color:$black;
     small{
       color:gray;
+    }
+  }
+  i.fa {
+    color:black;
+    cursor:pointer;
+    @include transition(all .5s ease);
+    opacity:.5;
+    &:hover {
+      transform:scale(1.5);
+      opacity:1;
+    }
+  }
+  .fa-close {
+    &:hover{
+      color:$red;
+    }
+  }
+  .fa-th-large {
+    &:hover{
+      color:$teal;
     }
   }
 }
@@ -24,6 +48,17 @@
 }
 
 
+.project-client-info{
+}
+.project-client-info-wrapper {
+  border: thin solid gainsboro;
+  border-radius: 4px;
+  padding: 20px;
+}
+.project-info {
+  margin-bottom:20px;
+}
+
 
 //Table view stuff
 td {
@@ -32,7 +67,10 @@ td {
 }
 
 .deliv-comp > td {
-  background-color:lighten(green,60%);
+  background-color:lighten($teal,40%);
+}
+.deliv-inv > td {
+  background-color:lighten($yellow,60%);
 }
 
 .complete-col, .hours-col {
@@ -54,15 +92,15 @@ td {
 }
 
 .sent {
-  color:green;
+  color:$teal;
 }
 .not-sent {
-  color:red;
+  color:$orange;
 }
 
 //Add a project
 .project-new {
-  width:760px;
+  background-color:white;
   padding:40px;
   border:thin solid $black;
   box-shadow: 4px 4px 20px rgba($black, .3);
@@ -75,5 +113,48 @@ td {
   input {
     width:15%;
   }
+}
+input.form-control.deliverable-name {
+  width:66%;
+}
+input.form-control.deliverable-hrs {
+  width:16%;
+}
 
+
+.doc-stats{
+  margin-top:10px;
+}
+
+.btn-add-deliv {
+  width:16%;
+}
+
+div.project-new-top {
+  transition: all .5s ease;
+  overflow:hidden;
+}
+
+div.project-new-bot {
+  .btn-primary {
+    display:block;
+    width:100%;
+    height:40px;
+    font-size:20px;
+  }
+}
+
+.collapsed {
+  transition: all .5s ease;
+  height:80px;
+  -webkit-box-shadow: inset 0px -10px 30px 0px rgba(255, 255, 255, 0.75);
+-moz-box-shadow:    inset 0px -10px 30px 0px rgba(255, 255, 255, 0.75);
+box-shadow:         inset 0px -10px 30px 0px rgba(255, 255, 255, 0.75);
+}
+
+.content-wrapper {
+  background-color:white;
+  padding:20px;
+  border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3);
 }

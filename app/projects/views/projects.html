@@ -31,7 +31,7 @@
   <div class="page-content">
 
     <div class="container-authenticated">
-      <h2>{{user.displayName}}'s projects - {{projCtrl.projects.length}} total - {{}}</h2>
+      <h2>{{user.displayName}}'s projects - {{projCtrl.projects.length}} total</h2>
         <input type="text" class="form-control project-search" ng-model="projectsQuery" placeholder="Search projects">
         <div class="project-list">
           <section class="project" data-ng-repeat="project in projCtrl.projects | orderBy: 'enddate'| filter:projectsQuery">
@@ -39,41 +39,49 @@
               <i ng-click="projCtrl.deleteProject(project._id)" class="fa fa-2x fa-close"></i>
               <i ng-click="projCtrl.viewProjectDetail(project._id)" class="fa fa-2x fa-th-large"></i>
             </div>
-            <h3>{{project.name}} <small>for <b>{{project.client.name}}</b> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone}}</small></h3>
+            <h3>{{project.name}}</h3>
+            <h4><small>for <b>{{project.client.name}}</b> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone}}</small></h4>
             <p><b>Start Date:</b> {{project.startdate | date : format : mediumDate}} &nbsp; &nbsp;<b>Due Date:</b> {{project.enddate | date : format : mediumDate}}</p>
             <p></p>
             <p>{{project.notes}}</p>
-            <h4>Deliverables</h4>
-            <table class="table table-deliverables">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th class="hours-col">Hours (est)</th>
-                  <th class="hours-col">Hours (real)</th>
-                  <th class="complete-col">Complete</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in project.deliverables | filter:{'complete':'no'} | limitTo:3">
-                  <td>{{$index + 1}}</td>
-                  <td>{{deliverable.name}}</td>
-                  <td class="hours-col">{{deliverable.hours}}</td>
-                  <td class="hours-col">x</td>
-                  <td class="complete-col">{{deliverable.complete}}</td>
-                </tr>
-                <tr ng-if="project.devliverables.length() > 3" class="faded-row">
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                </tr>
-              </tbody>
-            </table>
-            <h4>Project Documents:</h4>
-            <h5>Contract: <small class="sent" ng-if="project.contractSent">sent</small><small class="not-sent" ng-if="!project.contractSent">not sent</small></h5>
-            <h5>Esimate: <small class="sent" ng-if="project.estimateSent">sent</small><small class="not-sent" ng-if="!project.estimateSent">not sent</small></h5>
-            <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(project)">Document Center</button>
+            <div class="row project-info">
+              <div class="col-md-9">
+              <h4>Deliverables due:</h4>
+                <table class="table table-deliverables">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th class="hours-col">Hours (est)</th>
+                      <th class="hours-col">Hours (real)</th>
+                      <th class="complete-col">Complete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-class="deliverable.complete == 'yes' ? 'deliv-comp' : 'deliv-incomp'" class="table-item" ng-repeat="deliverable in project.deliverables | filter:{'complete':'no'} | limitTo:3">
+                      <td>{{$index + 1}}</td>
+                      <td>{{deliverable.name}}</td>
+                      <td class="hours-col">{{deliverable.hours}}</td>
+                      <td class="hours-col">x</td>
+                      <td class="complete-col">{{deliverable.complete}}</td>
+                    </tr>
+                    <tr ng-if="project.devliverables.length() > 3" class="faded-row">
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-3 doc-stats">
+                <h4>Documents:</h4>
+                <h5>Contract: <span class="sent" ng-if="project.contractSent"><b>sent!</b></span><span class="not-sent" ng-if="!project.contractSent">not sent</span></h5>
+                <h5>Esimate: <span class="sent" ng-if="project.estimateSent"><b>sent!</b></span><span class="not-sent" ng-if="!project.estimateSent">not sent</span></h5>
+                <h5># Invoices: <span>{{project.invoices.length}} sent<span></h5>
+                <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(project)">Document Center</button>
+              </div>
+            </div>
           </section>
         </div>
       </div>

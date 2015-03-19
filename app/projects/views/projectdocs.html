@@ -30,111 +30,165 @@
 
   <div class="page-content">
     <div class="container-authenticated">
-      <h1 class="page-header">Document Center</h1>
-      <h2>{{projCtrl.project.name}} <small>({{projCtrl.project.client.name}})</small></h2>
-      <div bs-active-pane="1" bs-tabs>
-        <div title="Contract" bs-pane>
-          <div class="document-options">
-            <h4>Contract Options:</h4>
-            <p ng-if="projCtrl.project.contractSent" class="contract-alert">
-              Looks like you already sent out a contract to your client. Would you like to send a reminder? Click the button above
-            </p>
-            <div class="docubut-wrapper">
-              <button class="btn btn-success" ng-click="projCtrl.project.contractCreated = 'yes'" ng-disabled="projCtrl.project.contractCreated == 'yes'">Generate Contract</button>
-              <button class="btn btn-warning btn-docusend" ng-click="projCtrl.emailContract(projCtrl.project)" ng-disabled="projCtrl.project.contractSent">Email to copy to client</button>
-              <button class="btn btn-info btn-reminder" ng-disabled="!(projCtrl.project.contractSent)" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
-              <button class="btn btn-danger btn-revise">Revise Contract</button>
+      <div class="content-wrapper">
+        <h2>Document Center <small>{{projCtrl.project.name}}</small> </h2>
+        <p><i class="fa fa-user"></i><a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project.client._id)"> {{projCtrl.project.client.name}}</a></p>
+        <div bs-active-pane="0" bs-tabs>
+
+          <div title="Contract" bs-pane>
+            <div class="document-options">
+              <p ng-if="projCtrl.project.contractSent" class="contract-alert">
+                Looks like you already sent out a contract to your client. Would you like to send a reminder? Click the button above
+              </p>
+              <div class="docubut-wrapper">
+                <button class="btn btn-success" ng-click="projCtrl.createContract(projCtrl.project)" ng-disabled="projCtrl.project.contractCreated == 'yes'">Generate Contract</button>
+                <button class="btn btn-warning btn-docusend" ng-click="projCtrl.emailContract(projCtrl.project)" ng-disabled="projCtrl.project.contractSent">Email copy to client</button>
+                <button class="btn btn-info btn-reminder" ng-disabled="!(projCtrl.project.contractSent)" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
+              </div>
+              <h4>Sections to include in contract:</h4>
+              <div class="document-options-wrapper">
+                <div class="form-group">
+                  <label for="cDesign">Design:</label>
+                  <input id="cDesign" type="checkbox" ng-model="contractinc.design" ng-init="contractinc.design=true" />
+                </div>
+                <div class="form-group">
+                  <label for="cText">Text Content:</label>
+                  <input id="cText" type="checkbox" ng-model="contractinc.textcontent" ng-init="contractinc.textcontent=true"/>
+                </div>
+                <div class="form-group">
+                  <label for="cTechsupp">Tech Support:</label>
+                  <input id="cTechsupp" type="checkbox" ng-model="contractinc.techsupp" ng-init="contractinc.techsupp=true"/>
+                </div>
+                <div class="form-group">
+                  <label for="cChanges">Revisions:</label>
+                  <input id="cChanges" type="checkbox" ng-model="contractinc.changes" ng-init="contractinc.changes=true"/>
+                </div>
+                <div class="form-group">
+                  <label for="cCopyrights">Copyrights: </label>
+                  <input id="cCopyrights" type="checkbox" ng-model="contractinc.copyrights" ng-init="contractinc.copyrights=true" />
+                </div>
+                <div class="form-group">
+                  <label for="cLegal">Legal: </label>
+                  <input id="cLegal" type="checkbox" ng-model="contractinc.legal" ng-init="contractinc.legal=true"/>
+                </div>
+                <div class="form-group">
+                  <label for="cTesting">Testing:</label>
+                  <input id="cTesting" type="checkbox" ng-model="contractinc.browsertest" ng-init="contractinc.browsertest=true"/>
+                </div>
+              </div>
             </div>
-            <h4>Sections to include:</h4>
-            <div class="document-options-wrapper">
-              <div class="form-group">
-                <label for="cDesign">Design:</label>
-                <input id="cDesign" type="checkbox" ng-model="contractinc.design" ng-init="contractinc.design=true" />
+            <ng-include ng-if="projCtrl.project.contractCreated == 'yes'" class="contract" src="'projects/views/docs/contract.html'"></ng-include>
+          </div>
+
+          <div title="Estimate" bs-pane>
+            <div class="document-options">
+              <p ng-if="projCtrl.project.estimateSent" class="estimate-alert">
+                So it looks like you already sent out an estimate to your client. Would you like to send a reminder? Click the button above.
+              </p>
+              <div class="docubut-wrapper">
+                <button class="btn btn-success" ng-click="projCtrl.createEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateCreated == 'yes'">Generate Estimate</button>
+                <button class="btn btn-warning email-document" ng-disabled="" ng-click="projCtrl.emailEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateSent">Email copy to client</button>
+                <button class="btn btn-info btn-reminder" ng-disabled="!projCtrl.project.estimateSent" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
+                <button class="btn btn-danger btn-revise" ng-click="projCtrl.resetEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateSent">Reset Estimate</button>
               </div>
-              <div class="form-group">
-                <label for="cText">Text Content:</label>
-                <input id="cText" type="checkbox" ng-model="contractinc.textcontent" ng-init="contractinc.textcontent=true"/>
+              <h4>Estimate Options:</h4>
+              <div class="document-options-wrapper">
+                <div class="form-group form-inline">
+                  <label for="ePadding">Pad estimate?</label>
+                  <input ng-disabled="projCtrl.project.estimateCreated" id="ePadding" type="checkbox" ng-model="estimateinc.padding" ng-init="estimateinc.padding = true" />
+                  <input class="form-inline form-control input-thin input-num"  ng-disabled="projCtrl.project.estimateCreated" ng-if="estimateinc.padding" type="number" name="ePaddingPercent" id="ePaddingPercent" ng-model="estimate.pad" ng-init="estimate.pad = .25">
+                </div>
+                <div class="form-group form-inline">
+                  <label for="ePadding">Add all deliverables</label>
+                  <input ng-disabled="projCtrl.project.estimateCreated" id="ePadding" type="checkbox" ng-model="estimateinc.selectAll" ng-init="estimateinc.selectAlls = true" />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="cTechsupp">Tech Support:</label>
-                <input id="cTechsupp" type="checkbox" ng-model="contractinc.techsupp" ng-init="contractinc.techsupp=true"/>
+              <h4><b>{{ projCtrl.project.estimate.totalHrs}} / {{projCtrl.project.totalHrs}}</b> hours estimated at a cost of <b>{{  projCtrl.project.estimate.totalAmnt  | currency}} / {{projCtrl.project.estCostTotal | currency}} </b></h4>
+              <div class="estimate-deliverables">
+                <table class="table table-bordered table-striped table-deliverables">
+                  <thead>
+                    <tr>
+                      <th class="complete-col">#</th>
+                      <th class="desc-col">Name</th>
+                      <th class="hours-col">Hours (est)</th>
+                      <th class="hours-col">Cost Estimate ($)</th>
+                      <th class="complete-col">Include in estimate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-class="deliverable.inEstimate == 'yes' ? 'deliv-est' : ''" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
+                      <td class="complete-col">{{$index + 1}}</td>
+                      <td class="desc-col">{{deliverable.name}}</td>
+                      <td class="hours-col form-inline"><input class="form-control input-thin input-num" ng-model="deliverable.hours" ng-blur="projCtrl.updateDeliverable(projCtrl.project, deliverable)" type="number" min="0" ng-disabled="projCtrl.project.estimateCreated == 'yes'"></td>
+                      <td class="hours-col form-inline">{{deliverable.cost}}</td>
+                      <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.inEstimate" ng-true-value="'yes'" ng-disabled="projCtrl.project.estimateCreated == 'yes'" ng-false-value="'no'"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="desc-col totals"><b>Totals:</b></td>
+                      <td class="hours-col">{{projCtrl.project.totalHrs}} hrs</td>
+                      <td class="hours-col">{{projCtrl.project.estCostTotal | currency}}</td>
+                      <td class="hours-col"></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="form-group">
-                <label for="cChanges">Revisions:</label>
-                <input id="cChanges" type="checkbox" ng-model="contractinc.changes" ng-init="contractinc.changes=true"/>
-              </div>
-              <div class="form-group">
-                <label for="cCopyrights">Copyrights: </label>
-                <input id="cCopyrights" type="checkbox" ng-model="contractinc.copyrights" ng-init="contractinc.copyrights=true" />
-              </div>
-              <div class="form-group">
-                <label for="cLegal">Legal: </label>
-                <input id="cLegal" type="checkbox" ng-model="contractinc.legal" ng-init="contractinc.legal=true"/>
-              </div>
-              <div class="form-group">
-                <label for="cTesting">Testing:</label>
-                <input id="cTesting" type="checkbox" ng-model="contractinc.browsertest" ng-init="contractinc.browsertest=true"/>
-              </div>
+              <ng-include ng-if="projCtrl.project.estimateCreated == 'yes'" src="'projects/views/docs/estimate.html'"></ng-include>
             </div>
           </div>
-          <ng-include ng-if="projCtrl.project.contractSent = 'yes'" class="contract" src="'projects/views/docs/contract.html'"></ng-include>
-        </div>
 
-        <div title="Estimate" bs-pane>
-          <div class="document-options">
-            <p ng-if="projCtrl.project.estimateSent" class="contract-alert">
-              So it looks like you already sent out an estimate to your client. Would you like to send a reminder? Click the button above.
-            </p>
-            <div class="docubut-wrapper">
-              <button class="btn btn-success" ng-click="projCtrl.createEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateCreated == 'yes'">Generate Estimate</button>
-              <button class="btn btn-warning email-document" ng-disabled="projCtrl.project.estimateCreated == 'no' || projCtrl.project.estimateSent" ng-click="projCtrl.emailEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateSent">Email to copy to client</button>
-              <button class="btn btn-info btn-reminder" ng-disabled="!projCtrl.project.estimateSent" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')">Send reminder</button>
-              <button class="btn btn-danger btn-revise" ng-click="projCtrl.resetEstimate(projCtrl.project)">Reset Estimate</button>
-            </div>
-            <h4>Estimate Options:</h4>
-            <div class="document-options-wrapper">
-              <div class="form-group form-inline">
-                <label for="ePadding">Pad estimate?</label>
-                <input id="ePadding" type="checkbox" ng-model="estimateinc.padding" ng-init="cestimateinc.padding = true" />
-                <span ng-if="estimateinc.padding" >
-                  <label class="form-inline" for="ePaddingPercent">Percentage padding:</label>
-                  %<input class="form-inline form-control" type="number" name="ePaddingPercent" id="ePaddingPercent" ng-model="estimate.pad" ng-init="estimate.pad = 25">
-                </span>
+          <div title="Invoices" bs-pane>
+            <div class="document-options">
+              <p nf-if="!projCtrl.project.estimateSent">You need to send an estimate to a client before you can send an invoice!</p>
+              <div ng-if="projCtrl.project.estimateSent" class="docubut-wrapper">
+                <button class="btn btn-success" ng-click="projCtrl.addInvoice(projCtrl.project)"  data-animation="am-fade-and-slide-top" data-template="projects/views/docs/invoice-deliv.tmpl.html" bs-modal="modal">
+                  Add Invoice
+                </button>
               </div>
-              <!--<div class="form-group">
-                <label for="eAddAll">Add all invoices?</label>
-                <input type="checkbox" ng-model="addAllDeliverables" ng-click="addAll()">
-              </div> -->
-            </div>
-            <div class="estimate-deliverables">
-              <table class="table table-bordered table-striped table-deliverables">
-                <thead>
-                  <tr>
-                    <th class="complete-col">#</th>
-                    <th class="desc-col">Name</th>
-                    <th class="hours-col">Hours (est)</th>
-                    <th class="hours-col">Cost Estimate ($)</th>
-                    <th class="complete-col">Include in estimate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-class="deliverable.inEstimate == 'yes' ? 'deliv-est' : ''" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
-                    <td class="complete-col">{{$index + 1}}</td>
-                    <td class="desc-col">{{deliverable.name}}</td>
-                    <td class="hours-col">{{deliverable.hours}}</td>
-                    <td class="hours-col form-inline" ><input class="form-control" ng-change="projCtrl.updateDeliverable(projCtrl.project)" type="number" ng-model="deliverable.cost" ng-init="deliverable.cost = deliverable.hours * user.ratehr" ng-disabled="projCtrl.project.estimateCreated == 'yes'"></td>
-                    <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project)" ng-model="deliverable.inEstimate" ng-true-value="'yes'" ng-disabled="projCtrl.project.estimateCreated == 'yes'" ng-false-value="'no'"></td>
-                  </tr>
-                  <tr>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <ng-include ng-if="projCtrl.project.estimateCreated == 'yes'" src="'projects/views/docs/estimate.html'"></ng-include>
-          </div>
-        </div>
-        <div title="Invoices" bs-pane>
+              <div class="estimate-deliverables">
+                <table ng-if="projCtrl.project.estimateSent" class="table table-bordered table-striped table-deliverables">
+                  <thead>
+                    <tr>
+                      <th class="complete-col">#</th>
+                      <th class="desc-col">Name</th>
+                      <th class="hours-col">Hours (est)</th>
+                      <th class="hours-col">Cost Estimate ($)</th>
+                      <th class="hours-col">Hours (real)</th>
+                      <th class="hours-col">Cost Actual ($)</th>
+                      <th class="complete-col">Estimated?</th>
+                      <th class="complete-col">Add to invoice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-class="deliverable.invoiced == 'yes' ? 'deliv-in' : ''" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
+                      <td class="complete-col">{{$index + 1}}</td>
+                      <td class="desc-col">{{deliverable.name}}</td>
+                      <td class="hours-col">{{deliverable.hours}}</td>
+                      <td class="hours-col">{{deliverable.cost | currency}}</td>
+                      <td class="hours-col"><input class="form-control" min="0" ng-blur="projCtrl.updateDeliverable(projCtrl.project, deliverable)" type="number" ng-model="deliverable.realHrs" ng-disabled="deliverable.invoiced == 'yes'"></td></td>
+                      <td class="hours-col">{{deliverable.realCost | currency}}</td>
+                      <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.inEstimate" ng-true-value="'yes'" disabled ng-false-value="'no'"></td>
+                      <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'" ng-disabled="deliverable.inEstimate =='no'"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="desc-col totals"><b>Totals:</b></td>
+                      <td class="hours-col">{{projCtrl.project.totalHrs}} hrs</td>
+                      <td class="hours-col">{{projCtrl.project.estCostTotal | currency}}</td>
+                      <td class="hours-col">{{projCtrl.project.totalRealHrs}} hrs</td>
+                      <td class="hours-col">{{projCtrl.project.realCostTotal | currency}}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
+              <div class="invoice" ng-repeat="invoice in projCtrl.project.invoices">
+              </div>
+              
+            </div>
+          </div>
         </div>
       </div>
     </div>

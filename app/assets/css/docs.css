@@ -1,0 +1,286 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300|Raleway:400,900,800);
+* {
+  box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative; }
+
+a {
+  color: #343434; }
+  a:hover {
+    color: #343434;
+    text-decoration: none; }
+  a:focus {
+    color: #343434;
+    text-decoration: none; }
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+
+.font-main {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400; }
+
+.font-header, body, nav li a {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800; }
+
+body {
+  font-weight: 400; }
+
+h4 {
+  margin-bottom: 20px; }
+
+
+.page-content {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 0;
+  margin: 0 auto;
+  color: #333; }
+  .page-content h1 {
+    font-weight: 400; }
+  .page-content h1, .page-content h3, .page-content h4 {
+    text-align: left; }
+  .page-content h3, .page-content h4 {
+    color: gray; }
+  .page-content p {
+    text-align: left; }
+  .page-content img {
+    max-width: 100%;
+    max-height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+
+.toggle {
+  position: fixed;
+  top: 10px;
+  right: 0;
+  bottom: 0;
+  left: 20px;
+  transition: all .5s ease;
+  z-index: 100;
+  font-size: 30px;
+  color: black;
+  width: 30px;
+  height: 30px;
+  cursor: pointer; }
+  .toggle:hover {
+    color: #29D4E8; }
+
+
+
+.client {
+  border: thin solid #343434;
+  padding: 20px;
+  min-height: 400px; }
+
+.client-new {
+  width: 760px;
+  padding: 40px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  margin: 0 auto; }
+
+td {
+  transition: all .5s ease; }
+
+.deliv-comp > td {
+  background-color: #b3ffb3; }
+
+.deliv-inv > td {
+  background-color: #b3ffb3; }
+
+.complete-col, .hours-col {
+  text-align: center; }
+  .complete-col input, .hours-col input {
+    width: 60px; }
+
+.desc-col {
+  width: 40%; }
+
+.project-search {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  width: 200px; }
+
+.sent {
+  color: #45B29D; }
+
+.not-sent {
+  color: #E27A3F; }
+
+.project-new {
+  width: 760px;
+  padding: 40px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
+
+.form-control input:first-child {
+  width: 40%; }
+.form-control input {
+  width: 15%; }
+
+.deliverable-name {
+  width: 40%; }
+
+.doc-stats {
+  margin-top: 10px; }
+
+.container-calendar {
+  padding-top: 120px;
+  width: 80%;
+  margin: 0 auto; }
+
+.document {
+  font-family: "Raleway", sans-serif;
+  font-size:13px;
+  border: thin solid #4d4d4d;
+  border-radius: 2px;
+  padding: 60px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  box-shadow: 8px 8px 20px rgba(77, 77, 77, 0.2);
+  position: relative; }
+  .document ul {
+    padding-left: 40px;
+    list-style-type: circle; }
+    .document ul li {
+      margin-bottom: 10px; }
+  .document h3, .document h4 {
+    font-weight: bold; }
+  .document h4 {
+    color: #4d4d4d; }
+  table {
+    font-family: "Raleway", sans-serif;
+  }
+  .document h1,
+  .document h2,
+  .document h3,
+  .document h4,
+  .document h5,
+  .document h6 {
+    font-family: "Raleway", sans-serif;
+  }
+
+.contract-wrapper h5 {
+  font-weight: bold; }
+
+
+.deliv-est > td {
+  background-color: #8bd2c4; }
+
+.estimate-wrapper h2 {
+  margin-top: 0px; }
+
+.estimate-table tbody > tr > td, .estimate-table .table > tfoot > tr > td {
+  vertical-align: middle; }
+.estimate-table .name {
+  width: 65%; }
+.estimate-table .cost {
+  width: 35%;
+  text-align: right; }
+  .estimate-table .cost h3, .estimate-table .cost h4 {
+    text-align: right; }
+.estimate-table h5 {
+  font-size: 16px; }
+.estimate-table tr.total-header {
+  border-top: 1px solid #ddd; }
+
+.estimate-header {
+  overflow: auto; }
+
+.estimate-project-name,
+.estimate-project-date,
+.estimate-dev-info {
+  display: inline-block;
+  vertical-align: top; }
+
+.estimate-project-name,
+.estimate-project-date {
+  width: 30%;
+  margin-top: 20px;
+  margin-right: 5%; }
+  .estimate-project-name h4,
+  .estimate-project-date h4 {
+    margin-bottom: 20px; }
+  .estimate-project-name h5,
+  .estimate-project-date h5 {
+    border-bottom: thin solid #343434; }
+
+.estimate-dev-info {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  width: 190px; }
+  .estimate-dev-info p {
+    margin-top: 0;
+    margin-bottom: 0; }
+
+.estimate-goal p {
+  width: 70%;
+  min-height: 100px;
+  padding: 20px;
+  border: thin solid #343434;
+  border-radius: 2px; }
+
+td.totals {
+  text-align: right; }
+
+.table-bordered > tbody > tr > td {
+  vertical-align: middle; }
+
+.hours-col > input {
+  width: 80px; }
+
+.input-thin.input-num {
+  width: 80px; }
+
+.tab-pane.am-fade {
+  animation-duration: .3s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  opacity: 1; }
+
+.tab-pane.am-fade.active-remove {
+  display: none !important; }
+
+.tab-pane.am-fade.active-add {
+  animation-name: fadeIn; }
+
+.nav-tabs > li > a {
+  cursor: pointer; }
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear; }
+  .modal-backdrop.am-fade.ng-enter {
+    opacity: 0; }
+    .modal-backdrop.am-fade.ng-enter.ng-enter-active {
+      opacity: .5; }
+  .modal-backdrop.am-fade.ng-leave {
+    opacity: .5; }
+    .modal-backdrop.am-fade.ng-leave.ng-leave-active {
+      opacity: 0; }
+      table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+      .table > tbody > tr > td{
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+      }

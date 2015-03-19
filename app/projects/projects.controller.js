@@ -12,6 +12,8 @@
            Account.getProfile()
              .success(function(data) {
                $scope.user = data;
+              //  localStorage.setItem('user', JSON.stringify(data));
+              //  $scope.user = JSON.parse(localStorage.getItem('user'));
              })
              .error(function(error) {
                $alert({
@@ -57,15 +59,24 @@
           };
           /////////////////////////////
 
+          projCtrl.addInvoice = function(project){
+
+          }
 
           projCtrl.isAuthenticated = function () {
             return $auth.isAuthenticated();
           };
 
           projCtrl.updateTotals = function(){
+            // console.log(deliverable.realHrs);
+            // console.log($scope.user.rateHr);
+            // console.log(deliverable.realCost);
             projCtrl.project.hrsRemaining = 0;
             projCtrl.project.totalDel = 0;
             projCtrl.project.totalHrs = 0;
+            projCtrl.project.totalRealHrs = 0;
+            projCtrl.project.estCostTotal = 0;
+            projCtrl.project.realCostTotal = 0;
             $scope.projectStatus = '';
             _.each(projCtrl.project.deliverables, function(item, idx, arr){
               if(item.complete == 'no'){
@@ -75,6 +86,9 @@
               else{
               }
               projCtrl.project.totalHrs += +item.hours;
+              projCtrl.project.totalRealHrs += +item.realHrs;
+              projCtrl.project.estCostTotal += +item.cost;
+              projCtrl.project.realCostTotal += +item.realCost;
             });
             $scope.max = projCtrl.project.totalHrs;
             if(projCtrl.project.hrsRemaining == 0){
@@ -82,10 +96,36 @@
             }
           }
 
-          projCtrl.updateDeliverable = function(project){
-            projCtrl.updateTotals();
-            projCtrl.editProject(project);
+          projCtrl.updateDeliverable = function(project, deliv){
+            deliv.realCost = deliv.realHrs * $scope.user.ratehr;
+            deliv.cost = deliv.hours * $scope.user.ratehr;
+            projCtrl.updateEstimateTotals();
+            projCtrl.updateTotals(deliv);
+            projCtrl.editProject(project); //Sends data to service to save
+          }
 
+          projCtrl.updateEstimateTotals = function(){
+            projCtrl.project.estimate.totalHrs = 0;
+            projCtrl.project.estimate.totalAmnt = 0;
+            _.each(projCtrl.project.deliverables, function(item, idx, arr){
+              console.log(item);
+              if(item.inEstimate === 'yes'){
+                projCtrl.project.estimate.totalHrs += +item.hours;
+                projCtrl.project.estimate.totalAmnt += +item.cost;
+              }
+            });
+          };
+
+          projCtrl.addInvoice = function(project){
+            console.log('adding invoice');
+            var newInvoice = {
+              id : project.invoices.length + 1,
+              dateCreated : Date.now(),
+              sent : false,
+              deliverables : []
+            }
+            project.invoices.push(newInvoice);
+            projCtrl.editProject(project);
           }
 
           projCtrl.createProject = function (newProject){
@@ -100,10 +140,17 @@
             //Count total hours for project
             _.each(newProject.deliverables, function(item, idx, arr){
               newProject.totalHrs += +item.hours;
+              item.estCost = item.hours * $scope.user.rateHr;
+              item.realCost = item.estCost;
             })
             ProjectService.createProject(newProject);
           };
 
+          projCtrl.createContract = function(project){
+            console.log('creating contract');
+            project.contractCreated='yes';
+            projCtrl.editProject(project);
+          };
 
           projCtrl.createEstimate = function(project){
             project.estimateCreated = 'yes';
@@ -149,16 +196,18 @@
           };
 
           projCtrl.emailContract = function(project){
+            project.contractSendDate = Date.now();
             var html = angular.element('.contract-wrapper').html();
             ProjectService.emailContract(html, project);
+            projCtrl.editProject(project);
           };
           projCtrl.emailEstimate = function(project){
+            project.estimateSendDate = Date.now();
             var html = angular.element('.estimate-wrapper').html();
             ProjectService.emailEstimate(html, project);
+            projCtrl.editProject(project);
           }
           projCtrl.sendReminder = function(project, type){
-            console.log(project);
-            console.log(type);
             ProjectService.sendReminder(project, type);
           };
       }]);
