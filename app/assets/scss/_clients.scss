@@ -16,10 +16,27 @@
 
 
 .client{
+  transition:all .5 ease;
   border:thin solid $black;
   padding:20px;
+  padding-top:30px;
   min-height:400px;
   background-color:white;
+  margin-bottom:30px;
+  border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3);
+  position:relative;
+  .client-controls {
+    position:absolute;
+    top:15px;
+    right:15px;
+  }
+  .client-info {
+
+  }
+  .client-stats {
+    margin-top:20px;
+  }
 }
 
 .client-new {

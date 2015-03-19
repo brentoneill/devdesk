@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: #FEFEFA; }
+  background-color: #F5F5F5; }
 
 a {
   color: #343434; }
@@ -280,7 +280,6 @@ nav {
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease;
   position: relative;
-  z-index: 0;
   margin: 0 auto;
   color: #333; }
   .page-content h1 {
@@ -311,7 +310,7 @@ nav {
   height: 30px;
   cursor: pointer; }
   .toggle:hover {
-    color: #29D4E8; }
+    color: #45B29D; }
 
 .sidebar {
   transition: all .5s ease;
@@ -343,7 +342,7 @@ nav {
       color: gray;
       transition: all .3s ease-in; }
       .sidebar li a:hover {
-        color: #29D4E8; }
+        color: #45B29D; }
 
 #sidebartoggler {
   display: none; }
@@ -447,10 +446,22 @@ nav {
   width: 75%; }
 
 .client {
+  transition: all .5 ease;
   border: thin solid #343434;
   padding: 20px;
+  padding-top: 30px;
   min-height: 400px;
-  background-color: white; }
+  background-color: white;
+  margin-bottom: 30px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  position: relative; }
+  .client .client-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+  .client .client-stats {
+    margin-top: 20px; }
 
 .client-new {
   background-color: white;
@@ -523,15 +534,21 @@ td {
 
 .project-search {
   position: absolute;
-  top: 100px;
+  top: 140px;
   right: 0px;
   width: 200px; }
 
-.sent {
-  color: #45B29D; }
+.d-estimated {
+  background-color: #eea9a0; }
 
-.not-sent {
-  color: #E27A3F; }
+.d-completed {
+  background-color: #efb798; }
+
+.d-invoiced {
+  background-color: #f7e5aa; }
+
+.d-paid {
+  background-color: #90c256; }
 
 .project-new {
   background-color: white;
@@ -578,6 +595,9 @@ div.project-new-bot .btn-primary {
   padding: 20px;
   border: thin solid #343434;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
+
+.table-deliverables tr {
+  transition: all .3s ease; }
 
 .container-calendar {
   padding-top: 120px;
@@ -708,7 +728,8 @@ td.totals {
   animation-name: fadeIn; }
 
 .nav-tabs > li > a {
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 18px; }
 
 .modal-backdrop.am-fade {
   opacity: .5;
