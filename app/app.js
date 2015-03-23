@@ -4,7 +4,6 @@ var app = angular.module('devdesk', [
     'ngAnimate',
     'ngRoute',
     'ngSanitize',
-    'ui.router',
     'mgcrea.ngStrap',
     'ui.bootstrap',
     'auth',
@@ -15,7 +14,6 @@ var app = angular.module('devdesk', [
     'timer',
     'dashboard',
     'chart.js'
-    //'posts'
     ])
   .config(function($routeProvider){
     $routeProvider
