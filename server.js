@@ -13,9 +13,9 @@ var clientRoutes = require('./routes/clients');
 var projectRoutes = require('./routes/projects');
 var profileRoutes = require('./routes/profile');
 var docusendRoutes = require('./routes/docusend');
-//
-// var multer = require('multer');
-// var done = false;
+var uploadRoutes = require('./routes/upload');
+
+
 
 mongoose.connect(config.MONGO_URI);
 
@@ -30,22 +30,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
-// app.use(multer({ dest: './app/uploads/avatars',
-//   rename: function (fieldname, filename){
-//     console.log(fieldname);
-//     return fieldname;
-//   },
-//   onFileUploadStart: function(file) {
-//     console.log(file.originalname + ' is starting')
-//   },
-//   onFileUploadComplete: function(file) {
-//     console.log(file.fieldname + ' uploaded to ' + file.path)
-//     done=true;
-//   }
-// }));
 
 
 
@@ -65,7 +49,8 @@ app.use('/api', profileRoutes);
 app.use('/api/collections', crudRoutes);
 app.use('/api/collections/clients', clientRoutes);
 app.use('/api/collections/projects', projectRoutes);
-app.use('/', docusendRoutes)
+app.use('/', docusendRoutes);
+app.use('/', uploadRoutes);
 
 
 /*

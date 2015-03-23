@@ -13,7 +13,6 @@
 
 
           function updateStats() {
-            console.log('updating stats');
           };
 
           function getRecentProjects() {

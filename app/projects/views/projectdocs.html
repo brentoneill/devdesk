@@ -55,18 +55,35 @@
                 </p>
               </p>
               <div class="docubut-wrapper">
-                <button class="btn btn-success" ng-click="projCtrl.createContract(projCtrl.project)" ng-disabled="projCtrl.project.contractCreated == 'yes'">Generate Contract</button>
+                <button class="btn btn-success"
+                        ng-click="projCtrl.contractAccepted(projCtrl.project)"
+                        ng-disabled="!projCtrl.project.contractSent || projCtrl.project.contractAccepted ==='yes'"
+                        data-content="Congratulations on your client accepting your contract! Now time to get to work!"
+                        data-trigger="click"
+                        data-placement="top-right"
+                        data-title = "Contract Accepted"
+                        data-auto-close="1"
+                        bs-popover>
+                  <i class="fa fa-check"></i> Client Accepted Contract
+                </button>
+                <button class="btn btn-success"
+                        ng-click="projCtrl.createContract(projCtrl.project)"
+                        ng-disabled="projCtrl.project.contractCreated == 'yes'">
+                        <i class="fa fa-cogs"></i> Generate Contract
+                </button>
                 <button class="btn btn-warning btn-docusend" ng-click="projCtrl.emailContract(projCtrl.project)" ng-disabled="projCtrl.project.contractSent || projCtrl.project.contractCreated == 'no'"  data-placement="top-right" title="Contract emailed!"
                   data-content="A copy of the contract you generated as been sent to your client. Cheers!"
                   data-trigger="click"
                   data-auto-close="1"
-                  bs-popover>Email copy to client</button>
-                <button class="btn btn-info btn-reminder" ng-disabled="!(projCtrl.project.contractSent)" ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')" data-placement="top-right" title="Reminder Sent!"
+                  bs-popover>
+                  <i class="fa fa-envelope"></i> Email copy to client
+                </button>
+                <button class="btn btn-info btn-reminder" ng-disabled="!(projCtrl.project.contractSent) || projCtrl.project.contractAccepted === 'yes' " ng-click="projCtrl.sendReminder(projCtrl.project, 'contract')" data-placement="top-right" title="Reminder Sent!"
                   data-content="You have sent your client a reminder to sign your contract. Solid."
                   data-trigger="click"
                   data-auto-close="1"
                   bs-popover>
-                  Send reminder
+                  <i class="fa fa-thumb-tack"></i> Send reminder
                 </button>
               </div>
               <h4>Sections to include in contract:</h4>
@@ -119,33 +136,51 @@
                 </p>
               </p>
               <div class="docubut-wrapper">
-                <button class="btn btn-success" ng-click="projCtrl.createEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateCreated == 'yes'">Generate Estimate</button>
+                <button class="btn btn-success"
+                        ng-click="projCtrl.estimateAccepted(projCtrl.project)"
+                        ng-disabled="!projCtrl.project.estimateSent || projCtrl.project.estimateAccepted ==='yes'"
+                        data-content="Congratulations on your client accepting your estimate! Now time to get to work!"
+                        data-trigger="click"
+                        data-placement="top-right"
+                        data-title = "Estimate Accepted"
+                        data-auto-close="1"
+                        bs-popover>
+                        <i class="fa fa-check"></i> Client Accepted Estimate
+                </button>
+                <button class="btn btn-success"
+                        ng-click="projCtrl.createEstimate(projCtrl.project)"
+                        ng-disabled="projCtrl.project.estimateCreated == 'yes'">
+                        <i class="fa fa-cogs"></i> Generate Estimate
+                </button>
                 <button class="btn btn-warning email-document"
-                  ng-click="projCtrl.emailEstimate(projCtrl.project)"
-                  ng-disabled="projCtrl.project.estimateSent || projCtrl.project.estimateCreated == 'no'"
-                  data-placement="top-right"
-                  title="Estimate emailed!"
-                  data-content="A copy of the estimate you generated as been sent to your client. Cheers!"
-                  data-trigger="click"
-                  data-auto-close="1"
-                  bs-popover>
-                    Email copy to client
+                        ng-click="projCtrl.emailEstimate(projCtrl.project)"
+                        ng-disabled="projCtrl.project.estimateSent || projCtrl.project.estimateCreated == 'no'"
+                        data-placement="top-right"
+                        title="Estimate emailed!"
+                        data-content="A copy of the estimate you generated as been sent to your client. Cheers!"
+                        data-trigger="click"
+                        data-auto-close="1"
+                        bs-popover>
+                        <i class="fa fa-envelope"></i> Email copy to client
                 </button>
                 <button class="btn btn-info btn-reminder"
-                  ng-disabled="!projCtrl.project.estimateSent"
-                  ng-click="projCtrl.sendReminder(projCtrl.project, 'estimate')"
-                  data-placement="top-right"
-                  title="Reminder Sent!"
-                  data-content="You have sent your client a reminder to check your estimate. Solid."
-                  data-trigger="click"
-                  data-auto-close="1"
-                  bs-popover>
-                    Send reminder
+                        ng-disabled="!projCtrl.project.estimateSent || projCtrl.project.estimateAccepted === 'yes'"
+                        ng-click="projCtrl.sendReminder(projCtrl.project, 'estimate')"
+                        data-placement="top-right"
+                        title="Reminder Sent!"
+                        data-content="You have sent your client a reminder to check your estimate. Solid."
+                        data-trigger="click"
+                        data-auto-close="1"
+                        bs-popover>
+                        <i class="fa fa-thumb-tack"></i> Send reminder
                 </button>
-                <button class="btn btn-danger btn-revise" ng-click="projCtrl.resetEstimate(projCtrl.project)" ng-disabled="projCtrl.project.estimateSent"
-                  data-animation="am-flip-x"
-                  bs-tooltip="tooltip">
-                    Reset Estimate
+                <button class="btn btn-danger btn-revise"
+                        ng-click="projCtrl.resetEstimate(projCtrl.project)"
+                        ng-if="!projCtrl.project.estimateSent"
+                        ng-disabled="projCtrl.project.estimateSent"
+                        data-animation="am-flip-x"
+                        bs-tooltip="tooltip">
+                        <i class="fa fa-exclamation-triangle"></i> Reset Estimate
                 </button>
               </div>
               <h4>Estimate Options:</h4>
@@ -198,8 +233,9 @@
             <div class="document-options">
               <p ng-if="!projCtrl.project.estimateSent">You need to send an estimate to a client before you can send an invoice!</p>
               <div ng-if="projCtrl.project.estimateSent" class="docubut-wrapper">
-                <button class="btn btn-success" ng-click="projCtrl.createInvoice(projCtrl.project)">
-                  Create New Invoice
+                <button class="btn btn-success"
+                        ng-click="projCtrl.createInvoice(projCtrl.project)">
+                  <i class="fa fa-clipboard"></i> Create New Invoice
                 </button>
               </div>
             </div>
@@ -209,55 +245,74 @@
                 <div class="panel-heading">
                   <section data-invoice-num="$index + 1">
                     <div class="invoice-header">
-                      <h3>Invoice #{{$index + 1}} - <small>{{invoice.totalCost | currency}}, {{invoice.deliverables.length}} deliverables</small></h3>
+                      <h3>Invoice #{{$index + 1}} - <small>{{invoice.totalCost | currency}}, {{invoice.deliverables.length}} deliverables.</small>
+                        <small class="invoice-paid-text" ng-if="projCtrl.project.invoices[$index].paid ==='yes'"><b>Invoice Paid!</b></small>
+                      </h3>
                       <div class="invoice-controls">
                         <i class="fa fa-2x fa-expand" bs-collapse-toggle></i>
                         <i class="fa fa-2x fa-close" data-animation="am-fade-and-scale" data-placement="center" keyboard="true" template="projects/modals/deleteinvoice.tpl.html"bs-modal="modal"></i>
                       </div>
                       <p ng-if="invoice.sent">
-                        You emailed a copy of this invoice to {{projCtrl.project.client.name}} on {{invoice.sendDate | date: 'mediumDate'}}.
-                        <p ng-if="invoice.reminders.length > 0">
-                          Would you like to send them a reminder?
-                          <ul>
-                            <li ng-repeat="reminder in invoice.reminders">
-                              {{reminder.dateSent | date:'mediumDate'}}
-                            </li>
-                          </ul>
+                        You emailed the original copy of this invoice to {{projCtrl.project.client.name}} on {{invoice.sendDate | date: 'mediumDate'}}.
+                        <p ng-if="invoice.reminders.length < 0">
+                            Looks like you have not yet sent a reminder for this invoice. Click the button below to do so!
                         </p>
+                        <ul>
+                          <p>You have sent reminders for this invoice on the following dates:</p>
+                          <li ng-repeat="reminder in invoice.reminders">
+                            {{reminder.dateSent | date:'mediumDate'}}
+                          </li>
+                        </ul>
                       </p>
                       <button class="btn btn-success"
                         ng-click="projCtrl.generateInvoice(projCtrl.project, $index)"
-                        ng-disabled="projCtrl.project.estimateCreated == 'no' || projCtrl.project.invoices[$index].deliverables.length < 1 || projCtrl.project.invoices[$index].invoiceGenerated">
-                        Generate Invoice
+                        ng-disabled="projCtrl.project.estimateCreated == 'no' || projCtrl.project.invoices[$index].deliverables.length < 1 || projCtrl.project.invoices[$index].invoiceGenerated"
+                        ng-if="!projCtrl.project.invoices[$index].sent"
+                      >
+                        <i class="fa fa-cogs"></i> Generate Invoice
+                      </button>
+                      <button class="btn btn-danger btn-revise"
+                        ng-click="projCtrl.resetInvoice(projCtrl.project, $index)"
+                        ng-disabled="!projCtrl.project.invoices[$index].invoiceGenerated || projCtrl.project.invoices[$index].sent"
+                        ng-if = "!projCtrl.project.invoices[$index].sent"
+                        data-animation="am-flip-x"
+                        bs-tooltip="tooltip">
+                          <i class="fa fa-warning"></i> Reset Invoice
                       </button>
                       <button class="btn btn-warning email-document"
                         ng-click="projCtrl.emailInvoice(projCtrl.project, $index)"
                         ng-disabled="projCtrl.project.invoices[$index].sent || !projCtrl.project.invoices[$index].invoiceGenerated"
+                        ng-if="!projCtrl.project.invoices[$index].sent"
                         data-placement="top-right"
                         title="Invoice #{{$index + 1}} emailed!"
                         data-content="A copy of the estimate you generated as been sent to your client. Cheers!"
                         data-trigger="click"
                         data-auto-close="1"
                         bs-popover>
-                          Email to Client
+                          <i class="fa fa-envelope"></i> Email to Client
                       </button>
                       <button class="btn btn-info btn-reminder"
                         ng-click="projCtrl.sendInvoiceReminder(projCtrl.project, $index)"
-                        ng-disabled="!projCtrl.project.invoices[$index].sent"
+                        ng-disabled="!projCtrl.project.invoices[$index].sent || projCtrl.project.invoices[$index].paid === 'yes'"
                         data-placement="top-right"
                         title="Reminder Sent!"
                         data-content="You have sent your client a reminder to check this invoice. Solid."
                         data-trigger="click"
                         data-auto-close="1"
                         bs-popover>
-                          Send Reminder
+                          <i class="fa fa-thumb-tack"></i> Send Reminder
                       </button>
-                      <button class="btn btn-danger btn-revise"
-                        ng-click="projCtrl.resetInvoice(projCtrl.project, $index)"
-                        ng-disabled="!projCtrl.project.invoices[$index].invoiceGenerated || projCtrl.project.invoices[$index].sent"
-                        data-animation="am-flip-x"
-                        bs-tooltip="tooltip">
-                          Reset Invoice
+                      <button class="btn btn-success"
+                        ng-if="projCtrl.project.invoices[$index].sent"
+                        ng-disabled="projCtrl.project.invoices[$index].paid ==='yes'"
+                        ng-click="projCtrl.paidInvoice(projCtrl.project, $index)"
+                        data-placement="top-right"
+                        title="Invoice marked as paid"
+                        data-content="This invoice and its deliverables have been marked as paid. Rock on! "
+                        data-trigger="click"
+                        data-auto-close="1"
+                        bs-popover>
+                          <i class="fa fa-money"></i> Mark Invoice Paid
                       </button>
                     </div>
                   </div> <!--END PANEL HEADING-->
@@ -339,7 +394,6 @@
                               >
                                 <td class="desc-col-invoice">{{deliverable.name}}</td>
                                 <td class="amnt-col-invoice">{{deliverable.realCost | currency}}</td>
-
                               </tr>
                               <tr>
                                 <td class="desc-col-invoice"><h4>Payment Methods</h4></td>

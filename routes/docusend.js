@@ -166,7 +166,7 @@ router.post('/send-estimate-reminder', function(req, res, next){
   sendgrid.send({
     to:       'brentoneill@gmail.com',  //project.user.email
     from:     'no-reply@devdesk.com',
-    subject:  project.name + 'Estimate Reminder',
+    subject:  'Reminder: ' + project.name + ' Estimate Document awaiting your review',
     text:     'Just a friendly reminder from your freelance developer that you have a project estimate awaiting your review.\n\nFor your convenience, we have attached that estimate in this email.\n\n\nHave a good one!\n\n- the team [guy] at devdesk.',
     files: [
       {
@@ -192,7 +192,7 @@ router.post('/send-contract-reminder', function(req, res, next){
   sendgrid.send({
     to:       'brentoneill@gmail.com',  //project.user.email
     from:     'no-reply@devdesk.com',
-    subject:  project.name + ' contract document reminder',
+    subject:  'Reminder: ' + project.name + ' Contract Document awaiting your review',
     text:     'Just a friendly reminder from your freelance developer that you have a contract awaiting your signature.\n\nFor your convenience, we have attached that contract in this email.\n\n\nHave a good one!\n\n- the team [guy] at devdesk.',
     files: [
       {
@@ -218,7 +218,7 @@ router.post('/send-invoice-reminder', function(req, res, next){
   sendgrid.send({
     to:       'brentoneill@gmail.com',  //project.user.email
     from:     'no-reply@devdesk.com',
-    subject:  project.name + ' Invoice #' + index + ' reminder',
+    subject:  'Reminder: ' + project.name + ' Invoice #' + index + ' awaiting your review',
     text:     'Just a friendly reminder from your freelance developer that you have an invoice the requires you attention.\n\nFor your convenience, we have attached that invoice in this email.\n\n\nHave a good one!\n\n- the team [guy] at devdesk.',
     files: [
       {

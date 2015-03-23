@@ -5,6 +5,8 @@ angular.module('auth')
     }
     $auth.logout()
       .then(function() {
+        localStorage.removeItem('user');
+
         $alert({
           content: 'You have been logged out',
           animation: 'fadeZoomFadeDown',

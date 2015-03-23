@@ -1,18 +1,20 @@
-.container-dashboard {
-  padding-top:120px;
-  width:80%;
-  margin:0 auto;
-  h2 {
-    text-align:left;
-  }
-  .row {
-    margin-left:0px;
-    margin-right:0px;
-  }
+.chart-wrapper {
+  padding:10px;
+  padding-top:20px;
+  padding-bottom:20px;
+  background-color:white;
+  border-radius:4px;
+  min-height:250px;
+  box-shadow: 4px 4px 20px rgba($black, .3);
+  border:thin solid $black;
 }
 
-.dashboard-wrapper {
-/*   border:thin solid $black;
-box-shadow: 4px 4px 20px rgba($black, .3); */
-  padding:40px;
+.chart {
+  text-align:center;
+
+}
+
+.glance-wrapper {
+  padding:20px;
+  min-height:none;
 }

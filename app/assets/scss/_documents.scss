@@ -141,12 +141,13 @@ td.totals {
   vertical-align:middle;
 }
 
-.hours-col > input {
-  width:80px;
+.table > tbody > tr > td {
+  padding:4px;
 }
 
+
 .input-thin.input-num {
-  width:80px;
+  width:70px;
 }
 
 
@@ -193,4 +194,8 @@ td.totals {
       color:$teal;
     }
   }
+}
+
+.invoice-paid-text {
+  color:$green;
 }

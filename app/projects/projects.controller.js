@@ -12,8 +12,7 @@
            Account.getProfile()
              .success(function(data) {
                $scope.user = data;
-              //  localStorage.setItem('user', JSON.stringify(data));
-              //  $scope.user = JSON.parse(localStorage.getItem('user'));
+               localStorage.setItem('user', JSON.stringify(data));
              })
              .error(function(error) {
                $alert({
@@ -42,7 +41,6 @@
 
          ClientService.getClient($routeParams.clientId).success(function(client){
            projCtrl.client = client;
-
          });
 
         //  $scope.timerRunning = false;
@@ -64,7 +62,14 @@
 
 
          //////////////////////////////
-         $scope.deliverablesNew = [{id: 'deliv', 'complete': 'no', 'invoiced':'no', 'realHrs': 0}];
+         $scope.deliverablesNew = [
+           {
+             id: 'deliv',
+             'complete': 'no',
+             'invoiced':'no',
+             'realHrs': 0
+            }
+          ];
 
          $scope.addNewDeliverable = function() {
            var newDeliverableNo = $scope.deliverablesNew.length+1;
@@ -137,6 +142,14 @@
             }
           };
 
+          projCtrl.completeDeliverable = function(project, deliv){
+            console.log('completing deliv');
+            if(deliv.complete ==='yes'){
+              deliv.completeDate = Date.now();
+            }
+            projCtrl.updateDeliverable(project, deliv);
+          };
+
           projCtrl.updateDeliverable = function(project, deliv){
             deliv.realCost = deliv.realHrs * $scope.user.ratehr;
             deliv.cost = deliv.hours * $scope.user.ratehr;
@@ -157,6 +170,15 @@
           };
 
 
+          projCtrl.contractAccepted = function(project){
+            project.contractAccepted = 'yes';
+            projCtrl.editProject(project);
+          }
+          projCtrl.estimateAccepted = function(project){
+            project.estimateAccepted = 'yes';
+            projCtrl.editProject(project);
+          }
+
           projCtrl.generateInvoice = function(project, i){
             project.invoices[i].invoiceGenerated = true;
             project.invoices[i].reminders = [];
@@ -174,11 +196,21 @@
               id : project.invoices.length + 1,
               dateCreated : Date.now(),
               sent : false,
-              deliverables : []
+              deliverables : [],
+              paid: 'no'
             }
             project.invoices.push(newInvoice);
             projCtrl.editProject(project);
           };
+
+
+          projCtrl.paidInvoice = function(project, idx) {
+            project.invoices[idx].paid = 'yes';
+            // _.each(project.invoices[idx].deliverables, function(d, idx, arr){
+            //   var itemToMarkPaid = _.findWhere(project.deliverables, {name: d.name});
+            // });
+            projCtrl.editProject(project);
+          }
 
           projCtrl.resetInvoice = function(project, i) {
             project.invoices[i].deliverables = [];
@@ -205,7 +237,6 @@
             var itemInInvoice = _.findWhere(project.invoices[i].deliverables, {name: deliv.name});
             var removedIdx = _.indexOf(project.invoices[i].deliverables, itemInInvoice);
             project.invoices[i].deliverables.splice(removedIdx, 1);
-
             projCtrl.updateInvoiceTotals(project, i);
             deliv.invoiced ='no';
             projCtrl.editProject(project)
@@ -312,10 +343,6 @@
             projCtrl.editProject(project);
           };
 
-          projCtrl.sendInvoiceReminder = function(project, idx) {
-            ProjectService.sendInvoiceReminder(project, idx);
-          };
-
           projCtrl.emailContract = function(project){
             project.contractSendDate = Date.now();
             project.contractSent = true;
@@ -330,6 +357,10 @@
             var html = angular.element('.estimate-wrapper').html();
             ProjectService.emailEstimate(html, project);
             projCtrl.editProject(project);
+          };
+
+          projCtrl.sendInvoiceReminder = function(project, idx) {
+            ProjectService.sendInvoiceReminder(project, idx);
           };
 
           projCtrl.sendReminder = function(project, type){

@@ -1,5 +1,6 @@
-.container-profile {
-  padding-top:120px;
-  width:75%;
-  margin: 0 auto;
+.profile {
+  padding:40px;
+  border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3);
+  background-color:white;
 }

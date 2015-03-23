@@ -2,10 +2,10 @@
 .project {
   padding:40px;
   border:thin solid $black;
-  border-radius:4px;
   position:relative;
   margin-bottom:40px;
   background-color:white;
+  box-shadow: 4px 4px 20px rgba($black, .3);
   .table > thead > tr > th {
     padding:4px;
   }

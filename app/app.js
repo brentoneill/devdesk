@@ -13,7 +13,8 @@ var app = angular.module('devdesk', [
     'projects',
     'devcal',
     'timer',
-    'dashboard'
+    'dashboard',
+    'chart.js'
     //'posts'
     ])
   .config(function($routeProvider){

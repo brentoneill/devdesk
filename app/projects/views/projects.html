@@ -30,22 +30,22 @@
   <div class="page-content">
 
     <div class="container-authenticated">
-      <h2>{{user.displayName}}'s projects - {{projCtrl.projects.length}} total</h2>
+      <h2>Hi, {{user.displayName}}! You have {{projCtrl.projects.length}} active projects.</h2>
         <input type="text" class="form-control project-search" ng-model="projectsQuery" placeholder="Search projects">
         <div class="project-list">
           <section class="project" data-ng-repeat="project in projCtrl.projects | orderBy: 'enddate'| filter:projectsQuery">
-            <div class="project-controls">
-              <i class="fa fa-2x fa-close" data-animation="am-fade-and-scale" data-placement="center" keyboard="true" template="projects/modals/removeproject.tpl.html"bs-modal="modal"></i>
-              <i ng-click="projCtrl.viewProjectDetail(project._id)" class="fa fa-2x fa-th-large"></i>
-            </div>
-            <h3>{{project.name}}</h3>
-            <h4><small>for <b>{{project.client.name}}</b> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone | tel}}</small></h4>
-            <p><b>Start Date:</b> {{project.startdate | date : format : mediumDate}} &nbsp; &nbsp;<b>Due Date:</b> {{project.enddate | date : format : mediumDate}}</p>
-            <p></p>
-            <p>{{project.notes}}</p>
-            <div class="row project-info">
+            <div class="row">
+              <div class="project-controls">
+                <i class="fa fa-2x fa-close" data-animation="am-fade-and-scale" data-placement="center" keyboard="true" template="projects/modals/removeproject.tpl.html"bs-modal="modal"></i>
+                <i ng-click="projCtrl.viewProjectDetail(project._id)" class="fa fa-2x fa-th-large"></i>
+              </div>
               <div class="col-md-9">
-              <h4>Deliverables due:</h4>
+                <h3>{{project.name}}</h3>
+                <h4><small>for <b>{{project.client.name}}</b> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone | tel}}</small></h4>
+                <p><b>Start Date:</b> {{project.startdate | date : format : mediumDate}} &nbsp; &nbsp;<b>Due Date:</b> {{project.enddate | date : format : mediumDate}}</p>
+                <p></p>
+                <p>{{project.notes}}</p>
+                <h4>Deliverables due:</h4>
                 <table class="table table-deliverables">
                   <thead>
                     <tr>
@@ -61,7 +61,7 @@
                       <td>{{$index + 1}}</td>
                       <td>{{deliverable.name}}</td>
                       <td class="hours-col">{{deliverable.hours}}</td>
-                      <td class="hours-col">{{deliverable.real}}</td>
+                      <td class="hours-col">{{deliverable.realHrs}}</td>
                       <td class="complete-col">{{deliverable.complete}}</td>
                     </tr>
                     <tr ng-if="project.devliverables.length > 3" class="faded-row">
@@ -75,9 +75,9 @@
               </div>
               <div class="col-md-3 doc-stats">
                 <h4>Documents:</h4>
-                <h5>Contract: <span class="sent" ng-if="project.contractSent"><b>sent!</b></span><span class="not-sent" ng-if="!project.contractSent">not sent</span></h5>
-                <h5>Esimate: <span class="sent" ng-if="project.estimateSent"><b>sent!</b></span><span class="not-sent" ng-if="!project.estimateSent">not sent</span></h5>
-                <h5># Invoices: <span>{{project.invoices.length}} sent<span></h5>
+                <h5>Contract: <span class="sent" ng-if="project.contractSent"><b>sent</b></span><span class="not-sent" ng-if="!project.contractSent">not sent</span> | <span class="sent" ng-if="project.contractAccepted === 'yes'"><b>accepted!</b></span></h5>
+                <h5>Esimate:&nbsp; <span class="sent" ng-if="project.estimateSent"><b>sent</b></span><span class="not-sent" ng-if="!project.estimateSent">not sent</span> | <span class="sent" ng-if="project.estimateAccepted === 'yes'"><b>accepted!</b></span></h5>
+                <h5>Invoices: <span>{{project.invoices.length}} sent<span></h5>
                 <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(project)">Document Center</button>
               </div>
             </div>

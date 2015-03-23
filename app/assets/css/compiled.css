@@ -414,25 +414,28 @@ nav {
   outline: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
 
-.container-profile {
-  padding-top: 120px;
-  width: 75%;
-  margin: 0 auto; }
+.profile {
+  padding: 40px;
+  border: thin solid #343434;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  background-color: white; }
 
-.container-dashboard {
-  padding-top: 120px;
-  width: 80%;
-  margin: 0 auto; }
-  .container-dashboard h2 {
-    text-align: left; }
-  .container-dashboard .row {
-    margin-left: 0px;
-    margin-right: 0px; }
+.chart-wrapper {
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 4px;
+  min-height: 250px;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  border: thin solid #343434; }
 
-.dashboard-wrapper {
-  /*   border:thin solid $black;
-  box-shadow: 4px 4px 20px rgba($black, .3); */
-  padding: 40px; }
+.chart {
+  text-align: center; }
+
+.glance-wrapper {
+  padding: 20px;
+  min-height: none; }
 
 .container-authenticated {
   padding-top: 100px;
@@ -481,10 +484,10 @@ nav {
 .project {
   padding: 40px;
   border: thin solid #343434;
-  border-radius: 4px;
   position: relative;
   margin-bottom: 40px;
-  background-color: white; }
+  background-color: white;
+  box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
   .project .table > thead > tr > th {
     padding: 4px; }
   .project h3 {
@@ -723,11 +726,11 @@ td.totals {
 .table-bordered > tbody > tr > td {
   vertical-align: middle; }
 
-.hours-col > input {
-  width: 80px; }
+.table > tbody > tr > td {
+  padding: 4px; }
 
 .input-thin.input-num {
-  width: 80px; }
+  width: 70px; }
 
 .invoice-header {
   margin-bottom: 20px;
@@ -757,6 +760,9 @@ td.totals {
     color: #DF5A49; }
   .invoice-controls i.fa-expand:hover {
     color: #45B29D; }
+
+.invoice-paid-text {
+  color: #5C832F; }
 
 .tab-pane.am-fade {
   animation-duration: .3s;

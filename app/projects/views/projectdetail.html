@@ -42,6 +42,7 @@
             <p><b>Description: </b>{{projCtrl.project.description}}</p>
             <p><b>Project Goals: </b></p>
             <p>{{projCtrl.project.goal}}</p>
+            <h4>Document Status</h4>
           </div>
          <div class="col-md-4 col-sm-4 project-client-info">
            <div class="project-client-info-wrapper">
@@ -57,14 +58,14 @@
        <div ng-controller="ProgressbarController">
          <progressbar class="progress-striped active" max="100" value="((projCtrl.project.totalHrs - projCtrl.project.hrsRemaining)*100) / max" type="success">{{projectStatus}}</progressbar>
        </div>
-       <timer interval="1000" autostart>{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
-               <div><button ng-click="startTimer()" class="btn btn-success">
-                  Start
-                </button>
-                <button class="btn btn-danger" ng-click="stopTimer()">
-                  Stop
-                </button>
-            </div>
+<!--        <timer interval="1000" autostart>{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
+        <div><button ng-click="startTimer()" class="btn btn-success">
+           Start
+         </button>
+         <button class="btn btn-danger" ng-click="stopTimer()">
+           Stop
+         </button>
+     </div> -->
        <table class="table table-bordered table-deliverables">
           <thead>
             <tr>
@@ -79,7 +80,6 @@
               <th class="complete-col"><i class="fa fa-check"></i></th>
               <th class="complete-col"><i class="fa fa-clipboard"></i></th>
               <th class="complete-col"><i class="fa fa-money"></i></th>
-              <th class="complete-col"><i class="fa fa-clock-o"></i></th>
             </tr>
           </thead>
           <tbody>
@@ -92,22 +92,22 @@
               <td class="hours-col">{{deliverable.realCost | currency}}</td>
               <td class="hours-col">{{deliverable.velocity | percentage:0}}</td>
               <td class="complete-col"><input type="checkbox" disabled ng-model="deliverable.inEstimate" ng-true-value="'yes'" ng-false-value="'no'"></td>
-              <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
+              <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.completeDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
               <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'">
               <td class="complete-col"><input type="checkbox" ng-disabled="deliverable.invoiced == 'no'" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.paid" ng-true-value="'yes'" ng-false-value="'no'"></td>
-              <td class="complete-col">
-                <button class="btn btn-danger"
-                  ng-click="projCtrl.setDeliverable(deliverable);"
-                  data-animation="am-fade-and-scale"
-                  data-placement="center"
-                  keyboard="true"
-                  backdrop = "static"
-                  template="projects/modals/tracktime.tpl.html"
-                  bs-modal="modal">
+<!--               <td class="complete-col">
+  <button class="btn btn-danger"
+    ng-click="projCtrl.setDeliverable(deliverable);"
+    data-animation="am-fade-and-scale"
+    data-placement="center"
+    keyboard="true"
+    backdrop = "static"
+    template="projects/modals/tracktime.tpl.html"
+    bs-modal="modal">
 
-                  <i class="fa fa-clock-o"></i>
-                </button>
-              </td>
+    <i class="fa fa-clock-o"></i>
+  </button>
+</td> -->
             </tr>
             <tr class="row-totals">
               <td></td>

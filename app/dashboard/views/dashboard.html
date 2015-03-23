@@ -30,17 +30,62 @@
 
   <div class="page-content">
     <div class="container-authenticated">
-      <h2>Dashboard</h2>
+      <h2>Dashboard - {{dashCtrl.projects.length}} projects</h2>
       <div class="row">
-        <div class="col-md-4">
-          At a glance
+
+        <div class="col-md-4 col-sm-4 chart">
+          <h3>Deliverables Snapshot</h3>
+          <div class="chart-wrapper">
+            <canvas id="doughnut"
+              class="chart chart-doughnut"
+              data="dashCtrl.doughnutStats"
+              labels="dashCtrl.doughnutLabels"
+              legend="true">
+            </canvas>
+            <canvas id="line"
+                    class="chart chart-line"
+                    data="data"
+                    labels="labels"
+                    legend="true"
+                    series="series">
+            </canvas>
+          </div>
         </div>
-        <div class="col-md-4">
-          Stats 1
+        <div class="col-md-8 col-sm-8 chart">
+          <h3>Project Velocity</h3>
+          <div class="chart-wrapper">
+            <canvas id="bar"
+              class="chart chart-bar"
+              data="dashCtrl.velocityStats"
+              labels="dashCtrl.velocityLabels"
+              series="dashCtrl.velocitySeries"
+              legend="true">
+            </canvas>
+          </div>
         </div>
-        <div class="col-md-4">
-          Stats 2
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3>Some title</h3>
+          <div class="chart-wrapper">
+
+          </div>
         </div>
+
+        <div class="col-md-6">
+          <h3>Some title</h3>
+          <div class="chart-wrapper">
+            <canvas id="polar-area"
+                    class="chart chart-polar-area"
+                    data="dashCtrl.glanceData"
+                    labels="dashCtrl.glanceLabels">
+            </canvas>
+          </div>
+        </div>
+
       </div>
     </diV>
   </div>

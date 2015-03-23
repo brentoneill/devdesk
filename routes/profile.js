@@ -31,23 +31,13 @@ router.route('/me')
       user.city = req.body.city || user.city;
       user.state = req.body.state || user.state;
       user.zip = req.body.zip || user.zip;
-      user.picture = 'http://localhost:1337/uploads/avatars/userPhoto' + user.displayName + '.png';
+      user.picture = 'http://localhost:1337/uploads/avatars/userPhoto-' + user.displayName + '.jpg';
       user.ratehr = req.body.ratehr;
       user.save(function(err) {
         res.status(200).end();
       });
     });
   });
-
-// //PHOTO UPLOAD
-// router.route('/api/photo')
-//   .all(ensureAuthenticated)
-//   .post(function(req,res){
-//     if(done==true){
-//       console.log(req.files);
-//       res.end("File uploaded.");
-//     }
-//   });
 
 
 module.exports = router;
