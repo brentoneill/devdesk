@@ -146,13 +146,11 @@ td {
 .document {
   font-family: "Raleway", sans-serif;
   font-size:13px;
-  border: thin solid #4d4d4d;
   border-radius: 2px;
   padding: 60px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 8px 8px 20px rgba(77, 77, 77, 0.2);
   position: relative; }
   .document ul {
     padding-left: 40px;
@@ -166,12 +164,12 @@ td {
   table {
     font-family: "Raleway", sans-serif;
   }
-  .document h1,
-  .document h2,
-  .document h3,
-  .document h4,
-  .document h5,
-  .document h6 {
+  .document > h1,
+  .document > h2,
+  .document > h3,
+  .document > h4,
+  .document > h5,
+  .document >h6 {
     font-family: "Raleway", sans-serif;
   }
 
@@ -284,3 +282,20 @@ td.totals {
         vertical-align: top;
         border-top: 1px solid #ddd;
       }
+
+
+.invoice-wrapper {
+  padding:40px;
+}
+
+.desc-col-invoice {
+  width:80%;
+}
+
+.amnt-col-invoice {
+  width:20%;
+  text-align:right;
+}
+.amnt-col-invoice h4 {
+    text-align:right;
+}

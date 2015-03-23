@@ -17,7 +17,7 @@
       <li><a href="/#/projects/new">Add project</a></li>
     </ul>
     <ul>
-      <li><a href="/#/calendar">View calendar</a></li>
+
       <li><a href="/#/clients">View clients</a></li>
       <li><a href="/#/projects">View projects</a></li>
     </ul>
@@ -30,35 +30,36 @@
 
   <div class="page-content">
     <div class="container-dashboard">
+      <div class="dashboard-wrapper">
+        <h2>Welcome, {{user.displayName}}!</h2>
 
-      <h2>Welcome, {{user.displayName}}</h2>
-
-      <div class="row row-dashboard">
-        <h3>At a glance</h3>
-        <div class="col-md-6">
-          <div  class="">
-            <h4>List of new projects (outside source)</h4>
-          </div>
-          <div class="deliverables">
-            <h4>List of deliverables (due in next week/set by user)</h4>
+        <div class="row row-dashboard">
+          <h3>At a glance</h3>
+          <div class="col-md-6">
+            <div  class="">
+              <h4>List of new projects (outside source)</h4>
+            </div>
+            <div class="deliverables">
+              <h4>List of deliverables (due in next week/set by user)</h4>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div ng-controller="ProjectController as projCtrl" class="row row-dashboard">
-        <ul>
-          <li ng-repeat="project in projCtrl.projects">
-            <h2>{{project.name}}</h2>
-            <p>for <b>{{project.client.name}}</b> - {{project.client.email}}, {{project.client.phone}}</p>
-            <p><b>Start Date:</b> {{project.startdate  | date : format : mediumDate }}</p>
-            <p><b>Due Date:</b> {{project.enddate  | date : format : mediumDate}}</p>
-            <p>{{project.notes}}</p>
-            <h4>Deliverables:</h4>
-            <div ng-repeat="deliverable in project.deliverables">
-              <p>{{deliverable.name}} - {{deliverable.hours}}</p>
-            </div>
-          </li>
-        </ul>
+        <div ng-controller="ProjectController as projCtrl" class="row row-dashboard">
+          <ul>
+            <li ng-repeat="project in projCtrl.projects">
+              <h2>{{project.name}}</h2>
+              <p>for <b>{{project.client.name}}</b> - {{project.client.email}}, {{project.client.phone}}</p>
+              <p><b>Start Date:</b> {{project.startdate  | date : format : mediumDate }}</p>
+              <p><b>Due Date:</b> {{project.enddate  | date : format : mediumDate}}</p>
+              <p>{{project.notes}}</p>
+              <h4>Deliverables:</h4>
+              <div ng-repeat="deliverable in project.deliverables">
+                <p>{{deliverable.name}} - {{deliverable.hours}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

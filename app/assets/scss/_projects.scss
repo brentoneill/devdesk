@@ -19,8 +19,8 @@
   i.fa {
     color:black;
     cursor:pointer;
-    @include transition(all .5s ease);
     opacity:.5;
+    @include transition(all .5s ease);
     &:hover {
       transform:scale(1.5);
       opacity:1;
@@ -86,7 +86,7 @@ td {
 
 .project-search {
   position:absolute;
-  top:140px;
+  top:120px;
   right:0px;
   width:200px;
 }
@@ -102,6 +102,9 @@ td {
 }
 .d-paid {
   background-color:lighten($green, 20%);
+}
+.sent {
+  color:$teal;
 }
 
 //Add a project
@@ -127,13 +130,12 @@ input.form-control.deliverable-hrs {
   width:16%;
 }
 
+.btn-add-deliv {
+  width:16%;
+}
 
 .doc-stats{
   margin-top:10px;
-}
-
-.btn-add-deliv {
-  width:16%;
 }
 
 div.project-new-top {
@@ -160,7 +162,7 @@ div.project-new-bot {
 
 .content-wrapper {
   background-color:white;
-  padding:20px;
+  padding:40px;
   border:thin solid $black;
   box-shadow: 4px 4px 20px rgba($black, .3);
 }
@@ -168,5 +170,17 @@ div.project-new-bot {
 .table-deliverables {
   tr {
     transition:all .3s ease;
+  }
+}
+
+.invoice {
+  padding:20px;
+  border:thin solid darken($gray-light, 10%);
+}
+
+.row-totals > td {
+  text-align:center;
+  &:nth-child(2){
+    text-align:right;
   }
 }

@@ -398,10 +398,6 @@ nav {
   height: 50vh;
   background-color: #343434; }
 
-.container-auth {
-  padding-top: 120px;
-  width: 50%; }
-
 .alert-material {
   position: fixed;
   right: 12px;
@@ -433,11 +429,16 @@ nav {
     margin-left: 0px;
     margin-right: 0px; }
 
+.dashboard-wrapper {
+  /*   border:thin solid $black;
+  box-shadow: 4px 4px 20px rgba($black, .3); */
+  padding: 40px; }
+
 .container-authenticated {
-  padding-top: 120px;
+  padding-top: 100px;
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 160px;
+  margin-bottom: 120px;
   position: relative; }
   .container-authenticated textarea {
     resize: none; }
@@ -445,23 +446,29 @@ nav {
 .container-addclient {
   width: 75%; }
 
-.client {
-  transition: all .5 ease;
+.client-wrapper {
+  transition: all .5s ease;
   border: thin solid #343434;
   padding: 20px;
-  padding-top: 30px;
+  margin-right: 20px;
   min-height: 400px;
   background-color: white;
   margin-bottom: 30px;
   border: thin solid #343434;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
   position: relative; }
-  .client .client-controls {
+  .client-wrapper .client-controls {
+    margin: 0 auto;
+    display: inline-block;
+    width: 88%;
     position: absolute;
-    top: 15px;
-    right: 15px; }
-  .client .client-stats {
-    margin-top: 20px; }
+    bottom: 20px;
+    text-align: center; }
+    .client-wrapper .client-controls button {
+      width: 100%; }
+
+.client:nth-child(4n+4) {
+  margin-right: 0px; }
 
 .client-new {
   background-color: white;
@@ -488,10 +495,10 @@ nav {
   .project i.fa {
     color: black;
     cursor: pointer;
+    opacity: .5;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    opacity: .5; }
+    transition: all 0.5s ease; }
     .project i.fa:hover {
       transform: scale(1.5);
       opacity: 1; }
@@ -534,7 +541,7 @@ td {
 
 .project-search {
   position: absolute;
-  top: 140px;
+  top: 120px;
   right: 0px;
   width: 200px; }
 
@@ -549,6 +556,9 @@ td {
 
 .d-paid {
   background-color: #90c256; }
+
+.sent {
+  color: #45B29D; }
 
 .project-new {
   background-color: white;
@@ -567,11 +577,11 @@ input.form-control.deliverable-name {
 input.form-control.deliverable-hrs {
   width: 16%; }
 
-.doc-stats {
-  margin-top: 10px; }
-
 .btn-add-deliv {
   width: 16%; }
+
+.doc-stats {
+  margin-top: 10px; }
 
 div.project-new-top {
   transition: all .5s ease;
@@ -592,17 +602,21 @@ div.project-new-bot .btn-primary {
 
 .content-wrapper {
   background-color: white;
-  padding: 20px;
+  padding: 40px;
   border: thin solid #343434;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
 
 .table-deliverables tr {
   transition: all .3s ease; }
 
-.container-calendar {
-  padding-top: 120px;
-  width: 80%;
-  margin: 0 auto; }
+.invoice {
+  padding: 20px;
+  border: thin solid gainsboro; }
+
+.row-totals > td {
+  text-align: center; }
+  .row-totals > td:nth-child(2) {
+    text-align: right; }
 
 .document {
   border: thin solid #4d4d4d;
@@ -714,6 +728,35 @@ td.totals {
 
 .input-thin.input-num {
   width: 80px; }
+
+.invoice-header {
+  margin-bottom: 20px;
+  position: relative; }
+
+.desc-col-invoice {
+  width: 80%; }
+
+.amnt-col-invoice {
+  width: 20%;
+  text-align: right; }
+  .amnt-col-invoice h4 {
+    text-align: right; }
+
+.invoice-controls {
+  position: absolute;
+  top: -20px;
+  right: 0px; }
+  .invoice-controls i.fa {
+    opacity: .5;
+    transition: all .3s ease;
+    cursor: pointer; }
+    .invoice-controls i.fa:hover {
+      opacity: 1;
+      transform: scale(1.2); }
+  .invoice-controls i.fa-close:hover {
+    color: #DF5A49; }
+  .invoice-controls i.fa-expand:hover {
+    color: #45B29D; }
 
 .tab-pane.am-fade {
   animation-duration: .3s;

@@ -4,6 +4,7 @@
 //Utility and resets
 @import 'config';       //config options - colors, mixins
 @import 'reset';
+@import 'common';       //Layout for app view
 
 //Comment items
 @import 'typography';   //typography delcarations
@@ -24,7 +25,6 @@
 @import 'dashboard';
 @import 'clients';
 @import 'projects';
-@import 'calendar';
 @import 'documents';
 
 @import 'animations';

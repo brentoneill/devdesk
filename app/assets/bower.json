@@ -33,7 +33,8 @@
     "angular-motion": "0.3.4",
     "bootstrap-additions": "~0.2.3",
     "angular-deckgrid": "~0.5.0",
-    "icono": "~1.3.0"
+    "icono": "~1.3.0",
+    "angular-timer": "~1.3.1"
   },
   "resolutions": {
     "angular": "1.3.14"

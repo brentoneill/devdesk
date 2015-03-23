@@ -1,8 +1,8 @@
 .container-authenticated {
-  padding-top:120px;
+  padding-top:100px;
   width:80%;
   margin:0 auto;
-  margin-bottom:160px;
+  margin-bottom:120px;
   position:relative;
   textarea {
     resize:none;
@@ -15,11 +15,11 @@
 }
 
 
-.client{
-  transition:all .5 ease;
+.client-wrapper{
+  transition:all .5s ease;
   border:thin solid $black;
   padding:20px;
-  padding-top:30px;
+  margin-right:20px;
   min-height:400px;
   background-color:white;
   margin-bottom:30px;
@@ -27,16 +27,24 @@
   box-shadow: 4px 4px 20px rgba($black, .3);
   position:relative;
   .client-controls {
+    margin:0 auto;
+    display:inline-block;
+    width:88%;
     position:absolute;
-    top:15px;
-    right:15px;
+    bottom:20px;
+    text-align:center;
+    button{
+      width:100%;
+    }
+
   }
   .client-info {
 
   }
-  .client-stats {
-    margin-top:20px;
-  }
+}
+
+.client:nth-child(4n+4){
+  margin-right:0px;
 }
 
 .client-new {

@@ -1,0 +1,25 @@
+<div class="modal " tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-invoice">
+      <div class="modal-header">
+        <h4 class="modal-title">Add new invoice</h4>
+      </div>
+      <div class="modal-body">
+        <p>Deliverables included in this invoice</p>
+        <ul>
+          <li data-ng-repeat="deliverable in projCtrl.project.deliverables " ng-if="deliverable.invoiced='yes'">
+            <span>{{deliverable.name}} - {{deliverable.realHrs}} hrs @ {{user.ratehr | currency:"USD$":0}} for a total of {{deliverable.realCost | currency }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="$hide()">
+          <i class="fa fa-close"></i> Cancel
+        </button>
+        <button class="btn btn-success" ng-click="$hide()">
+          Invoice options <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

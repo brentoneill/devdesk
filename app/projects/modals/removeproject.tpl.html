@@ -1,0 +1,21 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Remove this project</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to remove this project?</p>
+        <p>...when it goes, it will stay gone!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="projCtrl.deleteProject(project._id); $hide()">
+          Yes, let it go.
+        </button>
+        <button class="btn btn-primary" ng-click="$hide()">
+          Nevermind then!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

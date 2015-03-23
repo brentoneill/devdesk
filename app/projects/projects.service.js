@@ -12,8 +12,10 @@
             editProject: editProject,
             deleteProject: deleteProject,
             emailContract: emailContract,
+            emailInvoice: emailInvoice,
             emailEstimate: emailEstimate,
-            sendReminder : sendReminder
+            sendReminder : sendReminder,
+            sendInvoiceReminder: sendInvoiceReminder
           }
 
 
@@ -50,12 +52,16 @@
             });
           }
 
+          function emailInvoice(html, project, idx){
+            console.log('service sending invoice');
+            var request = [html, project, idx];
+            $http.post('/send-invoice', request).then(function(res){
+              $rootScope.$broadcast("document:sent");
+              $location.path('/projects/' + project._id + '/documents');
+            });
+          }
           function emailContract(html, project){
             var request = [html, project];
-            project.contractSent = true;
-            // project.contract.contractSent = true;
-            // project.contract.sendDate = Date.now();
-            editProject(project);
             $http.post('/send-contract', request).then(function(res){
               $rootScope.$broadcast("document:sent");
               $location.path('/projects/' + project._id + '/documents');
@@ -63,32 +69,51 @@
           }
 
           function emailEstimate(html, project){
-            console.log('trying to send estimate');
             var request = [html, project];
-            project.estimateSent = true;
-            editProject(project);
             $http.post('/send-estimate', request).then(function(res){
               $rootScope.$broadcast("document:sent");
               $location.path('/projects/' + project._id + '/documents');
             });
           }
 
+          function sendInvoiceReminder(project, idx){
+            console.log('service trying to send invoice reminder');
+            var request = [project, idx];
+            var reminder = {
+              dateSent : Date.now(),
+              number: project.invoices[idx].reminders.length + 1
+            }
+            project.invoices[idx].reminders.push(reminder);
+            editProject(project);
+            $http.post('/send-invoice-reminder', request).then(function(res){
+              $location.path('/projects/' + project._id + '/documents');
+            });
+          };
+
           function sendReminder(project, type){
             var request = [project, type];
             if(type === 'contract'){
+              var reminder = {
+                dateSent: Date.now(),
+                number: project.contract.reminders.length + 1
+              }
+              project.contract.reminders.push(reminder);
               editProject(project);
               $http.post('/send-contract-reminder', request).then(function(res){
-                $rootScope.$boradcast("reminder:sent");
                 $location.path('/projects/' + project._id + '/documents');
               });
-            };
-            if(type ==='estimate'){
+            }
+            else if(type === 'estimate'){
+              var reminder = {
+                dateSent: Date.now(),
+                number: project.estimate.reminders.length + 1
+              };
+              project.estimate.reminders.push(reminder);
               editProject(project);
               $http.post('/send-estimate-reminder', request).then(function(res){
-                $rootScope.$boradcast("reminder:sent");
                 $location.path('/projects/' + project._id + '/documents');
               });
-            };
+            }
           }
 
       }]);

@@ -148,3 +148,49 @@ td.totals {
 .input-thin.input-num {
   width:80px;
 }
+
+
+
+
+///MODAL STUFF
+.invoice-header {
+  margin-bottom:20px;
+  position:relative;
+}
+
+.desc-col-invoice {
+  width:80%;
+}
+
+.amnt-col-invoice {
+  width:20%;
+  text-align:right;
+  h4 {
+    text-align:right;
+  }
+}
+
+.invoice-controls {
+  position:absolute;
+  top:-20px;
+  right:0px;
+  i.fa {
+    opacity:.5;
+    transition:all .3s ease;
+    cursor:pointer;
+    &:hover{
+      opacity:1;
+      transform:scale(1.2);
+    }
+  }
+  i.fa-close {
+    &:hover{
+      color:$red;
+    }
+  }
+  i.fa-expand {
+    &:hover{
+      color:$teal;
+    }
+  }
+}

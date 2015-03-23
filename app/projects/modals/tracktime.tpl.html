@@ -1,0 +1,21 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tracking Time</h4>
+      </div>
+      <div class="modal-body">
+        <p>Timer for: [deliverable name]</p>
+        <timer />
+      </div>
+      <div class="modal-footer">
+        <button ng-click="startTimer()" class="btn btn-success">
+          Start
+        </button>
+        <button class="btn btn-danger" ng-click="stopTimer(); $hide()">
+          Stop
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

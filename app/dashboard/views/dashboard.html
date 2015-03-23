@@ -1,3 +1,5 @@
+
+
 <input type="checkbox" id="sidebartoggler">
 
 <div class="page-wrapper">
@@ -15,7 +17,7 @@
       <li><a href="/#/projects/new">Add project</a></li>
     </ul>
     <ul>
-       
+
       <li><a href="/#/clients">View clients</a></li>
       <li><a href="/#/projects">View projects</a></li>
     </ul>
@@ -27,9 +29,19 @@
 
 
   <div class="page-content">
-    <div class="container-calendar">
-      <h3>Hi, {{user.displayName}}. Here's your calendar:</h3>
-      <div ui-calendar="uiConfig.calendar" ng-model="$scope.eventSources"></div>
-    </div>
+    <div class="container-authenticated">
+      <h2>Dashboard</h2>
+      <div class="row">
+        <div class="col-md-4">
+          At a glance
+        </div>
+        <div class="col-md-4">
+          Stats 1
+        </div>
+        <div class="col-md-4">
+          Stats 2
+        </div>
+      </div>
+    </diV>
   </div>
 </div>

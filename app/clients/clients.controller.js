@@ -24,6 +24,12 @@
 
           $scope.getProfile();
 
+          $scope.aside = {
+            "title": "Title",
+            "content": "Hello Aside<br />This is a multiline message!"
+          };
+
+
           ClientService.getClients().success(function(clients){
             cliCtrl.clients = _.where(clients, {'userId':$scope.user._id})
           });

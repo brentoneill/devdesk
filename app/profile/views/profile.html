@@ -15,7 +15,7 @@
       <li><a href="/#/projects/new">Add project</a></li>
     </ul>
     <ul>
-      <li><a href="/#/calendar">View calendar</a></li>
+
       <li><a href="/#/clients">View clients</a></li>
       <li><a href="/#/projects">View projects</a></li>
     </ul>
@@ -32,14 +32,14 @@
         <div class="panel-heading">Profile</div>
         <div class="panel-body">
           <legend><i class="ion-clipboard"></i> Edit My Profile</legend>
-        <form  id        =  "uploadForm"
-       enctype   =  "multipart/form-data"
-       action    =  "/api/photo"
-       method    =  "post"
->
-  <input type="file" name="userPhoto-{{user.displayName}}" />
-  <input type="submit" value="Upload Image" name="submit">
-</form>
+          <form  id        =  "uploadForm"
+                 enctype   =  "multipart/form-data"
+                 action    =  "/api/photo"
+                 method    =  "post"
+          >
+            <input type="file" name="userPhoto-{{user.displayName}}" />
+            <input type="submit" value="Upload Image" name="submit">
+          </form>
           <form method="post" ng-submit="updateProfile()">
             <div class="form-group">
               <label class="control-label">Profile Picture</label>
