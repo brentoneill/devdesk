@@ -9,9 +9,6 @@
   <div class="sidebar">
     <h4>Hi, {{user.displayName}}!</h4>
     <ul>
-      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
-    </ul>
-    <ul>
       <li><a href="/#/dashboard">Dashboard</a></li>
       <li><a href="/#/clients/new">Add client</a></li>
       <li><a href="/#/projects/new">Add project</a></li>
@@ -42,7 +39,8 @@
             <p><b>Description: </b>{{projCtrl.project.description}}</p>
             <p><b>Project Goals: </b></p>
             <p>{{projCtrl.project.goal}}</p>
-
+            <p><b>Notes:</b></p>
+            <p>{{projCtrl.project.notes}}</p>
           </div>
          <div class="col-md-4 col-sm-4 project-client-info">
            <h4><b>Project Documents Status:</b></h4>

@@ -117,7 +117,7 @@ angular.module('dashboard')
         _.each(project.deliverables, function(deliv, index, array){
           if(deliv.completeDate) {
             var dayComplete = moment(deliv.completeDate);
-            if(dayComplete.isBetween('2015-03-17', '2015-03-25')){
+            if(dayComplete.isBetween(weekAgo, today)){
               dashCtrl.weekData[1]++;
             }
             if(dayComplete.isBetween('2015-02-25', '2015-03-25')){
@@ -126,7 +126,7 @@ angular.module('dashboard')
           }
           if(deliv.invoicedDate){
             var dayInvoiced = moment(deliv.invoicedDate);
-            if(dayInvoiced.isBetween('2015-03-17', '2015-03-25')){
+            if(dayInvoiced.isBetween(weekAgo, today)){
               dashCtrl.weekData[2]++;
             }
             if(dayInvoiced.isBetween('2015-02-25', '2015-03-25')){
@@ -135,7 +135,7 @@ angular.module('dashboard')
           }
           if(deliv.paidDate){
             var dayPaid = moment(deliv.paidDate);
-            if(dayPaid.isBetween('2015-03-17', '2015-03-25')){
+            if(dayPaid.isBetween(weekAgo, today)){
               dashCtrl.weekData[3]++;
             }
             if(dayPaid.isBetween('2015-02-25', '2015-03-25')){
@@ -144,7 +144,7 @@ angular.module('dashboard')
           }
           if(deliv.estimateDate){
             var dayEstimated = moment(deliv.estimateDate);
-            if(dayEstimated.isBetween('2015-03-17', '2015-03-25')){
+            if(dayEstimated.isBetween(weekAgo, today)){
               dashCtrl.weekData[0]++;
             }
             if(dayEstimated.isBetween('2015-02-25', '2015-03-25')){

@@ -9,9 +9,6 @@
   <div class="sidebar">
     <h4>Hi, {{user.displayName}}!</h4>
     <ul>
-      <li><a href="/#/devflow"></a>Start a new Devflow</a></li>
-    </ul>
-    <ul>
       <li><a href="/#/dashboard">Dashboard</a></li>
       <li><a href="/#/clients/new">Add client</a></li>
       <li><a href="/#/projects/new">Add project</a></li>
@@ -69,7 +66,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 client-stats">
                   <h4>Average Project Hrs</h4>
-                  <p><b>{{cliCtrl.avgProjectHours}} hrs</b></p>
+                  <p><b>{{cliCtrl.avgProjectHours | number:2}} hrs</b></p>
                 </div>
               </div>
               <div class="row">
@@ -79,7 +76,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 client-stats">
                   <h4>Total Billable Hrs</h4>
-                  <p><b>{{cliCtrl.totalProjectsHours}} hrs</b></p>
+                  <p><b>{{cliCtrl.totalProjectsHours | number:2}} hrs</b></p>
                 </div>
               </div>
             </div>
@@ -108,7 +105,7 @@
                   </tbody>
                 </table>
               </div>
-              <h3>Some Cool graph</h3>
+              <h3>Deliverables Tracking for the last 7 days</h3>
               <div class="client-wrapper animated slideInRight">
                 <canvas id="radar" class="chart chart-radar"
                   data="cliCtrl.delivGraphData"

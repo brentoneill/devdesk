@@ -418,10 +418,14 @@ nav {
   outline: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
 
+.login-header {
+  font-size: 36px; }
+
 .profile {
   padding: 40px;
   border: thin solid #343434;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
+  border-radius: 4px;
   background-color: white; }
 
 .chart-wrapper {
@@ -531,6 +535,7 @@ nav {
   width: 760px;
   padding: 40px;
   border: thin solid #343434;
+  border-radius: 4px;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
   margin: 0 auto; }
 
@@ -561,27 +566,11 @@ nav {
     color: #343434; }
     .project h3 small {
       color: gray; }
-  .project i.fa {
-    color: black;
-    cursor: pointer;
-    opacity: .5;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    transition: all 0.5s ease; }
-    .project i.fa:hover {
-      transform: scale(1.5);
-      opacity: 1; }
-  .project .fa-close:hover {
-    color: #DF5A49; }
-  .project .fa-th-large:hover {
-    color: #45B29D; }
-
-.project-controls {
-  position: absolute;
-  right: 40px;
-  top: 20px; }
-  .project-controls i.fa:first-child {
-    margin-right: 10px; }
+  .project .doc-stats button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left; }
 
 .project-client-info h4 {
   color: #343434;
@@ -638,6 +627,7 @@ td {
 .project-new {
   background-color: white;
   padding: 40px;
+  border-radius: 4px;
   border: thin solid #343434;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
 
@@ -697,9 +687,11 @@ div.project-new-bot .btn-primary {
 .progress-bar {
   font-size: 16px; }
 
+.project-controls {
+  margin-bottom: 30px; }
+
 .document {
   border: thin solid #4d4d4d;
-  border-radius: 2px;
   padding: 60px;
   margin: 0 auto;
   margin-top: 40px;

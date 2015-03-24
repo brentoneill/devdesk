@@ -25,6 +25,8 @@
          };
 
          $scope.getProfile();
+         $scope.user = $.parseJSON(localStorage.getItem('user'));
+         console.log($scope.user);
 
          ProjectService.getProjects().success(function(projects){
            projCtrl.projects = _.where(projects, {'userId':$scope.user._id})

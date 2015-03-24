@@ -1,8 +1,8 @@
 <div class="container container-authenticated">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 center-form panel">
-      <div class="panel-body">
-        <h2 class="text-center">Sign up</h2>
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+      <h3 class="text-center login-header">Sign up</h3>
+      <div class="profile">
         <form method="post" ng-submit="signup()" name="signupForm">
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }">
             <input class="form-control input-lg" type="text" name="displayName" ng-model="displayName" placeholder="Name" required autofocus>
@@ -37,8 +37,6 @@
               <div ng-message="compareTo">Password must match.</div>
             </div>
           </div>
-
-          <p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
 
           <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Sign up</button>
           <br/>

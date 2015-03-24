@@ -17,37 +17,15 @@
       color:gray;
     }
   }
-  i.fa {
-    color:black;
-    cursor:pointer;
-    opacity:.5;
-    @include transition(all .5s ease);
-    &:hover {
-      transform:scale(1.5);
-      opacity:1;
-    }
-  }
-  .fa-close {
-    &:hover{
-      color:$red;
-    }
-  }
-  .fa-th-large {
-    &:hover{
-      color:$teal;
+  .doc-stats{
+    button {
+      display:block;
+      width:100%;
+      margin-bottom:10px;
+      text-align:left;
     }
   }
 }
-
-.project-controls {
-  position:absolute;
-  right:40px;
-  top:20px;
-  i.fa:first-child{
-    margin-right:10px;
-  }
-}
-
 
 .project-client-info{
   h4 {
@@ -121,6 +99,7 @@ td {
 .project-new {
   background-color:white;
   padding:40px;
+  border-radius:4px;
   border:thin solid $black;
   box-shadow: 4px 4px 20px rgba($black, .3);
 }
@@ -198,4 +177,9 @@ div.project-new-bot {
 
 .progress-bar {
   font-size:16px;
+}
+
+
+.project-controls {
+  margin-bottom:30px;
 }
