@@ -32,7 +32,7 @@
         <div class="col-md-8 col-md-offset-2 profile">
           <form method="post" ng-submit="updateProfile()">
             <h2 class="page-header">
-              <i class="fa fa-user"></i> Profile
+              <i class="fa fa-user"></i> Your Profile
               <button type="submit" class="btn btn-lg btn-success pull-right">Update Information</button>
             </h2>
             <div class="row">
@@ -52,6 +52,10 @@
                 <div class="form-group">
                   <label class="control-label"><i class="ion-link"></i> Website</label>
                   <input type="text" class="form-control" ng-model="user.website" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label"><i class="ion-person"></i> Hourly rate ($/hr):</label>
+                  <input type="text" class="form-control" ng-model="user.ratehr" />
                 </div>
               </div>
               <div class="col-md-6">
@@ -75,14 +79,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group form-inline">
-                  <label class="control-label"><i class="ion-person"></i> Hourly rate:</label>
-                  <input type="text" class="form-control" ng-model="user.ratehr" />
-                </div>
-              </div>
-            </div>
+
           </form>
         </div>
       </div>

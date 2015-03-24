@@ -150,6 +150,14 @@
             projCtrl.updateDeliverable(project, deliv);
           };
 
+          projCtrl.paidDeliverable = function(project, deliv) {
+            console.log('paying deliverable');
+            if(deliv.paid ==='yes'){
+              deliv.paidDate = Date.now();
+            }
+            projCtrl.updateDeliverable(project, deliv);
+          };
+
           projCtrl.updateDeliverable = function(project, deliv){
             deliv.realCost = deliv.realHrs * $scope.user.ratehr;
             deliv.cost = deliv.hours * $scope.user.ratehr;
@@ -206,9 +214,14 @@
 
           projCtrl.paidInvoice = function(project, idx) {
             project.invoices[idx].paid = 'yes';
-            // _.each(project.invoices[idx].deliverables, function(d, idx, arr){
-            //   var itemToMarkPaid = _.findWhere(project.deliverables, {name: d.name});
-            // });
+            _.each(project.invoices[idx].deliverables, function(ideliv, idx, arr){
+              _.each(project.deliverables, function(deliv, idx, arr){
+                if(ideliv.name === deliv.name){
+                  deliv.paidDate = Date.now();
+                  deliv.paid = 'yes';
+                }
+              });
+            });
             projCtrl.editProject(project);
           }
 
@@ -294,6 +307,9 @@
             project.estimateCreated = 'no';
             project.estimate.deliverables = [];
             project.estimate.estCost = 0;
+            _.each(project.deliverables, function(item, idx, arr){
+              item.inEstimate = 'no';
+            });
             projCtrl.editProject(project);
           };
 
@@ -337,6 +353,14 @@
           projCtrl.emailInvoice = function(project, idx){
             project.invoices[idx].sendDate = Date.now();
             project.invoices[idx].sent = true;
+            _.each(project.invoices[idx].deliverables, function(ideliv, idx, arr){
+              _.each(project.deliverables, function(deliv, idx, arr){
+                if(ideliv.name === deliv.name){
+                  deliv.invoicedDate = Date.now();
+                }
+              });
+            });
+
             var invoiceId = '#invoice-' + idx;
             var html = angular.element(invoiceId).html();
             ProjectService.emailInvoice(html, project, idx);
@@ -354,6 +378,11 @@
           projCtrl.emailEstimate = function(project){
             project.estimateSendDate = Date.now();
             project.estimateSent = true;
+            _.each(project.deliverables, function(item, idx, arr){
+              if(item.inEstimate === 'yes'){
+                item.estimateDate = Date.now();
+              }
+            });
             var html = angular.element('.estimate-wrapper').html();
             ProjectService.emailEstimate(html, project);
             projCtrl.editProject(project);

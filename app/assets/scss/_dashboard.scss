@@ -16,5 +16,17 @@
 
 .glance-wrapper {
   padding:20px;
-  min-height:none;
+  min-height:330px;
+}
+.donut-chart,
+.velocity-chart {
+  min-height:330px;
+}
+.donut-chart {
+  padding-top:20px;
+  h4 {
+    text-align:center;
+    padding-left:20px;
+    padding-right:20px;
+  }
 }

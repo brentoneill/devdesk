@@ -2,32 +2,31 @@ angular.module('dashboard')
   .controller('DashboardController', function(DashboardService, ProjectService, Account, $location, $auth, $scope){
     var dashCtrl = this;
 
+    moment.locale('en-US');
+
     $scope.user = $.parseJSON(localStorage.getItem('user'));
-
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Series A', 'Series B'];
-    $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
-
 
     dashCtrl.buildDoughnutChart = function(projects){
       dashCtrl.doughnutStats = [0, 0, 0, 0];
       dashCtrl.doughnutLabels = ['Estimated', 'Completed', 'Invoiced', 'Paid'];
+      dashCtrl.totalDelivDollars = 0;
+      dashCtrl.totalDelivsPaid = 0;
 
       _.each(projects, function(project, idx, arr){
         _.each(project.deliverables, function(item, idx, arr){ //d is a single deliverable
           if( item.paid === 'yes'){
             dashCtrl.doughnutStats[3] += +item.realCost;
+            dashCtrl.totalDelivsPaid += +item.realCost;
           }
           else {
             if( item.invoiced === 'yes' ){
               dashCtrl.doughnutStats[2] += +item.realCost;
+              dashCtrl.totalDelivDollars += +item.realCost;
             }
             else {
               if( item.complete === 'yes' ){
                 dashCtrl.doughnutStats[1] += +item.realCost;
+                dashCtrl.totalDelivDollars += +item.realCost;
               }
               else {
                 if (item.inEstimate === 'yes' ){
@@ -98,16 +97,68 @@ angular.module('dashboard')
     };
 
     dashCtrl.buildGlanceChart = function(projects){
-      dashCtrl.glanceLabels = [];
-      dashCtrl.glanceData   = [ [], [] ];
-      dashCtrl.glanceSeries = ['Active', 'Complete'];
-      for( var i = 0; i < 7; i++){
-        dashCtrl.glanceLabels[i] = Date.now();
-      }
+      dashCtrl.weekData   = [ 0, 0, 0, 0 ];
+      dashCtrl.monthData   = [ 0, 0, 0, 0 ];
+      dashCtrl.glanceLabels = ['Estimated', 'Complete', 'Invoiced', 'Paid'];
+
+      var todayM = moment().add('1', 'days');
+      var weekAgoM = moment().subtract('7', 'days');
+      var weekAgo = weekAgoM.format('YYYY-MM-DD');
+      var today = todayM.format('YYYY-MM-DD');
+      console.log(today);
+      console.log(weekAgo);
+
+      // for ( var i = 0 ; i < 7 ; i++){
+      //   var count = 7 - i;
+      //   dashCtrl.glanceLabels[i] = moment().subtract(count, 'days').format('l');
+      // }
+
+      _.each(dashCtrl.projects, function(project, index, array){
+        _.each(project.deliverables, function(deliv, index, array){
+          if(deliv.completeDate) {
+            var dayComplete = moment(deliv.completeDate);
+            if(dayComplete.isBetween('2015-03-17', '2015-03-25')){
+              dashCtrl.weekData[1]++;
+            }
+            if(dayComplete.isBetween('2015-02-25', '2015-03-25')){
+              dashCtrl.monthData[1]++;
+            }
+          }
+          if(deliv.invoicedDate){
+            var dayInvoiced = moment(deliv.invoicedDate);
+            if(dayInvoiced.isBetween('2015-03-17', '2015-03-25')){
+              dashCtrl.weekData[2]++;
+            }
+            if(dayInvoiced.isBetween('2015-02-25', '2015-03-25')){
+              dashCtrl.monthData[2]++;
+            }
+          }
+          if(deliv.paidDate){
+            var dayPaid = moment(deliv.paidDate);
+            if(dayPaid.isBetween('2015-03-17', '2015-03-25')){
+              dashCtrl.weekData[3]++;
+            }
+            if(dayPaid.isBetween('2015-02-25', '2015-03-25')){
+              dashCtrl.monthData[3]++;
+            }
+          }
+          if(deliv.estimateDate){
+            var dayEstimated = moment(deliv.estimateDate);
+            if(dayEstimated.isBetween('2015-03-17', '2015-03-25')){
+              dashCtrl.weekData[0]++;
+            }
+            if(dayEstimated.isBetween('2015-02-25', '2015-03-25')){
+              dashCtrl.monthData[0]++;
+            }
+          }
+        });
+      });
+      console.log(dashCtrl.weekData);
     };
 
     ProjectService.getProjects().success(function(projects){
       dashCtrl.projects = _.where(projects, {'userId':$scope.user._id});
+
       dashCtrl.buildDoughnutChart(dashCtrl.projects);
       dashCtrl.buildVelocityChart(dashCtrl.projects);
       dashCtrl.calcAtAGlance(dashCtrl.projects);

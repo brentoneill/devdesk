@@ -20,10 +20,10 @@
   border:thin solid $black;
   padding:20px;
   margin-right:20px;
-  min-height:400px;
   background-color:white;
   margin-bottom:30px;
   border:thin solid $black;
+  border-radius:4px;
   box-shadow: 4px 4px 20px rgba($black, .3);
   position:relative;
   .client-controls {
@@ -36,15 +36,70 @@
     button{
       width:100%;
     }
-
   }
   .client-info {
-
+    i.fa {
+      opacity:.5;
+    }
   }
+  button {
+    width:100%;
+    display:block;
+  }
+}
+
+.client-contact-info {
+
+  i.fa {
+    transition:all .3s ease;
+    opacity:.5;
+  }
+  p{
+    &:hover > i {
+      opacity:1;
+    }
+    &:hover > i.fa-envelope{
+      color:$orange;
+    }
+    &:hover > i.fa-phone{
+      color:$green;
+    }
+    &:hover > i.fa-building{
+      color:$blue;
+    }
+    &:hover > i.fa-file-text{
+      color:$teal;
+    }
+  }
+}
+.client-detail,
+.client-project-list {
+  min-height:0px;
+  position:relative;
 }
 
 .client:nth-child(4n+4){
   margin-right:0px;
+}
+
+.client-edit-button-wrapper {
+  position:absolute;
+  top:16px;
+  right:16px;
+  i.fa {
+    cursor:pointer;
+    opacity:.5;
+    transition:all .5s ease;
+    &:hover {
+      opacity:1;
+    }
+  }
+  i.fa-pencil {
+    &:hover {
+      color:$orange;
+      transform:scale(1.2);
+    }
+  }
 }
 
 .client-new {
@@ -54,4 +109,26 @@
   border:thin solid $black;
   box-shadow: 4px 4px 20px rgba($black, .3);
   margin:0 auto;
+}
+
+
+.client-email {
+  overflow-x:hidden;
+  word-wrap:break-word;
+}
+
+
+.client-stats {
+  p, h4 {
+    text-align:center;
+  }
+  p {
+    font-size:18px;
+  }
+}
+
+.client-edit {
+  input, textarea{
+    margin-bottom:10px;
+  }
 }

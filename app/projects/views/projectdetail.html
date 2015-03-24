@@ -42,9 +42,12 @@
             <p><b>Description: </b>{{projCtrl.project.description}}</p>
             <p><b>Project Goals: </b></p>
             <p>{{projCtrl.project.goal}}</p>
-            <h4>Document Status</h4>
+
           </div>
          <div class="col-md-4 col-sm-4 project-client-info">
+           <h4><b>Project Documents Status:</b></h4>
+           <p ng-if="projCtrl.project.contractAccepted === 'yes'" class="sent"><b>Contract accepted!</b></p>
+           <p ng-if="projCtrl.project.estimateAccepted === 'yes'" class="sent"><b>Estimate accepted!</b></p>
            <div class="project-client-info-wrapper">
              <p><b>Start Date:</b> {{projCtrl.project.startdate | date : format : mediumDate}}</p>
              <p><b>Deadline:</b> {{projCtrl.project.enddate | date : format : mediumDate}}</p>
@@ -93,8 +96,8 @@
               <td class="hours-col">{{deliverable.velocity | percentage:0}}</td>
               <td class="complete-col"><input type="checkbox" disabled ng-model="deliverable.inEstimate" ng-true-value="'yes'" ng-false-value="'no'"></td>
               <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.completeDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
-              <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'">
-              <td class="complete-col"><input type="checkbox" ng-disabled="deliverable.invoiced == 'no'" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.paid" ng-true-value="'yes'" ng-false-value="'no'"></td>
+              <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'"></td>
+              <td class="complete-col"><input type="checkbox" ng-disabled="deliverable.invoiced == 'no'" ng-click="projCtrl.paidDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.paid" ng-true-value="'yes'" ng-false-value="'no'"></td>
 <!--               <td class="complete-col">
   <button class="btn btn-danger"
     ng-click="projCtrl.setDeliverable(deliverable);"

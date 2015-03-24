@@ -11,7 +11,7 @@
   h1, h3, h4 {
     text-align:left;
   }
-  h3, h4 {
+  h4 {
     color:lighten(#333, 30%);
   }
   p {
@@ -41,13 +41,13 @@
 
 .sidebar {
   transition: all .5s ease;
-  @include position(fixed, 0px 0 0px -240px);
+  @include position(fixed, 0px 0 0px -260px);
   width:240px;
   padding:30px;
   background:#333;
   color:white;
   z-index:100;
-
+  box-shadow: 04px 0px 20px rgba($black, .3);
   ul{
     list-style-type:none;
     margin:0;

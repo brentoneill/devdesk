@@ -346,7 +346,7 @@
                                 </button>
                               </td>
                               <td class="complete-col">
-                                <button class="btn btn-danger" ng-click="projCtrl.removeDelivFromInvoice(projCtrl.project, deliverable, $parent.$index)" ng-disabled="deliverable.invoiced == 'no'">
+                                <button class="btn btn-danger" ng-click="projCtrl.removeDelivFromInvoice(projCtrl.project, deliverable, $parent.$index)" ng-disabled="deliverable.invoiced == 'no' || deliverable.invoicedDate">
                                   <i class="fa fa-minus"></i>
                                 </button>
                               </td>

@@ -4,6 +4,7 @@
   border:thin solid $black;
   position:relative;
   margin-bottom:40px;
+  border-radius:4px;
   background-color:white;
   box-shadow: 4px 4px 20px rgba($black, .3);
   .table > thead > tr > th {
@@ -49,11 +50,20 @@
 
 
 .project-client-info{
+  h4 {
+    color:$black;
+    margin-bottom:10px;
+
+  }
+  p {
+    margin-left:20px;
+  }
 }
 .project-client-info-wrapper {
   border: thin solid gainsboro;
   border-radius: 4px;
   padding: 20px;
+
 }
 .project-info {
   margin-bottom:20px;
@@ -164,6 +174,7 @@ div.project-new-bot {
   background-color:white;
   padding:40px;
   border:thin solid $black;
+  border-radius:4px;
   box-shadow: 4px 4px 20px rgba($black, .3);
 }
 
@@ -183,4 +194,8 @@ div.project-new-bot {
   &:nth-child(2){
     text-align:right;
   }
+}
+
+.progress-bar {
+  font-size:16px;
 }

@@ -29,32 +29,21 @@
   <div class="page-content">
     <div class="container-authenticated">
       <h2>Your clients</h2>
-
-<!--       <div deckgrid class="deckgrid" source="cliCtrl.clients" cardTemplate="clients/templates/clientcard.tpl.html">
-
-</div> -->
         <div class="row"  >
-          <section class="col-md-4 col-sm-6 col-xs-10 client" ng-repeat="client in cliCtrl.clients">
+          <section class="col-md-6 col-sm-6 col-xs-10 client" ng-repeat="client in cliCtrl.clients">
             <div class="client-wrapper">
-              <div class="client-controls">
-                <div class="control-wrapper">
-                  <button class="btn btn-warning" ng-click="cliCtrl.viewClientDetail(client._id)"><i class="fa fa-pencil"></i> Edit this client</button>
-                </div>
-              </div>
               <div class="client-info">
                 <h3>{{client.name}}</h3>
-                <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{client.email}}">{{client.email}}</a></p>
+                <p class="client-email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{client.email}}">{{client.email}}</a></p>
                 <p><i class="fa fa-link"></i>&nbsp;&nbsp;{{client.website || "Looks like this client doesn't have a website. Build one!"}}</p>
                 <p><i class="fa fa-building"></i>&nbsp;&nbsp;{{client.street}}</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{client.city}}, {{client.state}} {{client.zip}}</p>
-                <p><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;{{client.notes}}</p>
-                <h4>Projects:</h4>
-                <ul>
-                  <li data-ng-repeat="project in client.projects">
-                    <p>project.name</p>
-                    <p>project.status</p>
-                  </li>
-                </ul>
+                <p><i class="fa fa-file-text"></i>&nbsp;&nbsp;{{client.notes}}</p>
+              </div>
+              <div class="client-controls">
+                <div class="control-wrapper">
+                  <button class="btn btn-warning" ng-click="cliCtrl.viewClientDetail(client._id)"><i class="fa fa-search"></i> View client details</button>
+                </div>
               </div>
             </div>
           </section>

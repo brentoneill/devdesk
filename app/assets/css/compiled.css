@@ -40,6 +40,9 @@ body {
 h4 {
   margin-bottom: 20px; }
 
+h3 {
+  color: #45B29D; }
+
 .but {
   position: relative;
   font-size: 24px;
@@ -286,7 +289,7 @@ nav {
     font-weight: 400; }
   .page-content h1, .page-content h3, .page-content h4 {
     text-align: left; }
-  .page-content h3, .page-content h4 {
+  .page-content h4 {
     color: gray; }
   .page-content p {
     text-align: left; }
@@ -318,12 +321,13 @@ nav {
   top: 0px;
   right: 0;
   bottom: 0px;
-  left: -240px;
+  left: -260px;
   width: 240px;
   padding: 30px;
   background: #333;
   color: white;
-  z-index: 100; }
+  z-index: 100;
+  box-shadow: 4px 0px 20px rgba(52, 52, 52, 0.3); }
   .sidebar ul {
     list-style-type: none;
     margin: 0;
@@ -435,7 +439,18 @@ nav {
 
 .glance-wrapper {
   padding: 20px;
-  min-height: none; }
+  min-height: 330px; }
+
+.donut-chart,
+.velocity-chart {
+  min-height: 330px; }
+
+.donut-chart {
+  padding-top: 20px; }
+  .donut-chart h4 {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px; }
 
 .container-authenticated {
   padding-top: 100px;
@@ -454,10 +469,10 @@ nav {
   border: thin solid #343434;
   padding: 20px;
   margin-right: 20px;
-  min-height: 400px;
   background-color: white;
   margin-bottom: 30px;
   border: thin solid #343434;
+  border-radius: 4px;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
   position: relative; }
   .client-wrapper .client-controls {
@@ -469,9 +484,47 @@ nav {
     text-align: center; }
     .client-wrapper .client-controls button {
       width: 100%; }
+  .client-wrapper .client-info i.fa {
+    opacity: .5; }
+  .client-wrapper button {
+    width: 100%;
+    display: block; }
+
+.client-contact-info i.fa {
+  transition: all .3s ease;
+  opacity: .5; }
+.client-contact-info p:hover > i {
+  opacity: 1; }
+.client-contact-info p:hover > i.fa-envelope {
+  color: #E27A3F; }
+.client-contact-info p:hover > i.fa-phone {
+  color: #5C832F; }
+.client-contact-info p:hover > i.fa-building {
+  color: #334D5C; }
+.client-contact-info p:hover > i.fa-file-text {
+  color: #45B29D; }
+
+.client-detail,
+.client-project-list {
+  min-height: 0px;
+  position: relative; }
 
 .client:nth-child(4n+4) {
   margin-right: 0px; }
+
+.client-edit-button-wrapper {
+  position: absolute;
+  top: 16px;
+  right: 16px; }
+  .client-edit-button-wrapper i.fa {
+    cursor: pointer;
+    opacity: .5;
+    transition: all .5s ease; }
+    .client-edit-button-wrapper i.fa:hover {
+      opacity: 1; }
+  .client-edit-button-wrapper i.fa-pencil:hover {
+    color: #E27A3F;
+    transform: scale(1.2); }
 
 .client-new {
   background-color: white;
@@ -481,11 +534,24 @@ nav {
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
   margin: 0 auto; }
 
+.client-email {
+  overflow-x: hidden;
+  word-wrap: break-word; }
+
+.client-stats p, .client-stats h4 {
+  text-align: center; }
+.client-stats p {
+  font-size: 18px; }
+
+.client-edit input, .client-edit textarea {
+  margin-bottom: 10px; }
+
 .project {
   padding: 40px;
   border: thin solid #343434;
   position: relative;
   margin-bottom: 40px;
+  border-radius: 4px;
   background-color: white;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
   .project .table > thead > tr > th {
@@ -516,6 +582,12 @@ nav {
   top: 20px; }
   .project-controls i.fa:first-child {
     margin-right: 10px; }
+
+.project-client-info h4 {
+  color: #343434;
+  margin-bottom: 10px; }
+.project-client-info p {
+  margin-left: 20px; }
 
 .project-client-info-wrapper {
   border: thin solid gainsboro;
@@ -607,6 +679,7 @@ div.project-new-bot .btn-primary {
   background-color: white;
   padding: 40px;
   border: thin solid #343434;
+  border-radius: 4px;
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3); }
 
 .table-deliverables tr {
@@ -620,6 +693,9 @@ div.project-new-bot .btn-primary {
   text-align: center; }
   .row-totals > td:nth-child(2) {
     text-align: right; }
+
+.progress-bar {
+  font-size: 16px; }
 
 .document {
   border: thin solid #4d4d4d;
@@ -636,8 +712,7 @@ div.project-new-bot .btn-primary {
     .document ul li {
       margin-bottom: 10px; }
   .document h3, .document h4 {
-    font-weight: bold; }
-  .document h4 {
+    font-weight: bold;
     color: #4d4d4d; }
 
 .contract-wrapper h5 {
