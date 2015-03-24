@@ -23,7 +23,6 @@
     "angular-resource": "1.3.14",
     "angular-route": "1.3.14",
     "angular-strap": "2.2.1",
-    "satellizer": "0.9.3",
     "angular-sanitize": "1.3.14",
     "lodash": "~2.4.1",
     "jquery": "~2.1.3",
@@ -36,7 +35,7 @@
     "icono": "~1.3.0",
     "angular-timer": "~1.3.1",
     "angular-chart.js": "~0.5.3",
-    "angular-flippy": "*"
+    "animate.css": "3.2.5"
   },
   "resolutions": {
     "angular": "1.3.14"

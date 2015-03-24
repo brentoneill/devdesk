@@ -11,6 +11,8 @@
          $scope.getProfile = function() {
            Account.getProfile()
              .success(function(data) {
+               console.log('got profile');
+               console.log(data);
                $scope.user = data;
                localStorage.setItem('user', JSON.stringify(data));
              })
