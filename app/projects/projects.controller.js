@@ -11,10 +11,10 @@
          $scope.getProfile = function() {
            Account.getProfile()
              .success(function(data) {
-               console.log('got profile');
-               console.log(data);
                $scope.user = data;
                localStorage.setItem('user', JSON.stringify(data));
+               $scope.user = $.parseJSON(localStorage.getItem('user'));
+               console.log($scope.user);
              })
              .error(function(error) {
                $alert({
@@ -27,8 +27,6 @@
          };
 
          $scope.getProfile();
-         $scope.user = $.parseJSON(localStorage.getItem('user'));
-         console.log($scope.user);
 
          ProjectService.getProjects().success(function(projects){
            projCtrl.projects = _.where(projects, {'userId':$scope.user._id})
