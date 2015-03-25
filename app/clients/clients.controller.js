@@ -11,6 +11,22 @@
             Account.getProfile()
               .success(function(data) {
                 $scope.user = data;
+
+                ProjectService.getProjects().success(function(projects){
+                  cliCtrl.cliProjects = [];
+                  cliCtrl.allProjects = _.where(projects, {'userId': $scope.user._id});
+                  _.each(cliCtrl.allProjects, function(item, idx, arr){
+                    if(item.client.name === cliCtrl.client.name){
+                      cliCtrl.cliProjects.push(item);
+                    }
+                  });
+
+                  cliCtrl.computeClientStats(cliCtrl.cliProjects);
+                  cliCtrl.buildAllDelivsData(cliCtrl.allProjects);
+                  cliCtrl.buildClientDelivsData(cliCtrl.cliProjects);
+                  cliCtrl.buildDelivGraph();
+                });
+
               })
               .error(function(error) {
                 $alert({
@@ -34,21 +50,6 @@
 
           ClientService.getClient($routeParams.clientId).success(function(client){
             cliCtrl.client = client;
-          });
-
-          ProjectService.getProjects().success(function(projects){
-            cliCtrl.cliProjects = [];
-            cliCtrl.allProjects = _.where(projects, {'userId': $scope.user._id});
-            _.each(cliCtrl.allProjects, function(item, idx, arr){
-              if(item.client.name === cliCtrl.client.name){
-                cliCtrl.cliProjects.push(item);
-              }
-            });
-
-            cliCtrl.computeClientStats(cliCtrl.cliProjects);
-            cliCtrl.buildAllDelivsData(cliCtrl.allProjects);
-            cliCtrl.buildClientDelivsData(cliCtrl.cliProjects);
-            cliCtrl.buildDelivGraph();
           });
 
           cliCtrl.computeClientStats = function(projects){
@@ -83,8 +84,6 @@
             });
             cliCtrl.avgProjectsPerClient = cliCtrl.avgProjectsPerClient / cliCtrl.clients.length;
             cliCtrl.mostActiveClient = _.max(cliCtrl.clients, function(client){ return client.numProjects; });
-            console.log(cliCtrl.mostActiveClient);
-
           }
 
           cliCtrl.buildAllDelivsData = function(projects){
@@ -188,6 +187,7 @@
           };
 
           cliCtrl.editClient = function (client) {
+            $scope.clientEditEnabled = false;
             ClientService.editClient(client);
           };
 

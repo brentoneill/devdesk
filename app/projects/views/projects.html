@@ -40,7 +40,7 @@
             <div class="row">
               <div class="col-md-9">
                 <h3>{{project.name}}</h3>
-                <h4><small>for &nbsp;<b><a href="" ng-click="projCtrl.viewClientDetail(project.client._id)"><i class="fa fa-users"></i> {{project.client.name}}</b></a> - <a href="mailto:{{project.client.email}}">{{project.client.email}}</a> - {{project.client.phone | tel}}</small></h4>
+                <h4><small>for &nbsp;<b><a href="" ng-click="projCtrl.viewClientDetail(project.client._id)"> <i class="fa fa-users"></i> {{project.client.name}}</b></a> - <a href="mailto:{{project.client.email}}"> {{project.client.email}}</a> - {{project.client.phone | tel}}</small></h4>
                 <p><b>Estimated Cost: </b>{{project.estCostTotal | currency:undefined:0}} &nbsp; &nbsp; <b>Estimated Hrs: </b>{{project.totalHrs}} hrs</p>
                 <p><b>Start Date:</b> {{project.startdate | date : format : mediumDate}} &nbsp; &nbsp;<b>Due Date:</b> {{project.enddate | date : format : mediumDate}}</p>
                 <p><b>Notes:</b></p>

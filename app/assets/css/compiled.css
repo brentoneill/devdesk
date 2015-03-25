@@ -57,7 +57,8 @@ h3 {
   color: #45B29D; }
 
 i.fa-user,
-i.fa-users {
+i.fa-users,
+i.fa-folder-open {
   color: #45B29D; }
 
 .but {
@@ -249,7 +250,9 @@ button.btn {
     transform: translate(2px, 2px); }
 
 .btno-thin {
-  padding: 4px; }
+  padding: 4px;
+  padding-left: 6px;
+  padding-right: 6px; }
 
 .btno:disabled {
   opacity: .6;

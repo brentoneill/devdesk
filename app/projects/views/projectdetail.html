@@ -51,7 +51,8 @@
            <div class="project-client-info-wrapper">
              <p><b>Start Date:</b> {{projCtrl.project.startdate | date : format : mediumDate}}</p>
              <p><b>Deadline:</b> {{projCtrl.project.enddate | date : format : mediumDate}}</p>
-             <p><a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project.client._id)"><i class="fa fa-user">&nbsp;&nbsp;</i>{{projCtrl.project.client.name}}</a> <a href="projCtrl.project.client.website">{{projCtrl.project.client.website}}</a></p>
+             <p><a href="" ng-click="projCtrl.viewClientDetail(projCtrl.project.client._id)"><i class="fa fa-user">&nbsp;&nbsp;</i>{{projCtrl.project.client.name}}</a></p>
+             <p><a href="{{projCtrl.project.client.website}}" target="_blank"><i class="fa fa-external-link"></i>{{projCtrl.project.client.website}}</a></p>
              <p><i class="fa fa-envelope"></i>&nbsp;&nbsp; <a href="mailto:{{projCtrl.project.client.email}}">{{projCtrl.project.client.email}}</a></p>
              <p><i class="fa fa-phone"></i>&nbsp;&nbsp; {{projCtrl.project.client.phone | tel}}</a></p>
            </div>
