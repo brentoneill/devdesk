@@ -3,3 +3,5 @@
 /app/assets/bower_components
 
 /app/tmp
+
+config.js
