@@ -28,7 +28,6 @@
           $scope.user = $.parseJSON(localStorage.getItem('user'));
           $scope.clientEditEnabled = false;
 
-
           ClientService.getClients().success(function(clients){
             cliCtrl.clients = _.where(clients, {'userId':$scope.user._id})
           });
@@ -65,6 +64,27 @@
             });
             cliCtrl.avgProjectCost = cliCtrl.totalProjectsCost / projectCount;
             cliCtrl.avgProjectHours = cliCtrl.totalProjectsHours /projectCount;
+
+            cliCtrl.avgProjectsPerClient = 0;
+            cliCtrl.repeatClients = 0;
+            cliCtrl.mostActiveClient = {};
+            _.each(cliCtrl.clients, function(client, index, array){
+              client.numProjects = 0;
+              _.each(cliCtrl.allProjects, function(project, index, array){
+                if(client.name === project.client.name){
+                  client.numProjects++;
+                }
+              });
+              cliCtrl.avgProjectsPerClient += client.numProjects;
+              cliCtrl.editClient(client);
+              if(client.numProjects > 1) {
+                cliCtrl.repeatClients++;
+              }
+            });
+            cliCtrl.avgProjectsPerClient = cliCtrl.avgProjectsPerClient / cliCtrl.clients.length;
+            cliCtrl.mostActiveClient = _.max(cliCtrl.clients, function(client){ return client.numProjects; });
+            console.log(cliCtrl.mostActiveClient);
+
           }
 
           cliCtrl.buildAllDelivsData = function(projects){
@@ -103,7 +123,6 @@
                 }
               });
             });
-            console.log(cliCtrl.allWeekData);
           }
 
           cliCtrl.buildClientDelivsData = function(projects){
@@ -142,7 +161,6 @@
                 }
               });
             });
-            console.log(cliCtrl.clientWeekData);
           }
 
           cliCtrl.buildDelivGraph = function(){
@@ -171,7 +189,6 @@
 
           cliCtrl.editClient = function (client) {
             ClientService.editClient(client);
-            $scope.clientEditEnabled = false;
           };
 
           cliCtrl.deleteClient = function(id) {

@@ -27,10 +27,16 @@
   <div class="page-content">
 
     <div class="container-authenticated">
-      <h2>Hi, {{user.displayName}}! You have {{projCtrl.projects.length}} active projects.</h2>
-        <input type="text" class="form-control project-search" ng-model="projectsQuery" placeholder="Search projects">
+      <h2>Hi, {{user.displayName}}! You have {{projCtrl.projects.length}} active projects.
+        <small>
+          <select name="projectOrder" ng-model="projectOrder" ng-init="projectOrder = 'enddate'">
+            <option ng-repeat="item in projectOrderByOptions" value="{{item.value}}">{{item.name}}</option>
+          </select>
+        </small>
+      </h2>
+      <input type="text" class="form-control project-search animated slideInDown" ng-model="projectsQuery" placeholder="Search projects">
         <div class="project-list">
-          <section class="project" data-ng-repeat="project in projCtrl.projects | orderBy: 'enddate'| filter:projectsQuery">
+          <section class="project animated" ng-class-odd="'slideInRight'" ng-class-even="'slideInLeft'" data-ng-repeat="project in projCtrl.projects | orderBy: projectOrder | filter:projectsQuery">
             <div class="row">
               <div class="col-md-9">
                 <h3>{{project.name}}</h3>
@@ -69,20 +75,20 @@
               </div>
               <div class="col-md-3 doc-stats">
                 <div class="project-controls">
-                  <button class="btn btn-info" ng-click="projCtrl.viewProjectDetail(project._id)">
+                  <button class="btn-fw btno btno-primary" ng-click="projCtrl.viewProjectDetail(project._id)">
                     <i class="fa fa-fw fa-clock-o"></i> Project HQ
                   </button>
-                  <button class="btn btn-warning" ng-click="projCtrl.goToDocuments(project)">
+                  <button class="btn-fw btno btno-primary" ng-click="projCtrl.goToDocuments(project)">
                     <i class="fa fa-fw fa-file-text-o"></i> Document Center
                   </button>
-                  <button class="btn btn-danger"  data-animation="am-fade-and-scale" data-placement="center" keyboard="true" template="projects/modals/removeproject.tpl.html"bs-modal="modal">
+                  <button class="btn-fw btno btno-danger" data-container="body" data-animation="am-fade-and-scale" data-placement="center" keyboard="true" template="projects/modals/removeproject.tpl.html"bs-modal="modal">
                     <i class="fa fa-fw fa-close"></i> Delete Project
                   </button>
                 </div>
                 <h4>Documents:</h4>
                 <h5>Contract: <span class="sent" ng-if="project.contractSent"><b>sent</b></span><span class="not-sent" ng-if="!project.contractSent">not sent</span> | <span class="sent" ng-if="project.contractAccepted === 'yes'"><b>accepted!</b></span></h5>
                 <h5>Esimate:&nbsp; <span class="sent" ng-if="project.estimateSent"><b>sent</b></span><span class="not-sent" ng-if="!project.estimateSent">not sent</span> | <span class="sent" ng-if="project.estimateAccepted === 'yes'"><b>accepted!</b></span></h5>
-                <h5>Invoices: <span>{{project.invoices.length}} sent<span></h5>
+                <h5>Invoices: <span class"invoices-sent">{{project.invoices.length}} sent<span></h5>
               </div>
             </div>
           </section>

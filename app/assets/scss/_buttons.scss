@@ -189,3 +189,85 @@
 button.btn {
   font-size:13px;
 }
+
+.btno{
+  font-size:14px;
+  color:$white;
+  padding:10px;
+  font-weight:bold;
+  border:0;
+  background-color:transparent;
+  border-radius:6px;
+  transition:all .2s ease;
+  &:hover {
+    opacity:.8;
+  }
+  &:active {
+    outline:none;
+  }
+  &:focus {
+    outline:none;
+  }
+}
+.btno-primary {
+  background-color:$teal;
+  border:thin solid darken($teal, 10%);
+  box-shadow: 3px 3px 0px rgba(darken($teal, 10%), 1);
+  &:active{
+    box-shadow: 1px 1px 0px rgba(darken($teal, 10%), 1);
+    transform:translate(2px, 2px);
+  }
+}
+.btno-danger {
+  background-color:$red;
+  border:thin solid darken($red, 10%);
+  box-shadow: 3px 3px 0px rgba(darken($red, 10%), 1);
+  &:active{
+    box-shadow: 1px 1px 0px rgba(darken($red, 10%), 1);
+    transform:translate(2px, 2px);
+  }
+}
+.btno-warning {
+  background-color:$yellow;
+  border:thin solid darken($yellow, 10%);
+  box-shadow: 3px 3px 0px rgba(darken($yellow, 10%), 1);
+  &:active{
+    box-shadow: 1px 1px 0px rgba(darken($yellow, 10%), 1);
+    transform:translate(2px, 2px);
+  }
+}
+.btno-info {
+  background-color:$blue;
+  border:thin solid darken($blue, 10%);
+  box-shadow: 3px 3px 0px rgba(darken($blue, 10%), 1);
+  &:active{
+    box-shadow: 1px 1px 0px rgba(darken($blue, 10%), 1);
+    transform:translate(2px, 2px);
+  }
+}
+.btno-thin {
+  padding:4px;
+}
+.btno:disabled {
+  opacity:.6;
+  box-shadow:none;
+}
+
+.btno-modal {
+  &:hover{
+    opacity:1;
+  }
+}
+
+.btno-fw {
+  width:100%;
+  display:block;
+}
+
+.btno-adddeliv{
+  width:15%;
+}
+
+.btno-mid {
+  padding:6px;
+}

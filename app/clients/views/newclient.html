@@ -33,6 +33,10 @@
               <input class="form-control" type="text" name="nName" data-ng-model="client.name" placeholder="Name">
             </div>
             <div class="form-group">
+              <label for="cName">Contact Name:</label>
+              <input class="form-control" type="text" name="nName" data-ng-model="client.contactName" placeholder="Name">
+            </div>
+            <div class="form-group">
               <label for="cEmail">Website:</label>
               <input class="form-control" type="text" name="cWeb" data-ng-model="client.website" placeholder="Website">
             </div>
@@ -75,7 +79,7 @@
             </div>
 
             <div class="form-group">
-              <button class="btn btn-primary" data-ng-click="cliCtrl.createClient(client)">Add Client</button>
+              <button class="btno btno-primary" data-ng-click="cliCtrl.createClient(client)">Add Client</button>
             </div>
           </div>
 

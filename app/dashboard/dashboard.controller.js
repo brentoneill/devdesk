@@ -4,7 +4,24 @@ angular.module('dashboard')
 
     moment.locale('en-US');
 
-    $scope.user = $.parseJSON(localStorage.getItem('user'));
+    $scope.getProfile = function() {
+      Account.getProfile()
+        .success(function(data) {
+          $scope.user = data;
+          localStorage.setItem('user', JSON.stringify(data));
+          $scope.user = $.parseJSON(localStorage.getItem('user'));
+        })
+        .error(function(error) {
+          $alert({
+            content: error.message,
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+        });
+    };
+
+    $scope.getProfile();
 
     dashCtrl.buildDoughnutChart = function(projects){
       dashCtrl.doughnutStats = [0, 0, 0, 0];
@@ -105,13 +122,6 @@ angular.module('dashboard')
       var weekAgoM = moment().subtract('7', 'days');
       var weekAgo = weekAgoM.format('YYYY-MM-DD');
       var today = todayM.format('YYYY-MM-DD');
-      console.log(today);
-      console.log(weekAgo);
-
-      // for ( var i = 0 ; i < 7 ; i++){
-      //   var count = 7 - i;
-      //   dashCtrl.glanceLabels[i] = moment().subtract(count, 'days').format('l');
-      // }
 
       _.each(dashCtrl.projects, function(project, index, array){
         _.each(project.deliverables, function(deliv, index, array){
@@ -153,12 +163,10 @@ angular.module('dashboard')
           }
         });
       });
-      console.log(dashCtrl.weekData);
     };
 
     ProjectService.getProjects().success(function(projects){
       dashCtrl.projects = _.where(projects, {'userId':$scope.user._id});
-
       dashCtrl.buildDoughnutChart(dashCtrl.projects);
       dashCtrl.buildVelocityChart(dashCtrl.projects);
       dashCtrl.calcAtAGlance(dashCtrl.projects);

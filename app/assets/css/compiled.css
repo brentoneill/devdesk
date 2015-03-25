@@ -1,5 +1,15 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300|Raleway:400,900,800);
+::selection {
+  background: #45B29D;
+  /* WebKit/Blink Browsers */
+  color: #FEFEFA; }
+
+::-moz-selection {
+  background: #45B29D;
+  /* WebKit/Blink Browsers */
+  color: #FEFEFA; }
+
 * {
   box-sizing: border-box; }
 
@@ -26,6 +36,9 @@ ul {
   margin: 0;
   list-style-type: none; }
 
+.aside .aside-dialog .aside-header {
+  background-color: #45B29D; }
+
 .font-main {
   font-family: "Roboto", sans-serif;
   font-weight: 400; }
@@ -41,6 +54,10 @@ h4 {
   margin-bottom: 20px; }
 
 h3 {
+  color: #45B29D; }
+
+i.fa-user,
+i.fa-users {
   color: #45B29D; }
 
 .but {
@@ -183,6 +200,74 @@ h3 {
 button.btn {
   font-size: 13px; }
 
+.btno {
+  font-size: 14px;
+  color: #FEFEFA;
+  padding: 10px;
+  font-weight: bold;
+  border: 0;
+  background-color: transparent;
+  border-radius: 6px;
+  transition: all .2s ease; }
+  .btno:hover {
+    opacity: .8; }
+  .btno:active {
+    outline: none; }
+  .btno:focus {
+    outline: none; }
+
+.btno-primary {
+  background-color: #45B29D;
+  border: thin solid #378d7d;
+  box-shadow: 3px 3px 0px #378d7d; }
+  .btno-primary:active {
+    box-shadow: 1px 1px 0px #378d7d;
+    transform: translate(2px, 2px); }
+
+.btno-danger {
+  background-color: #DF5A49;
+  border: thin solid #d03825;
+  box-shadow: 3px 3px 0px #d03825; }
+  .btno-danger:active {
+    box-shadow: 1px 1px 0px #d03825;
+    transform: translate(2px, 2px); }
+
+.btno-warning {
+  background-color: #EFC94C;
+  border: thin solid #ebbb1d;
+  box-shadow: 3px 3px 0px #ebbb1d; }
+  .btno-warning:active {
+    box-shadow: 1px 1px 0px #ebbb1d;
+    transform: translate(2px, 2px); }
+
+.btno-info {
+  background-color: #334D5C;
+  border: thin solid #21323b;
+  box-shadow: 3px 3px 0px #21323b; }
+  .btno-info:active {
+    box-shadow: 1px 1px 0px #21323b;
+    transform: translate(2px, 2px); }
+
+.btno-thin {
+  padding: 4px; }
+
+.btno:disabled {
+  opacity: .6;
+  box-shadow: none; }
+
+.btno-modal:hover {
+  opacity: 1; }
+
+.btno-fw {
+  width: 100%;
+  display: block; }
+
+.btno-adddeliv {
+  width: 15%; }
+
+.btno-mid {
+  padding: 6px; }
+
 nav {
   width: 100%;
   height: 80px;
@@ -278,6 +363,11 @@ nav {
     background-color: #343434;
     height: 1px; }
 
+#top-nav i.fa-clock-o {
+  transition: all .3s ease; }
+  #top-nav i.fa-clock-o:hover {
+    color: #45B29D; }
+
 .page-content {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -343,7 +433,7 @@ nav {
     .sidebar li:hover {
       opacity: 1; }
     .sidebar li a {
-      color: gray;
+      color: white;
       transition: all .3s ease-in; }
       .sidebar li a:hover {
         color: #45B29D; }
@@ -551,6 +641,36 @@ nav {
 .client-edit input, .client-edit textarea {
   margin-bottom: 10px; }
 
+.client-link {
+  cursor: pointer; }
+
+.view-more {
+  width: 50px;
+  text-align: center; }
+
+.client-list-controls {
+  position: absolute;
+  top: 0px;
+  right: 15px; }
+  .client-list-controls input, .client-list-controls select {
+    display: inline-block; }
+  .client-list-controls input[type='text'] {
+    width: 200px; }
+
+circle.repeat-clients {
+  fill: transparent;
+  stroke: #45B29D;
+  margin: 0 auto; }
+
+.allclients-stats {
+  text-align: center; }
+
+.client-detail-headers th {
+  min-width: 40px;
+  text-align: center; }
+.client-detail-headers th:first-child {
+  text-align: left; }
+
 .project {
   padding: 40px;
   border: thin solid #343434;
@@ -566,10 +686,10 @@ nav {
     color: #343434; }
     .project h3 small {
       color: gray; }
-  .project .doc-stats button {
+  .project .doc-stats .btn-fw {
+    margin-bottom: 10px;
     display: block;
     width: 100%;
-    margin-bottom: 10px;
     text-align: left; }
 
 .project-client-info h4 {
@@ -597,8 +717,6 @@ td {
 
 .complete-col, .hours-col {
   text-align: center; }
-  .complete-col input, .hours-col input {
-    width: 60px; }
 
 .desc-col {
   width: 40%; }
@@ -610,16 +728,16 @@ td {
   width: 200px; }
 
 .d-estimated {
-  background-color: #eea9a0; }
+  background-color: #f2faf8; }
 
 .d-completed {
-  background-color: #efb798; }
+  background-color: #d4efea; }
 
 .d-invoiced {
-  background-color: #f7e5aa; }
+  background-color: #c2e7e0; }
 
 .d-paid {
-  background-color: #90c256; }
+  background-color: #9dd9ce; }
 
 .sent {
   color: #45B29D; }
@@ -652,12 +770,6 @@ div.project-new-top {
   transition: all .5s ease;
   overflow: hidden; }
 
-div.project-new-bot .btn-primary {
-  display: block;
-  width: 100%;
-  height: 40px;
-  font-size: 20px; }
-
 .collapsed {
   transition: all .5s ease;
   height: 80px;
@@ -666,6 +778,7 @@ div.project-new-bot .btn-primary {
   box-shadow: inset 0px -10px 30px 0px rgba(255, 255, 255, 0.75); }
 
 .content-wrapper {
+  position: relative;
   background-color: white;
   padding: 40px;
   border: thin solid #343434;
@@ -681,22 +794,39 @@ div.project-new-bot .btn-primary {
 
 .row-totals > td {
   text-align: center; }
-  .row-totals > td:nth-child(2) {
-    text-align: right; }
+
+td.cell-right {
+  text-align: right; }
 
 .progress-bar {
   font-size: 16px; }
 
+.important-button-wrapper {
+  position: absolute;
+  top: 60px;
+  right: 40px; }
+
 .project-controls {
   margin-bottom: 30px; }
 
+.invoices-sent {
+  color: #E27A3F; }
+
+.invoices-paid {
+  color: #5C832F; }
+
+.backbut-wrapper {
+  position: absolute;
+  top: 0px;
+  left: -40px; }
+
 .document {
-  border: thin solid #4d4d4d;
+  border: thin solid #999999;
   padding: 60px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 8px 8px 20px rgba(77, 77, 77, 0.2);
+  box-shadow: 8px 8px 20px rgba(153, 153, 153, 0.2);
   position: relative; }
   .document ul {
     padding-left: 40px;
@@ -705,7 +835,7 @@ div.project-new-bot .btn-primary {
       margin-bottom: 10px; }
   .document h3, .document h4 {
     font-weight: bold;
-    color: #4d4d4d; }
+    color: #999999; }
 
 .contract-wrapper h5 {
   font-weight: bold; }
@@ -731,7 +861,7 @@ div.project-new-bot .btn-primary {
     right: 0px; }
 
 .deliv-est > td {
-  background-color: #8bd2c4; }
+  background-color: #f2faf8; }
 
 .estimate-wrapper h2 {
   margin-top: 0px; }

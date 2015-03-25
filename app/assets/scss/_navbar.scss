@@ -103,3 +103,12 @@ nav {
     height:1px;
   }
 }
+
+#top-nav {
+  i.fa-clock-o{
+    transition:all .3s ease;
+    &:hover{
+      color:$teal;
+    }
+  }
+}

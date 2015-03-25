@@ -52,7 +52,7 @@
                 <input type="text" class="form-control" ng-model="cliCtrl.client.state">
                 <input type="text" class="form-control" ng-model="cliCtrl.client.zip">
                 <textarea class="form-control" ng-model="cliCtrl.client.notes"></textarea>
-                <button class="btn btn-warning" ng-click="cliCtrl.editClient(cliCtrl.client)">
+                <button class="btn-fw btno btno-primary" ng-click="cliCtrl.editClient(cliCtrl.client)">
                   <i class="fa fa-pencil"></i> Submit Edit
                 </button>
               </div>
@@ -85,7 +85,7 @@
             <h3>Projects <small>{{cliCtrl.cliProjects.length}} total</small></h3>
             <div class="client-wrapper client-project-list animated slideInDown">
                 <table class="table table-striped">
-                  <thead>
+                  <thead class="client-detail-headers">
                     <th>Name</th>
                     <th>Est. Hrs</th>
                     <th>Est. Cost</th>
@@ -105,7 +105,7 @@
                   </tbody>
                 </table>
               </div>
-              <h3>Deliverables Tracking for the last 7 days</h3>
+              <h3>Deliverable Activity for the last 7 days</h3>
               <div class="client-wrapper animated slideInRight">
                 <canvas id="radar" class="chart chart-radar"
                   data="cliCtrl.delivGraphData"

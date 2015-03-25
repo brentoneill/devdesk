@@ -32,7 +32,7 @@
           <div class="col-md-4 project-new-top">
             <div class="form-group">
               <label for="pClient">Client</label>
-              <select required ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
+              <select required class="" ng-model="project.client" ng-options="client.name for client in projCtrl.clients">
                 <option value="">Select from client list</option>
               </select>
               <p ng-if="!project.client">Client not listed? No worries, <a href="/#/clients/new">click here to add!</a></p>
@@ -68,10 +68,10 @@
             <div class="form-group form-inline deliverables-list" data-ng-repeat="deliverable in deliverablesNew">
               <input type="text" class="form-control deliverable-name" ng-model="deliverable.name" name="" placeholder="Enter deliverable name & description">
               <input type="number" min="0" class="form-control deliverable-hrs" ng-model="deliverable.hours" name="" placeholder="hrs">
-              <button class="btn btn-success btn-add-deliv" ng-show="showAddDeliverable(deliverable)" ng-click="addNewDeliverable()"><i class="fa fa-plus"></i></button>
+              <button class="btno btno-mid btno-adddeliv btno-info" ng-show="showAddDeliverable(deliverable)" ng-click="addNewDeliverable()"><i class="fa fa-plus"></i></button>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" ng-disabled="deliverablesNew.length < 2"data-ng-click="projCtrl.createProject(project)">Add Project</button>
+              <button class="btno btno-fw btno-primary" ng-disabled="deliverablesNew.length < 2"data-ng-click="projCtrl.createProject(project)">Add Project</button>
             </div>
           </div>
         </div>

@@ -26,6 +26,13 @@
              });
          };
 
+         $scope.projectOrderByOptions = [
+           {name:'Project End Date', value:'enddate'},
+           {name:'Project Start Date', value:'startdate'},
+           {name:'Client Name', value:'client.name'},
+           {name:'Project Name', value:'name'}
+         ];
+
          $scope.getProfile();
 
          ProjectService.getProjects().success(function(projects){

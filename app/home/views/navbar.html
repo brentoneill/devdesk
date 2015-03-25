@@ -10,7 +10,15 @@
       <ul ng-if="isAuthenticated()">
         <li><a href="/#/logout">Logout</a></li>
         <li><a href="/#/profile">Profile</a></li>
-        <li><a href=""><i class="fa fa-2x fa-clock-o" ng-click="openRightSideBar()"></a></i></li>
+        <li>
+          <a href="">
+            <i class="fa fa-2x fa-clock-o" data-title="Track your Time"
+              data-content="Time tracking stuff goes here"
+              container="body"
+              bs-aside="aside">
+            </i>
+          </a>
+        </li>
       </ul>
     </nav>
 </div>

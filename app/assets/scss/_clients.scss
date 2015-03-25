@@ -133,3 +133,43 @@
     margin-bottom:10px;
   }
 }
+
+.client-link {
+  cursor:pointer;
+}
+
+.view-more {
+  width:50px;
+  text-align:center;
+}
+
+.client-list-controls {
+  position:absolute;
+  top:0px;
+  right:15px;
+  input, select {
+    display:inline-block;
+  }
+  input[type='text']{
+    width:200px;
+  }
+}
+
+circle.repeat-clients {
+  fill:rgba(0,0,0,0);
+  stroke:$teal;
+  margin:0 auto;
+}
+
+.allclients-stats{
+  text-align:center;
+}
+.client-detail-headers {
+  th {
+    min-width:40px;
+    text-align:center;
+  }
+  th:first-child{
+    text-align:left;
+  }
+}

@@ -2,7 +2,7 @@ $white:      #FEFEFA;
 $black:      #343434;
 $gray-dark:  #333333;
 $gray-light: #F5F5F5; //white smoke
-$gray-med:   lighten($gray-dark, 10%);
+$gray-med:   lighten($gray-dark, 40%);
 $red:        #DF5A49;
 $orange:     #E27A3F;
 $yellow:     #EFC94C;
@@ -10,3 +10,13 @@ $blue:       #334D5C;
 $teal:       #45B29D;
 $tan:        #CFC291;
 $green:      #5C832F;
+
+
+::selection {
+  background: $teal; /* WebKit/Blink Browsers */
+  color:$white;
+}
+::-moz-selection {
+  background: $teal; /* WebKit/Blink Browsers */
+  color:$white;
+}

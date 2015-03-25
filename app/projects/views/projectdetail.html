@@ -30,9 +30,11 @@
     <div class="container-authenticated">
       <div class="content-wrapper">
         <h2 class="page-header">Project HQ <small>{{projCtrl.project.name}}</small>
-          <button class="btn btn-warning pull-right" ng-click="projCtrl.goToDocuments(projCtrl.project)">
-            <i class="fa fa-file-text-o"></i> Document Center
-          </button>
+          <div class="important-button-wrapper">
+            <button class="btno btno-primary pull-right" ng-click="projCtrl.goToDocuments(projCtrl.project)">
+              <i class="fa fa-file-text-o"></i> Document Center
+            </button>
+          </div>
         </h2>
         <div class="row project-info">
           <div class="col-md-8 col-sm-8">
@@ -55,7 +57,9 @@
            </div>
          </div>
        </div>
-       <h4>Deliverables - {{projCtrl.project.totalDel}} tasks, {{projCtrl.project.hrsRemaining}} hrs remaining</h4>
+       <h4>Deliverables - {{projCtrl.project.totalDel}} tasks, {{projCtrl.project.hrsRemaining}} hrs remaining <br />
+         <small>Note: As your deliverables flow from estimated <i class="fa fa-arrow-right"></i> completed <i class="fa fa-arrow-right"></i> invoiced <i class="fa fa-arrow-right"></i> paid <i class="fa fa-arrow-right"></i> they will darken in color in the table.</i></small>
+       </h4>
        <div ng-controller="ProgressbarController">
          <progressbar class="progress-striped active" max="100" value="((projCtrl.project.totalHrs - projCtrl.project.hrsRemaining)*100) / max" type="success">{{projectStatus}}</progressbar>
        </div>
@@ -70,22 +74,21 @@
        <table class="table table-bordered table-deliverables">
           <thead>
             <tr>
-              <th class="complete-col">#</th>
               <th class="desc-col">Name</th>
               <th class="hours-col">Hours (est)</th>
               <th class="hours-col">Cost (est)</th>
               <th class="hours-col">Hours (real)</th>
               <th class="hours-col">Cost (real)</th>
               <th class="hours-col">Velocity</th>
-              <th class="complete-col">Estimated?</th>
+              <th class="complete-col"><i class="fa fa-search"></i></th>
               <th class="complete-col"><i class="fa fa-check"></i></th>
               <th class="complete-col"><i class="fa fa-clipboard"></i></th>
               <th class="complete-col"><i class="fa fa-money"></i></th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-class="{'d-estimated' : deliverable.inEstimate =='yes', 'd-completed' : deliverable.complete =='yes', 'd-invoiced' : deliverable.invoiced=='yes', 'd-paid' : deliverable.paid =='yes'}" class="table-item" ng-repeat="deliverable in projCtrl.project.deliverables">
-              <td class="complete-col">{{$index + 1}}</td>
+            <tr ng-class="{'d-estimated' : deliverable.inEstimate =='yes', 'd-completed' : deliverable.complete =='yes', 'd-invoiced' : deliverable.invoiced=='yes', 'd-paid' : deliverable.paid =='yes'}" class="table-item"
+                ng-repeat="deliverable in projCtrl.project.deliverables">
               <td class="desc-col">{{deliverable.name}}</td>
               <td class="hours-col">{{deliverable.hours}}</td>
               <td class="hours-col">{{deliverable.cost | currency}}</td>
@@ -96,23 +99,10 @@
               <td class="complete-col"><input type="checkbox" tabindex="-1" ng-click="projCtrl.completeDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.complete" ng-true-value="'yes'" ng-false-value="'no'"></td>
               <td class="complete-col"><input type="checkbox" disabled tabindex="-1" ng-click="projCtrl.updateDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.invoiced" ng-true-value="'yes'" ng-false-value="'no'"></td>
               <td class="complete-col"><input type="checkbox" ng-disabled="deliverable.invoiced == 'no'" ng-click="projCtrl.paidDeliverable(projCtrl.project, deliverable)" ng-model="deliverable.paid" ng-true-value="'yes'" ng-false-value="'no'"></td>
-<!--               <td class="complete-col">
-  <button class="btn btn-danger"
-    ng-click="projCtrl.setDeliverable(deliverable);"
-    data-animation="am-fade-and-scale"
-    data-placement="center"
-    keyboard="true"
-    backdrop = "static"
-    template="projects/modals/tracktime.tpl.html"
-    bs-modal="modal">
 
-    <i class="fa fa-clock-o"></i>
-  </button>
-</td> -->
             </tr>
             <tr class="row-totals">
-              <td></td>
-              <td><b>Total:</b></td>
+              <td class="cell-right"><b>Total:</b></td>
               <td>{{projCtrl.project.totalHrs}} hrs</td>
               <td>{{projCtrl.project.estCostTotal | currency}}</td>
               <td>{{projCtrl.project.totalRealHrs}} hrs</td>

@@ -18,10 +18,10 @@
     }
   }
   .doc-stats{
-    button {
+    .btn-fw {
+      margin-bottom:10px;
       display:block;
       width:100%;
-      margin-bottom:10px;
       text-align:left;
     }
   }
@@ -63,9 +63,6 @@ td {
 
 .complete-col, .hours-col {
   text-align:center;
-  input{
-    width:60px;
-  }
 }
 
 .desc-col {
@@ -80,16 +77,16 @@ td {
 }
 
 .d-estimated {
-  background-color:lighten($red, 20%);
+  background-color:lighten($teal, 48%);
 }
 .d-completed {
-  background-color:lighten($orange, 20%);
+  background-color:lighten($teal, 40%);
 }
 .d-invoiced {
-  background-color:lighten($yellow, 20%);
+  background-color:lighten($teal, 35%);
 }
 .d-paid {
-  background-color:lighten($green, 20%);
+  background-color:lighten($teal, 25%);
 }
 .sent {
   color:$teal;
@@ -132,14 +129,6 @@ div.project-new-top {
   overflow:hidden;
 }
 
-div.project-new-bot {
-  .btn-primary {
-    display:block;
-    width:100%;
-    height:40px;
-    font-size:20px;
-  }
-}
 
 .collapsed {
   transition: all .5s ease;
@@ -150,6 +139,7 @@ div.project-new-bot {
 }
 
 .content-wrapper {
+  position:relative;
   background-color:white;
   padding:40px;
   border:thin solid $black;
@@ -170,16 +160,36 @@ div.project-new-bot {
 
 .row-totals > td {
   text-align:center;
-  &:nth-child(2){
-    text-align:right;
-  }
+
+}
+
+td.cell-right {
+  text-align:right;
 }
 
 .progress-bar {
   font-size:16px;
-}
 
+}
+.important-button-wrapper {
+  position:absolute;
+  top:60px;
+  right:40px;
+}
 
 .project-controls {
   margin-bottom:30px;
+}
+
+.invoices-sent {
+  color:$orange;
+}
+.invoices-paid {
+  color:$green;
+}
+
+.backbut-wrapper{
+  position:absolute;
+  top:0px;
+  left:-40px;
 }
