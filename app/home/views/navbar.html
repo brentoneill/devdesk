@@ -8,17 +8,23 @@
         <li><a href="/#/signup" rel="where">Sign Up</a></li>
       </ul>
       <ul ng-if="isAuthenticated()">
-        <li><a href="/#/logout">Logout</a></li>
-        <li><a href="/#/profile">Profile</a></li>
         <li>
           <a href="">
-            <i class="fa fa-2x fa-clock-o" data-title="Track your Time"
-              data-content="Time tracking stuff goes here"
-              container="body"
-              bs-aside="aside">
+<!--             <i class="fa fa-2x fa-clock-o"
+  template="/home/tpls/tracktime.tpl.html"
+  container="body"
+  bs-aside="aside">
+</i> -->
+            <i class="fa fa-2x fa-clock-o"
+                template="/home/tpls/tracktimepopover.tpl.html"
+                placement="bottom-right"
+                bs-popover>
+
             </i>
           </a>
         </li>
+        <li><a href="/#/logout">Logout</a></li>
+        <li><a href="/#/profile">Profile</a></li>
       </ul>
     </nav>
 </div>

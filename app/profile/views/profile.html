@@ -52,9 +52,20 @@
                   <label class="control-label"><i class="ion-link"></i> Website</label>
                   <input type="text" class="form-control" ng-model="user.website" />
                 </div>
-                <div class="form-group">
-                  <label class="control-label"><i class="ion-person"></i> Hourly rate ($/hr):</label>
-                  <input type="text" class="form-control" ng-model="user.ratehr" />
+                <div class="form-group form-rates">
+                  <label class="control-label"><i class="ion-person"></i> Hourly rates ($/hr):</label>
+                  <div class="form-group form-inline">
+                    <label for="">&nbsp;&nbsp;Normal </label>
+                    <input type="text" class="form-control" ng-model="user.ratehr" />
+                  </div>
+<!--                   <div class="form-group form-inline">
+  <label for="">&nbsp;&nbsp;Discount </label>
+  <input type="number" class="form-control" ng-model="user.discountRatehr" />
+</div>
+<div class="form-inline">
+  <label for="">&nbsp;&nbsp;Premium </label>
+  <input type="number" class="form-control" ng-model="user.premiumRatehr" />
+</div> -->
                 </div>
               </div>
               <div class="col-md-6">

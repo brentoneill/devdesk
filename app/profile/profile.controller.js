@@ -35,7 +35,9 @@ angular.module('profile')
         state: $scope.user.state,
         zip: $scope.user.zip,
         phone: $scope.user.phone,
-        ratehr: $scope.user.ratehr
+        ratehr: $scope.user.ratehr,
+        discRatehr: $scope.user.discountRatehr,
+        premRatehr: $scope.user.premiumRatehr
       }).then(function() {
         $alert({
           content: 'Profile has been updated',

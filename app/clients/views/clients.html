@@ -31,15 +31,15 @@
           <div class="col-md-3 col-sm-3">
             <h3>Client Stats</h3>
             <div class="chart-wrapper allclients-stats animated slideInLeft">
-              <h5>Repeat clients</h5>
-
+              <h5 data-animation="am-flip-x"
+                  data-title="This circle grows as your circle of clients grows"
+                  bs-tooltip>
+                  Repeat clients
+              </h5>
               <svg height="100" width="100">
-                <circle class="repeat-clients"cx="50" cy="50" r="{{cliCtrl.repeatClients + 35}}"
-                        stroke-width="{{cliCtrl.repeatClients * 2}}"/>
-                <text x="48" y="52"
-                      data-animation="am-flip-x"
-                      data-title="This circle grows as your circle of clients grows"
-                      bs-tooltip="tooltip">
+                <circle class="repeat-clients"cx="50" cy="50" r="40"
+                        stroke-width="{{cliCtrl.repeatClients}}"/>
+                <text x="48" y="52">
                   {{cliCtrl.repeatClients}}
                 </text>
               </svg>

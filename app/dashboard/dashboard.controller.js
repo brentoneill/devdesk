@@ -10,6 +10,15 @@ angular.module('dashboard')
           $scope.user = data;
           localStorage.setItem('user', JSON.stringify(data));
           $scope.user = $.parseJSON(localStorage.getItem('user'));
+
+          ProjectService.getProjects().success(function(projects){
+            dashCtrl.projects = _.where(projects, {'userId':$scope.user._id});
+            dashCtrl.buildDoughnutChart(dashCtrl.projects);
+            dashCtrl.buildVelocityChart(dashCtrl.projects);
+            dashCtrl.calcAtAGlance(dashCtrl.projects);
+            dashCtrl.buildGlanceChart(dashCtrl.projects);
+          });
+
         })
         .error(function(error) {
           $alert({
@@ -164,14 +173,6 @@ angular.module('dashboard')
         });
       });
     };
-
-    ProjectService.getProjects().success(function(projects){
-      dashCtrl.projects = _.where(projects, {'userId':$scope.user._id});
-      dashCtrl.buildDoughnutChart(dashCtrl.projects);
-      dashCtrl.buildVelocityChart(dashCtrl.projects);
-      dashCtrl.calcAtAGlance(dashCtrl.projects);
-      dashCtrl.buildGlanceChart(dashCtrl.projects);
-    });
 
     dashCtrl.updateStats = function(){
       DashboardService.updateStats();

@@ -14,7 +14,12 @@ var projectRoutes = require('./routes/projects');
 var profileRoutes = require('./routes/profile');
 var docusendRoutes = require('./routes/docusend');
 var uploadRoutes = require('./routes/upload');
+var aws = require('aws-sdk');
 
+
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET = process.env.S3_BUCKET
 
 
 mongoose.connect(config.MONGO_URI);

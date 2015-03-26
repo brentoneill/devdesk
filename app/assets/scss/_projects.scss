@@ -28,19 +28,14 @@
 }
 
 .project-client-info{
-  h4 {
-    color:$black;
-    margin-bottom:10px;
-
-  }
-  p {
-    margin-left:20px;
+  i {
+    opacity:.5;
   }
 }
 .project-client-info-wrapper {
   border: thin solid gainsboro;
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px;
 
 }
 .project-info {

@@ -14,7 +14,6 @@
                $scope.user = data;
                localStorage.setItem('user', JSON.stringify(data));
                $scope.user = $.parseJSON(localStorage.getItem('user'));
-               console.log($scope.user);
              })
              .error(function(error) {
                $alert({
@@ -37,6 +36,7 @@
 
          ProjectService.getProjects().success(function(projects){
            projCtrl.projects = _.where(projects, {'userId':$scope.user._id})
+           $scope.projects = projCtrl.projects;
          });
 
          ProjectService.getProject($routeParams.projectId).success(function(project){
@@ -90,6 +90,16 @@
           };
           /////////////////////////////
 
+          projCtrl.projectTracking = function(project){
+            project = $.parseJSON(project);
+            $scope.project = project;
+          }
+
+          projCtrl.setToDelivToTrack = function(deliverable){
+            deliverable = $.parseJSON(deliverable);
+            $scope.delivBeingTracked = deliverable;
+            console.log($scope.delivBeingTracked);
+          }
 
           projCtrl.setDeliverable = function(deliv){
             projCtrl.curDeliv = deliv;

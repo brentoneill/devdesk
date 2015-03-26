@@ -21,7 +21,9 @@ var userSchema = new mongoose.Schema({
   state: String,
   zip: String,
   fullName: String,
-  ratehr: Number
+  ratehr: Number,
+  discountRatehr: Number,
+  premiumRatehr: Number
 }, {strict: false});
 
 

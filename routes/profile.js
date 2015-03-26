@@ -31,8 +31,9 @@ router.route('/me')
       user.city = req.body.city || user.city;
       user.state = req.body.state || user.state;
       user.zip = req.body.zip || user.zip;
-      user.picture = 'http://localhost:1337/uploads/avatars/userPhoto-' + user.displayName + '.jpg';
       user.ratehr = req.body.ratehr;
+      user.discountRatehr = req.body.discountRatehr;
+      user.premiumRatehr = req.body.premiumRatehr;
       user.save(function(err) {
         res.status(200).end();
       });

@@ -421,6 +421,8 @@ nav {
   color: white;
   z-index: 100;
   box-shadow: 4px 0px 20px rgba(52, 52, 52, 0.3); }
+  .sidebar h4 {
+    font-size: 24px; }
   .sidebar ul {
     list-style-type: none;
     margin: 0;
@@ -430,13 +432,14 @@ nav {
     border-bottom: 2px solid #4e4e4e; }
   .sidebar li {
     text-transform: uppercase;
-    opacity: .5;
+    opacity: .8;
     cursor: pointer;
     color: gray; }
     .sidebar li:hover {
       opacity: 1; }
     .sidebar li a {
       color: white;
+      font-size: 16px;
       transition: all .3s ease-in; }
       .sidebar li a:hover {
         color: #45B29D; }
@@ -495,6 +498,10 @@ nav {
   height: 50vh;
   background-color: #343434; }
 
+.popover-tracker {
+  width: 400px;
+  text-transform: none; }
+
 .alert-material {
   position: fixed;
   right: 12px;
@@ -520,6 +527,11 @@ nav {
   box-shadow: 4px 4px 20px rgba(52, 52, 52, 0.3);
   border-radius: 4px;
   background-color: white; }
+
+.form-inline .form-rates label {
+  width: 40%; }
+.form-inline .form-rates input {
+  width: 50%; }
 
 .chart-wrapper {
   padding: 10px;
@@ -695,16 +707,13 @@ circle.repeat-clients {
     width: 100%;
     text-align: left; }
 
-.project-client-info h4 {
-  color: #343434;
-  margin-bottom: 10px; }
-.project-client-info p {
-  margin-left: 20px; }
+.project-client-info i {
+  opacity: .5; }
 
 .project-client-info-wrapper {
   border: thin solid gainsboro;
   border-radius: 4px;
-  padding: 20px; }
+  padding: 10px; }
 
 .project-info {
   margin-bottom: 20px; }

@@ -48,6 +48,9 @@
   color:white;
   z-index:100;
   box-shadow: 04px 0px 20px rgba($black, .3);
+  h4 {
+    font-size:24px;
+  }
   ul{
     list-style-type:none;
     margin:0;
@@ -59,7 +62,7 @@
 
   li {
     text-transform:uppercase;
-    opacity:.5;
+    opacity:.8;
     cursor:pointer;
     color:gray;
     &:hover {
@@ -67,6 +70,7 @@
     }
     a {
       color:white;
+      font-size: 16px;
       transition:all .3s ease-in;
       &:hover{
         color: $teal;

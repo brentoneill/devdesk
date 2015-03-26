@@ -29,7 +29,9 @@
 
     <div class="container-authenticated">
       <div class="content-wrapper">
-        <h2 class="page-header">Project HQ <small>{{projCtrl.project.name}}</small>
+        <h2 class="page-header">
+          Project HQ
+          <small><a href="" class="client-link" ng-click=""><i class="fa fa-folder-open"></i> {{projCtrl.project.name}} </a> - <span class="client-link" ng-click="projCtrl.viewClientDetail(projCtrl.project.client._id)"><i class="fa fa-user"></i> {{projCtrl.project.client.name}}</span></small>
           <div class="important-button-wrapper">
             <button class="btno btno-primary pull-right" ng-click="projCtrl.goToDocuments(projCtrl.project)">
               <i class="fa fa-file-text-o"></i> Document Center
@@ -43,11 +45,12 @@
             <p>{{projCtrl.project.goal}}</p>
             <p><b>Notes:</b></p>
             <p>{{projCtrl.project.notes}}</p>
+            <h4><b>Project Documents Status:</b></h4>
+            <p ng-if="projCtrl.project.contractAccepted === 'yes'" class="sent"><b>Contract accepted!</b></p>
+            <p ng-if="projCtrl.project.estimateAccepted === 'yes'" class="sent"><b>Estimate accepted!</b></p>
+
           </div>
          <div class="col-md-4 col-sm-4 project-client-info">
-           <h4><b>Project Documents Status:</b></h4>
-           <p ng-if="projCtrl.project.contractAccepted === 'yes'" class="sent"><b>Contract accepted!</b></p>
-           <p ng-if="projCtrl.project.estimateAccepted === 'yes'" class="sent"><b>Estimate accepted!</b></p>
            <div class="project-client-info-wrapper">
              <p><b>Start Date:</b> {{projCtrl.project.startdate | date : format : mediumDate}}</p>
              <p><b>Deadline:</b> {{projCtrl.project.enddate | date : format : mediumDate}}</p>
