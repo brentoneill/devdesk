@@ -38,6 +38,8 @@ router.route('/:collectionName/:id')
     })
   })
   .put(ensureAuthenticated, function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
     delete req.body._id
     req.collection.updateById(req.params.id, {$set:req.body}, {safe:true, multi:false}, function(e, result){
       res.sendStatus((result===1)? 200 : 404 )

@@ -16,11 +16,5 @@
                 $scope.timerRunning = false;
             };
 
-            $scope.$on('timer-stopped', function (event, data){
-                console.log('Timer Stopped - data = ', data);
-                var timeToAdd = data.minutes/60 + data.hours;
-                console.log(timeToAdd);
-                console.log($scope.delivBeingTracked);
-            });
     })
 })();

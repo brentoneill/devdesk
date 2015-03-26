@@ -52,25 +52,6 @@
            projCtrl.client = client;
          });
 
-        //  $scope.timerRunning = false;
-        //
-        // $scope.startTimer = function () {
-        //   $scope.$broadcast('timer-start');
-        //   $scope.timerRunning = true;
-        // };
-        //
-        //  $scope.stopTimer = function () {
-        //     $scope.$broadcast('timer-stop');
-        //     $scope.timerRunning = false;
-        //  };
-        //
-        //  $scope.resumeTimer = function () {
-        //     $scope.$broadcast('timer-resume');
-        //     $scope.timerRunning = true;
-        //  };
-
-
-         //////////////////////////////
          $scope.deliverablesNew = [
            {
              id: 'deliv',
@@ -79,6 +60,29 @@
              'realHrs': 0
             }
           ];
+
+          $scope.$on('timer-stopped', function (event, data){
+              console.log('Timer Stopped - data = ', data);
+              var idx = 0;
+              _.each($scope.project.deliverables, function(item, index, array){
+                if(item.name === $scope.delivBeingTracked.name){
+                  idx = index;
+                }
+              });
+              $scope.timeToAdd = (1 + data.hours + data.minutes/60).toFixed(2);
+              console.log($scope.timeToAdd);
+              $scope.project.deliverables[idx].realHrs += +$scope.timeToAdd;
+              $scope.project.deliverables[idx].realCost += +($scope.timeToAdd * $scope.user.ratehr);
+              $scope.project.realHrs += $scope.timeToAdd;
+              $scope.project.realHrs = $scope.project.realHrs.toFixed(2);
+              $scope.project.realCost += +($scope.timeToAdd * $scope.user.ratehr);
+              projCtrl.editProject($scope.project);
+
+              $scope.timeTrackTip = {
+                title: 'You logged ' + $scope.timeToAdd + ' hr(s) for ' + $scope.delivBeingTracked.name
+              }
+          });
+
 
          $scope.addNewDeliverable = function() {
            var newDeliverableNo = $scope.deliverablesNew.length+1;
@@ -233,6 +237,7 @@
 
           projCtrl.paidInvoice = function(project, idx) {
             project.invoices[idx].paid = 'yes';
+            project.invoices[idx].paidDate = Date.now();
             _.each(project.invoices[idx].deliverables, function(ideliv, idx, arr){
               _.each(project.deliverables, function(deliv, idx, arr){
                 if(ideliv.name === deliv.name){
@@ -358,6 +363,7 @@
 
           projCtrl.editProject = function (project) {
             ProjectService.editProject(project);
+            console.log('trying to edit project');
             // $location.path('/projects');
           };
 

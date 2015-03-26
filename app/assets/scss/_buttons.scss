@@ -109,7 +109,7 @@
   display:inline-block;
   height:60px;
   &:hover {
-    background-color:lighten($white, 10%);
+    background-color:rgba($black, .8);
     border-color:lighten($white, 10%);}
   &:before,
   &:after {
@@ -143,17 +143,40 @@
   }
 }
 
-.btn-contact-vert{
+.btn-contact-login{
   &:before{
     left:0;
-    content:"about";
+    content:"login";
     top:10px;
   }
   &:after{
     left:0;
     top:-50%;
     opacity:0;
-    content:"info";
+    content:"let's go!";
+  }
+  &:hover {
+    &:before {
+      top:-50%;
+      opacity:0;
+    }
+    &:after{
+      top:10px;
+      opacity:1;
+    }
+  }
+}
+.btn-contact-signup{
+  &:before{
+    left:0;
+    content:"signup";
+    top:10px;
+  }
+  &:after{
+    left:0;
+    top:-50%;
+    opacity:0;
+    content:"don't wait!";
   }
   &:hover {
     &:before {

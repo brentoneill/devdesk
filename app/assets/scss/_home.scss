@@ -13,7 +13,11 @@
     text-align:center;
     width:50%;
     text-shadow: 4px 4px 10px rgba(0,0,0,.6);
-    h1, h3 {
+    h1 {
+      margin-bottom:20px;
+      font-weight:bold;
+    }
+    h2 {
       margin-bottom:20px;
     }
   }
@@ -35,7 +39,7 @@
 .feature-list {
   padding-left:20px;
   padding-right:20px;
-  margin-top:80px;
+  margin-top:40px;
   margin-bottom:80px;
   .feature {
     text-align:center;
@@ -51,15 +55,79 @@
 
 
 
-.cta-marketing {
+.cta-stats {
   height:50vh;
   background-color: $black;
+  background-image:url('../images/screenshot.png');
+  background-position: 50% 130%;
+  background-size:contain;
+  background-attachment:fixed;
+  position:relative;
   .caption{
-
+    display:inline-block;
+    margin: 0 auto;
+    width:50%;
+    margin-top:10vh;
+    color:white;
+    border-radius:4px;
+    padding:20px;
+    z-index:1;
+    background-color:$black;
+    .but {
+      display:inline-block;
+    }
   }
+  .caption-text {
+    z-index:1000;
+    display:block;
+  }
+}
+
+.overlay {
+  z-index:0;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:rgba(0,0,0,.7);
 }
 
 .popover-tracker {
   width:400px;
   text-transform:none;
+  font-family:'Raleway', sans-serif;
+}
+
+.timer {
+  margin-bottom:10px;
+  cursor:text;
+}
+
+.time-track-buttons{
+  margin-top:10px;
+}
+
+.container-features {
+  i.fa {
+    color:$teal;
+    margin-bottom:10px;
+  }
+}
+
+footer {
+  -webkit-box-shadow: 0px -1px 32px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 32px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 32px -5px rgba(0,0,0,0.75);
+  min-height:300px;
+  color:$white;
+  background-color:$black;
+  padding:100px;
+  a {
+    transition:all .3s ease;
+    color:$teal;
+    &:hover {
+      color:$white;
+    }
+  }
 }

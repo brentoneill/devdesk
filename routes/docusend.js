@@ -1,12 +1,11 @@
 var express = require('express');
-var router = express.Router();
 var config = require('../config');
 var sendgrid  = require('sendgrid')(config.sgName, config.sgPass);
+var aws = require('aws-sdk');
 var fs = require('fs');
 var pdf = require('html-pdf');
-
 var ensureAuthenticated = require('./helpers').ensureAuthenticated;
-
+var router = express.Router();
 var css = fs.readFileSync('./app/assets/css/docs.css', 'utf8');
 
 router.post('/send-contract', function(req, res, next){

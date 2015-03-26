@@ -1,6 +1,6 @@
 <div class="popover popover-tracker" ng-controller="ProjectController as projCtrl">
   <div class="arrow"></div>
-  <h3 class="popover-title">Track your time
+  <h3 class="popover-title"><b>Track your time</b>
     <i class="fa fa-close pull-right" ng-click="$hide()">
         <!--       title="Good Work!"
          data-content="You just tracked some time!" data-type="success"
@@ -25,10 +25,11 @@
       </select>
     </div>
     <div ng-controller="TimerController as timeCtrl">
-      <timer interval="1000" autostart="false">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
-      <div class="form-group">
+      <timer class="timer" interval="1000" autostart="false">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
+      <br />
+      <div class="form-group time-track-buttons">
         <button ng-click="startTimer()" ng-disabled="timerRunning || !trackingDeliverable" class="btno btno-thin btno-primary">Start</button>
-        <button ng-click="stopTimer()" ng-disabled="!timerRunning || !trackingDeliverable" class="btno btno-thin btno-danger">Stop</button>
+        <button ng-click="stopTimer()" ng-disabled="!timerRunning || !trackingDeliverable" class="btno btno-thin btno-danger timertool" placement="bottom-left" bs-tooltip="timeTrackTip">Stop</button>
       </div>
     </div>
   </div>

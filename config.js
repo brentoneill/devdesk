@@ -12,5 +12,9 @@ module.exports = {
   TWITTER_CALLBACK: process.env.TWITTER_CALLBACK || 'Twitter Callback Url',
   YAHOO_SECRET: process.env.YAHOO_SECRET || 'Yahoo Client Secret',
   sgName : 'brentoneill',
-  sgPass : '466370'
+  sgPass : '466370',
+  AWS_ACCESS_KEY : process.env.AWS_ACCESS_KEY || 'AKIAIOTRVM7OBQ5N3BJQ',
+  AWS_SECRET_KEY : process.env.AWS_SECRET_KEY || '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',
+  S3_BUCKET : process.env.S3_BUCKET || 'devdesk-docs'
+
 };

@@ -146,7 +146,7 @@ i.fa-folder-open {
   display: inline-block;
   height: 60px; }
   .btn-contact:hover {
-    background-color: white;
+    background-color: rgba(52, 52, 52, 0.8);
     border-color: white; }
   .btn-contact:before, .btn-contact:after {
     position: absolute;
@@ -169,19 +169,35 @@ i.fa-folder-open {
   left: -50%;
   opacity: 0; }
 
-.btn-contact-vert:before {
+.btn-contact-login:before {
   left: 0;
-  content: "about";
+  content: "login";
   top: 10px; }
-.btn-contact-vert:after {
+.btn-contact-login:after {
   left: 0;
   top: -50%;
   opacity: 0;
-  content: "info"; }
-.btn-contact-vert:hover:before {
+  content: "let's go!"; }
+.btn-contact-login:hover:before {
   top: -50%;
   opacity: 0; }
-.btn-contact-vert:hover:after {
+.btn-contact-login:hover:after {
+  top: 10px;
+  opacity: 1; }
+
+.btn-contact-signup:before {
+  left: 0;
+  content: "signup";
+  top: 10px; }
+.btn-contact-signup:after {
+  left: 0;
+  top: -50%;
+  opacity: 0;
+  content: "don't wait!"; }
+.btn-contact-signup:hover:before {
+  top: -50%;
+  opacity: 0; }
+.btn-contact-signup:hover:after {
   top: 10px;
   opacity: 1; }
 
@@ -341,6 +357,20 @@ nav {
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
+    nav li a:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #45B29D;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
     nav li a:hover:before {
       visibility: visible;
       -webkit-transform: scaleX(1);
@@ -474,7 +504,10 @@ nav {
     text-align: center;
     width: 50%;
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6); }
-    .header-image .caption h1, .header-image .caption h3 {
+    .header-image .caption h1 {
+      margin-bottom: 20px;
+      font-weight: bold; }
+    .header-image .caption h2 {
       margin-bottom: 20px; }
 
 .container-features {
@@ -485,7 +518,7 @@ nav {
 .feature-list {
   padding-left: 20px;
   padding-right: 20px;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 80px; }
   .feature-list .feature {
     text-align: center; }
@@ -494,13 +527,68 @@ nav {
     .feature-list .feature .feature-text {
       text-align: left; }
 
-.cta-marketing {
+.cta-stats {
   height: 50vh;
-  background-color: #343434; }
+  background-color: #343434;
+  background-image: url("../images/screenshot.png");
+  background-position: 50% 130%;
+  background-size: contain;
+  background-attachment: fixed;
+  position: relative; }
+  .cta-stats .caption {
+    display: inline-block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 10vh;
+    color: white;
+    border-radius: 4px;
+    padding: 20px;
+    z-index: 1;
+    background-color: #343434; }
+    .cta-stats .caption .but {
+      display: inline-block; }
+  .cta-stats .caption-text {
+    z-index: 1000;
+    display: block; }
+
+.overlay {
+  z-index: 0;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7); }
 
 .popover-tracker {
   width: 400px;
-  text-transform: none; }
+  text-transform: none;
+  font-family: 'Raleway', sans-serif; }
+
+.timer {
+  margin-bottom: 10px;
+  cursor: text; }
+
+.time-track-buttons {
+  margin-top: 10px; }
+
+.container-features i.fa {
+  color: #45B29D;
+  margin-bottom: 10px; }
+
+footer {
+  -webkit-box-shadow: 0px -1px 32px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -1px 32px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -1px 32px -5px rgba(0, 0, 0, 0.75);
+  min-height: 300px;
+  color: #FEFEFA;
+  background-color: #343434;
+  padding: 100px; }
+  footer a {
+    transition: all .3s ease;
+    color: #45B29D; }
+    footer a:hover {
+      color: #FEFEFA; }
 
 .alert-material {
   position: fixed;
