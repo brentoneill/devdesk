@@ -1,0 +1,41 @@
+@media all and (max-width: 1140px) {
+  .document-options {
+    padding-top:100px;
+  }
+}
+
+@media all and (max-width: 1140px) {
+  .project-search {
+    display:none;
+  }
+  .td-contact-website,
+  .td-contact-name {
+    display:none;
+  }
+
+}
+
+
+@media all and (max-width: 868px) {
+  .important-button-wrapper {
+    top:40px;
+    right:20px;
+  }
+  .table {
+    font-size:11px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  h2 {
+    font-size:24px;
+    margin-top:18px;
+  }
+  nav span.logo {
+    margin-left:16%;
+  }
+  nav ul {
+    margin-top:14px;
+    margin-right:4px;
+  }
+}

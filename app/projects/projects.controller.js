@@ -74,7 +74,6 @@
               $scope.project.deliverables[idx].realHrs += +$scope.timeToAdd;
               $scope.project.deliverables[idx].realCost += +($scope.timeToAdd * $scope.user.ratehr);
               $scope.project.realHrs += $scope.timeToAdd;
-              $scope.project.realHrs = $scope.project.realHrs.toFixed(2);
               $scope.project.realCost += +($scope.timeToAdd * $scope.user.ratehr);
               projCtrl.editProject($scope.project);
 
@@ -166,7 +165,6 @@
           };
 
           projCtrl.completeDeliverable = function(project, deliv){
-            console.log('completing deliv');
             if(deliv.complete ==='yes'){
               deliv.completeDate = Date.now();
             }
@@ -363,12 +361,13 @@
 
           projCtrl.editProject = function (project) {
             ProjectService.editProject(project);
-            console.log('trying to edit project');
             // $location.path('/projects');
           };
 
-          projCtrl.deleteProject = function(id) {
-            ProjectService.deleteProject(id);
+          projCtrl.deleteProject = function(project) {
+            var idx = _.indexOf(projCtrl.projects, project);
+            projCtrl.projects.splice(idx, 1);
+            ProjectService.deleteProject(project._id);
           };
 
           projCtrl.goToDocuments = function(project){

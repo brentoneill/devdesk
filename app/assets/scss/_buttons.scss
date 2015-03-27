@@ -296,3 +296,14 @@ button.btn {
 .btno-mid {
   padding:6px;
 }
+
+.btno-home {
+  width:200px;
+  margin: 0 auto;
+  cursor:pointer;
+  font-size:24px;
+  text-shadow:none;
+  &:hover {
+    opacity:1;
+  }
+}
